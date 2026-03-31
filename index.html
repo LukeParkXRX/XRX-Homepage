@@ -1,0 +1,1604 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ═══ PRIMARY SEO ═══ -->
+    <title>XRX | Breathing Life into AI</title>
+    <meta name="description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
+    <meta name="keywords" content="XRX, AI XR, spatial intelligence, ALIVE Engine, ONTO, OntologyHub, ontology, knowledge graph, AI agent, MCP, Model Context Protocol, AI relationship, digital twin, XDT, ALIVE Park, extended reality, generative AI, Korean AI startup, AI persona, vector graph, spatial computing, immersive AI">
+    <meta name="author" content="XRX Inc.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://xrx.studio">
+
+    <!-- ═══ OPEN GRAPH (Facebook, LinkedIn, KakaoTalk) ═══ -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://xrx.studio">
+    <meta property="og:title" content="XRX | Breathing Life into AI">
+    <meta property="og:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
+    <meta property="og:image" content="https://xrx.studio/og-image.png">
+    <meta property="og:site_name" content="XRX">
+    <meta property="og:locale" content="en_US">
+
+    <!-- ═══ TWITTER CARD ═══ -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://xrx.studio">
+    <meta name="twitter:title" content="XRX | Breathing Life into AI">
+    <meta name="twitter:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
+    <meta name="twitter:image" content="https://xrx.studio/og-image.png">
+
+    <!-- ═══ JSON-LD STRUCTURED DATA (Google, AI crawlers) ═══ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://xrx.studio/#organization",
+          "name": "XRX",
+          "legalName": "XRX Inc.",
+          "url": "https://xrx.studio",
+          "logo": "https://xrx.studio/xrx_w_logo_White.svg",
+          "foundingDate": "2023",
+          "foundingLocation": "Incheon, Republic of Korea",
+          "description": "XRX is an AI & XR startup building spatial intelligence infrastructure. We develop ALIVE Engine (AI persona and memory platform), ONTO (OntologyHub.ai, personal knowledge graph and MCP-compatible ontology platform), ALIVE Park (AI-powered interactive theme park), and XDT (digital twin solution).",
+          "email": "info@xrx.studio",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "116, Daejoo Knowledge Industry Center, 395, Hambakmoe-ro",
+            "addressLocality": "Namdong-gu, Incheon",
+            "addressCountry": "KR"
+          },
+          "sameAs": [
+            "https://xrx.studio",
+            "https://ontologyhub.ai",
+            "https://xdt.co.kr"
+          ],
+          "knowsAbout": [
+            "Artificial Intelligence",
+            "Extended Reality",
+            "Ontology",
+            "Knowledge Graph",
+            "AI Agent",
+            "Model Context Protocol",
+            "Digital Twin",
+            "Spatial Computing",
+            "Generative AI",
+            "Large Language Models"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://xrx.studio/#website",
+          "url": "https://xrx.studio",
+          "name": "XRX",
+          "publisher": { "@id": "https://xrx.studio/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "ALIVE Engine",
+          "applicationCategory": "AI Platform",
+          "description": "AI persona, memory and relationship platform. Generative neural framework for real-time behavioral intelligence in immersive 3D environments.",
+          "creator": { "@id": "https://xrx.studio/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "ONTO — OntologyHub",
+          "url": "https://ontologyhub.ai",
+          "applicationCategory": "Knowledge Graph / AI Agent Platform",
+          "description": "Personal knowledge graph and ontology hub. MCP-compatible platform that structures knowledge for AI agents (GPT, Claude, Gemini) and human reasoning. Build your personal ontology and connect it to AI via Model Context Protocol.",
+          "creator": { "@id": "https://xrx.studio/#organization" }
+        },
+        {
+          "@type": "SoftwareApplication",
+          "name": "XDT — eXtended Digital Twin",
+          "url": "https://xdt.co.kr",
+          "applicationCategory": "Digital Twin Platform",
+          "description": "Industrial digital twin platform unifying ROS2, MQTT, OPC-UA, Modbus devices into real-time 3D visualization with AI anomaly detection.",
+          "creator": { "@id": "https://xrx.studio/#organization" }
+        }
+      ]
+    }
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="https://formspree.io">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Outfit:wght@200;300;400;500;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Outfit:wght@200;300;400;500;700&amp;display=swap" rel="stylesheet"></noscript>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+    
+
+    <style>
+        :root {
+            --bg: #030303;
+            --fg: #F4F4F4;
+            --mute: #808080;
+            --border: #1F1F1F;
+            --accent: #FF9800;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --layout-pad: 3vw;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--fg);
+            font-family: var(--font-display);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        
+        .mono {
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--mute);
+        }
+
+        .mono-accent {
+            color: var(--accent);
+        }
+
+        h1 {
+            font-size: clamp(3rem, 7vw, 8rem);
+            font-weight: 300;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 4vw, 5rem);
+            font-weight: 200;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+        }
+
+        p {
+            font-size: 1.35rem;
+            font-weight: 300;
+            line-height: 1.7;
+            color: #C8C8C8;
+            max-width: 600px;
+        }
+
+        
+        .container {
+            padding: 0 var(--layout-pad);
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+
+        .section-pad {
+            padding: 15vh 0;
+        }
+
+        .border-top { border-top: 1px solid var(--border); }
+        .border-bottom { border-bottom: 1px solid var(--border); }
+
+        .reg-mark {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            color: var(--mute);
+            font-family: var(--font-mono);
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+        }
+        .rm-tl { top: var(--layout-pad); left: var(--layout-pad); }
+        .rm-tr { top: var(--layout-pad); right: var(--layout-pad); }
+        .rm-bl { bottom: var(--layout-pad); left: var(--layout-pad); }
+        .rm-br { bottom: var(--layout-pad); right: var(--layout-pad); }
+
+        
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem var(--layout-pad);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            background: rgba(0, 0, 0, 0.82);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logo img {
+            height: 44px;
+            width: auto;
+            display: block;
+            filter: brightness(0) invert(1);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3vw;
+        }
+
+        .nav-links a {
+            color: var(--fg);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            font-size: 0.85rem;
+        }
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+
+        
+        .hero {
+            height: 100vh;
+            padding-top: 72px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        
+        #webgl-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        
+        .bg-text {
+            position: absolute;
+            bottom: -5vh;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 35vw;
+            font-weight: 700;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(255,255,255,0.03);
+            white-space: nowrap;
+            z-index: 0;
+            pointer-events: none;
+            font-family: var(--font-display);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+        }
+
+        .hero-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .word-cycler {
+            display: inline-grid;
+            overflow: hidden;
+            height: 1.15em;
+            vertical-align: bottom;
+            color: var(--accent);
+        }
+
+        @keyframes wordSlideIn {
+            from { transform: translateY(105%); opacity: 0; }
+            to   { transform: translateY(0);    opacity: 1; }
+        }
+
+        @keyframes wordSlideOut {
+            from { transform: translateY(0);      opacity: 1; }
+            to   { transform: translateY(-105%);  opacity: 0; }
+        }
+
+        .cycle-word {
+            grid-area: 1 / 1;
+            white-space: nowrap;
+            will-change: transform;
+        }
+
+        .cycle-word.entering {
+            animation: wordSlideIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .cycle-word.leaving {
+            animation: wordSlideOut 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-meta {
+            position: absolute;
+            right: var(--layout-pad);
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            gap: 4rem;
+        }
+
+        .rotated-text {
+            writing-mode: vertical-rl;
+            transform: rotate(180deg);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .status-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--fg);
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px rgba(255,255,255,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; box-shadow: 0 0 5px 0px rgba(255,255,255,0.2); }
+            50% { opacity: 1; box-shadow: 0 0 15px 2px rgba(255,255,255,0.6); }
+            100% { opacity: 0.5; box-shadow: 0 0 5px 0px rgba(255,255,255,0.2); }
+        }
+
+        .hero-data-box {
+            border: 1px solid var(--border);
+            padding: 1rem;
+            display: flex;
+            gap: 2rem;
+            backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.4);
+        }
+        
+        .data-block {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+
+        
+        .ticker-wrap {
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+            padding: 2rem 0;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .ticker-label {
+            padding: 0 var(--layout-pad);
+            color: var(--mute);
+            font-size: 0.75rem;
+            letter-spacing: 0.15em;
+        }
+
+        .ticker-track {
+            display: flex;
+            white-space: nowrap;
+            animation: ticker 30s linear infinite;
+        }
+
+        .ticker-item {
+            display: inline-flex;
+            align-items: center;
+            padding: 0 3rem;
+            font-family: var(--font-display);
+            font-weight: 400;
+            font-size: 1.05rem;
+            color: #555;
+            letter-spacing: 0.04em;
+        }
+
+        .ticker-item span {
+            color: var(--accent);
+            margin-right: 0.8rem;
+            font-size: 0.6rem;
+            opacity: 0.7;
+        }
+
+        .contact-addresses {
+            margin-top: 3rem;
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .address-block {
+            border-left: 1px solid var(--border);
+            padding-left: 1.5rem;
+        }
+
+        .address-label {
+            color: var(--accent);
+            font-size: 0.7rem;
+            letter-spacing: 0.15em;
+            margin-bottom: 0.5rem;
+        }
+
+        .address-text {
+            font-size: 0.95rem;
+            color: #A0A0A0;
+            line-height: 1.7;
+            max-width: none;
+            font-weight: 300;
+        }
+
+        .protocol-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .protocol-tag {
+            font-size: 0.75rem;
+            color: var(--accent);
+            border: 1px solid rgba(255, 152, 0, 0.3);
+            padding: 0.2rem 0.7rem;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-track-slow {
+            animation-duration: 45s;
+        }
+
+        .ticker-slogan {
+            font-size: 1.15rem;
+            font-weight: 300;
+            color: var(--mute);
+            letter-spacing: 0.08em;
+            padding: 0 4rem;
+        }
+
+        .ticker-slogan span {
+            color: var(--accent);
+            margin-right: 1rem;
+            font-size: 1rem;
+            opacity: 0.6;
+        }
+
+        
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--layout-pad);
+        }
+
+        .phase-label {
+            margin-bottom: 1rem;
+            color: var(--mute);
+        }
+
+        
+        .intro-text {
+            font-size: clamp(1.5rem, 2.5vw, 3rem);
+            font-weight: 300;
+            line-height: 1.3;
+            color: var(--fg);
+            max-width: 90%;
+        }
+        .intro-text span {
+            color: var(--mute);
+        }
+
+        
+        .product-card {
+            border: 1px solid var(--border);
+            padding: 3rem;
+            position: relative;
+            transition: border-color 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 400px;
+            background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0) 100%);
+        }
+
+        .product-card:hover {
+            border-color: var(--accent);
+        }
+
+        .product-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 10px; height: 10px;
+            border-top: 1px solid var(--accent);
+            border-left: 1px solid var(--accent);
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .product-card:hover::before { opacity: 1; }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .card-title {
+            font-size: 2rem;
+            font-weight: 400;
+        }
+
+        .card-specs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 3rem;
+            border-top: 1px solid var(--border);
+            padding-top: 1.5rem;
+        }
+
+        
+        .belief-item {
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            gap: 2rem;
+            padding: 2rem 0;
+            border-bottom: 1px solid var(--border);
+            align-items: baseline;
+        }
+
+        .belief-item:first-child { border-top: 1px solid var(--border); }
+
+        .belief-num {
+            font-family: var(--font-mono);
+            color: var(--accent);
+            font-size: 1rem;
+        }
+
+        .belief-title {
+            font-size: 2rem;
+            font-weight: 300;
+        }
+
+        
+        .table-wrap {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 1.5rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            font-family: var(--font-mono);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--mute);
+            font-weight: normal;
+            border-top: 1px solid var(--border);
+        }
+
+        td {
+            font-size: 1.35rem;
+            font-weight: 300;
+        }
+
+        td:first-child {
+            font-family: var(--font-mono);
+            font-size: 1rem;
+            color: var(--fg);
+        }
+
+        tr:hover td {
+            background: rgba(255,255,255,0.02);
+            color: var(--accent);
+            cursor: default;
+        }
+
+        
+        .process-container {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding-top: 4rem;
+        }
+
+        .process-line {
+            position: absolute;
+            top: 4rem;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: var(--border);
+            z-index: 0;
+        }
+
+        .process-step {
+            position: relative;
+            z-index: 1;
+            background: var(--bg); 
+            padding-right: 2rem;
+        }
+
+        .step-node {
+            width: 12px;
+            height: 12px;
+            border: 1px solid var(--accent);
+            background: var(--bg);
+            border-radius: 50%;
+            margin-bottom: 1.5rem;
+            transform: translateY(-6px); 
+            transition: background 0.3s;
+        }
+
+        .process-step:hover .step-node {
+            background: var(--accent);
+        }
+
+        .step-title {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: #E8E8E8;
+        }
+
+        /* 프로세스 스텝 설명 — 대문자 해제, 사이즈·색상 개선 */
+        .process-step p.mono {
+            font-size: 0.9rem;
+            color: #A8A8A8;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            line-height: 1.7;
+        }
+
+        /* 프로덕트 카드 설명 */
+        .product-card > div > p {
+            color: #C0C0C0;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+        /* Belief 항목 설명 */
+        .belief-item p.mono {
+            font-size: 0.88rem;
+            color: #A0A0A0;
+            text-transform: none;
+            letter-spacing: 0.02em;
+            line-height: 1.7;
+        }
+
+        /* 카드 스펙 데이터 값 */
+        .card-specs .data-block span:last-child {
+            color: #D8D8D8;
+        }
+
+
+        
+        .contact-section {
+            background: #050505;
+            position: relative;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .form-group {
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid var(--mute);
+            color: var(--fg);
+            font-family: var(--font-display);
+            font-size: 1.2rem;
+            padding: 1rem 0;
+            border-radius: 0;
+            outline: none;
+            transition: border-color 0.3s;
+            appearance: none;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '↓';
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            pointer-events: none;
+            transition: transform 0.2s;
+        }
+
+        .select-wrapper:focus-within::after {
+            transform: translateY(-50%) rotate(180deg);
+        }
+
+        select {
+            cursor: pointer;
+            padding-right: 2rem;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            border-bottom-color: var(--accent);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button.submit-btn {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 1rem 3rem;
+            font-family: var(--font-mono);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        button.submit-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        button.submit-btn::after {
+            content: '→';
+            font-size: 1.2em;
+        }
+
+        
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            color: #909090;
+        }
+        .section-label::before {
+            content: '';
+            display: block;
+            width: 20px;
+            height: 1px;
+            background: var(--accent);
+        }
+
+        
+        footer {
+            padding: 2rem var(--layout-pad);
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border);
+        }
+
+        
+        @media (max-width: 1024px) {
+            .grid-2, .grid-3, .form-grid { grid-template-columns: 1fr; }
+            .hero-content { grid-template-columns: 1fr; }
+            .hero-meta { display: none; }
+            .process-container { flex-direction: column; gap: 3rem; }
+            .process-line { display: none; }
+            .step-node { transform: none; margin-bottom: 1rem; }
+            h1 { font-size: 12vw; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a class="logo" href="#"><img src="xrx_w_logo_White.svg" alt="XRX" /></a>
+        <div class="nav-links mono">
+            <a href="#about">ABOUT</a>
+            <a href="#business">BUSINESS</a>
+            <a href="#work">WORK</a>
+            <a href="#contact">CONTACT</a>
+        </div>
+    </nav>
+
+    <main>
+        
+        <section id="home" class="hero container">
+            <div class="reg-mark rm-tl">+</div>
+            <div class="reg-mark rm-tr">+</div>
+            <div class="reg-mark rm-bl">+</div>
+            <div class="reg-mark rm-br">+</div>
+
+            <div class="bg-text">ENGINE</div>
+            
+            <div id="webgl-container"></div>
+
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="mono">Initiate sequence v.2.4.0 <span style="margin-left:20px; color: var(--mute);">SYS.ONLINE</span></div>
+                    <h1>Breathing Life<br><span style="white-space:nowrap;">into <span class="word-cycler" id="cycler"></span></span>
+                    </h1>
+                </div>
+            </div>
+
+            <div class="hero-meta">
+                <div class="rotated-text mono">
+                    <span class="status-dot"></span>
+                    L.20 Spatial Experiment
+                    <span style="color:var(--mute)">// RUNNING</span>
+                </div>
+                
+                <div class="hero-data-box mono">
+                    <div class="data-block">
+                        <span style="color:var(--mute)">LATITUDE</span>
+                        <span>37.5665° N</span>
+                    </div>
+                    <div class="data-block">
+                        <span style="color:var(--mute)">LONGITUDE</span>
+                        <span>126.9780° E</span>
+                    </div>
+                    <div class="data-block">
+                        <span style="color:var(--accent)">[ SYSTEM ]</span>
+                        <span>OPTIMAL</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+        <!-- SLOGAN TICKER -->
+        <div class="ticker-wrap border-top border-bottom">
+            <div class="ticker-track ticker-track-slow">
+                <div class="ticker-item ticker-slogan"><span>—</span> Intelligence Rendered. Reality Extended.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Where Cognition Meets Space.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Real-time. Reactive. Relentless.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Breathing Life into Every Dimension.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> AI × XR — The Infrastructure of Tomorrow.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Beyond Screens. Into Space.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Spatial Intelligence. Human Experience.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> We Build What Doesn't Exist Yet.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Intelligence Rendered. Reality Extended.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Where Cognition Meets Space.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Real-time. Reactive. Relentless.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Breathing Life into Every Dimension.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> AI × XR — The Infrastructure of Tomorrow.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Beyond Screens. Into Space.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> Spatial Intelligence. Human Experience.</div>
+                <div class="ticker-item ticker-slogan"><span>—</span> We Build What Doesn't Exist Yet.</div>
+            </div>
+        </div>
+
+        <section id="about" class="container section-pad">
+            <div class="grid-2">
+                <div>
+                    <div class="section-label mono">IDENTIFICATION</div>
+                    <p class="intro-text">
+                        We construct <span>cognitive spatial frameworks</span>. By fusing generative AI with extended reality, XRX builds the infrastructure for next-generation dimensional interaction.
+                    </p>
+                </div>
+                <div style="display: flex; align-items: flex-end; justify-content: flex-end;">
+                    <p class="mono" style="text-align: right; max-width: 300px; color: var(--mute);">
+                        ESTABLISHED 2023<br><br>
+                        SPECIALIZATION:<br>
+                        NEURAL RENDERING<br>
+                        SPATIAL COMPUTING<br>
+                        AUTONOMOUS AGENTS
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        
+        <section id="business" class="container section-pad border-top">
+            <div class="section-label mono">CORE SYSTEMS</div>
+            <div class="grid-2">
+
+                <!-- ALIVE -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">ALIVE</h3>
+                            <span class="mono mono-accent">[ CORE ]</span>
+                        </div>
+                        <p>AI persona, memory &amp; relationship platform. A proprietary generative neural framework that injects real-time behavioral intelligence into immersive 3D environments.</p>
+                    </div>
+                    <div class="card-specs mono">
+                        <div class="data-block">
+                            <span style="color:var(--mute)">LATENCY</span>
+                            <span>&lt; 12ms</span>
+                        </div>
+                        <div class="data-block">
+                            <span style="color:var(--mute)">INTEGRATION</span>
+                            <span>Unreal / Unity</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ALIVE PARK -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">ALIVE Park</h3>
+                            <span class="mono" style="color:var(--mute)">[ PLATFORM ]</span>
+                        </div>
+                        <p>AI-powered interactive theme park platform. Brings ALIVE Engine's real-time reactive spatial experiences into the physical world.</p>
+                    </div>
+                    <div class="card-specs mono">
+                        <div class="data-block">
+                            <span style="color:var(--mute)">CONCURRENCY</span>
+                            <span>10M+ Entities</span>
+                        </div>
+                        <div class="data-block">
+                            <span style="color:var(--mute)">TOPOLOGY</span>
+                            <span>Distributed Mesh</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ONTO -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">ONTO</h3>
+                            <span class="mono" style="color:var(--mute)">[ KNOWLEDGE ]</span>
+                        </div>
+                        <p>Personal knowledge graph &amp; ontology hub. An MCP-compatible platform that structures and connects knowledge for AI agents and human reasoning alike.</p>
+                    </div>
+                    <div class="card-specs mono">
+                        <div class="data-block">
+                            <span style="color:var(--mute)">PROTOCOL</span>
+                            <span>MCP Compatible</span>
+                        </div>
+                        <div class="data-block">
+                            <span style="color:var(--mute)">ENDPOINT</span>
+                            <span>OntologyHub.ai</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- XDT -->
+                <div class="product-card">
+                    <div>
+                        <div class="card-header">
+                            <h3 class="card-title">XDT</h3>
+                            <span class="mono mono-accent">[ DIGITAL TWIN ]</span>
+                        </div>
+                        <p>XR-based digital twin platform that synchronizes physical and digital spaces in real time. Deployed across industrial sites and smart facilities.</p>
+                    </div>
+                    <div class="card-specs mono">
+                        <div class="data-block">
+                            <span style="color:var(--mute)">SYNC</span>
+                            <span>Real-time</span>
+                        </div>
+                        <div class="data-block">
+                            <span style="color:var(--mute)">TARGET</span>
+                            <span>Industry / Smart Facility</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="container section-pad">
+            <div class="grid-2">
+                <div>
+                    <div class="section-label mono">AXIOMS</div>
+                    <h2>Foundational<br>Principles</h2>
+                </div>
+                <div>
+                    <div class="belief-item">
+                        <div class="belief-num">01</div>
+                        <div>
+                            <h4 class="belief-title">Intelligence requires space.</h4>
+                            <p class="mono" style="margin-top: 1rem;">Disembodied AI is limited. Cognition must be spatialized to achieve true utility.</p>
+                        </div>
+                    </div>
+                    <div class="belief-item">
+                        <div class="belief-num">02</div>
+                        <div>
+                            <h4 class="belief-title">Reality is a spectrum.</h4>
+                            <p class="mono" style="margin-top: 1rem;">The binary of physical and digital is obsolete. We engineer the gradient between them.</p>
+                        </div>
+                    </div>
+                    <div class="belief-item">
+                        <div class="belief-num">03</div>
+                        <div>
+                            <h4 class="belief-title">Data is material.</h4>
+                            <p class="mono" style="margin-top: 1rem;">Information is not just read; it is rendered, inhabited, and manipulated structurally.</p>
+                        </div>
+                    </div>
+                    <div class="belief-item">
+                        <div class="belief-num">04</div>
+                        <div>
+                            <h4 class="belief-title">Precision over scale.</h4>
+                            <p class="mono" style="margin-top: 1rem;">Density of intent matters more than volume of output. Every interaction is calculated.</p>
+                        </div>
+                    </div>
+                    <div class="belief-item">
+                        <div class="belief-num">05</div>
+                        <div>
+                            <h4 class="belief-title">Autonomy is the interface.</h4>
+                            <p class="mono" style="margin-top: 1rem;">The future of UI is not clicking; it is co-existing with proactive, intelligent agents.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        
+        <section class="container section-pad border-top">
+            <div class="section-label mono">DIFFERENTIATION MATRIX</div>
+            
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Parameter</th>
+                            <th>Legacy XR Systems</th>
+                            <th>XRX ALIVE Framework</th>
+                            <th>Delta Advantage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Entity Behavior</td>
+                            <td>Scripted / Finite State Machines</td>
+                            <td>Generative / Context-Aware LLM</td>
+                            <td class="mono mono-accent">+ Dynamic Adaptability</td>
+                        </tr>
+                        <tr>
+                            <td>Asset Generation</td>
+                            <td>Manual / Pre-rendered Pipeline</td>
+                            <td>Procedural Neural Rendering</td>
+                            <td class="mono mono-accent">- 80% Production Time</td>
+                        </tr>
+                        <tr>
+                            <td>Spatial Memory</td>
+                            <td>Session-based Local Storage</td>
+                            <td>Persistent Vector Graph DB</td>
+                            <td class="mono mono-accent">+ Infinite Recall</td>
+                        </tr>
+                        <tr>
+                            <td>Interaction Model</td>
+                            <td>Menu-driven GUI</td>
+                            <td>Natural Language &amp; Gestural</td>
+                            <td class="mono mono-accent">Frictionless UX</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        
+        <!-- ALIVE PROTOCOL -->
+        <section id="work" class="container section-pad">
+            <div class="protocol-header">
+                <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
+                <span class="protocol-tag mono">ALIVE &amp; ALIVE PARK</span>
+            </div>
+            <h2>Methodology</h2>
+            <div class="process-container">
+                <div class="process-line"></div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 01</div>
+                    <h4 class="step-title">Cognitive Mapping</h4>
+                    <p class="mono">Defining the LLM parameters and behavioral boundaries for the target spatial environment.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 02</div>
+                    <h4 class="step-title">Spatial Architecture</h4>
+                    <p class="mono">Constructing the 3D topological framework and integrating physics/collision logic.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 03</div>
+                    <h4 class="step-title">Neural Synthesis</h4>
+                    <p class="mono">Fusing the cognitive model with the spatial architecture via ALIVE Engine APIs.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 04</div>
+                    <h4 class="step-title">Live Deployment</h4>
+                    <p class="mono">Publishing to ALIVE Park or custom endpoints. Continuous behavioral learning initiated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ONTO PROTOCOL -->
+        <section class="container section-pad border-top">
+            <div class="protocol-header">
+                <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
+                <span class="protocol-tag mono">ONTO — OntologyHub.ai</span>
+            </div>
+            <h2>Knowledge Graph Pipeline</h2>
+            <div class="process-container">
+                <div class="process-line"></div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 01</div>
+                    <h4 class="step-title">Knowledge Ingestion</h4>
+                    <p class="mono">Collecting and parsing target information — documents, conversations, domains — as raw semantic input.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 02</div>
+                    <h4 class="step-title">Ontology Construction</h4>
+                    <p class="mono">Applying XRX reasoning algorithms to structure concepts, entities, and relationships into a knowledge graph.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 03</div>
+                    <h4 class="step-title">Personal AI Mapping</h4>
+                    <p class="mono">Modeling individuals or organizations as living ontologies — enabling sustainable, context-aware AI relationships.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 04</div>
+                    <h4 class="step-title">MCP Integration</h4>
+                    <p class="mono">Connecting the ontology to GPT, Claude, Gemini, and custom AI agents via Model Context Protocol for real-time use.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- XDT PROTOCOL -->
+        <section class="container section-pad border-top">
+            <div class="protocol-header">
+                <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
+                <span class="protocol-tag mono">XDT — xdt.co.kr</span>
+            </div>
+            <h2>Digital Twin Pipeline</h2>
+            <div class="process-container">
+                <div class="process-line"></div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 01</div>
+                    <h4 class="step-title">Device Registration</h4>
+                    <p class="mono">Registering all field devices — robots, sensors, PLCs — via JSON configuration. No custom coding required.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 02</div>
+                    <h4 class="step-title">Protocol Bridging</h4>
+                    <p class="mono">Unifying heterogeneous communication standards — ROS 2, MQTT, OPC-UA, Modbus — into a single platform layer.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 03</div>
+                    <h4 class="step-title">Twin Rendering</h4>
+                    <p class="mono">Generating a real-time 3D digital twin of the physical site — visualizing every device, state, and flow simultaneously.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-node"></div>
+                    <div class="mono phase-label">PHASE 04</div>
+                    <h4 class="step-title">AI Analytics</h4>
+                    <p class="mono">Running AI-based anomaly detection across all connected assets. Data-driven decisions triggered in real time.</p>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- PARTNERS TICKER -->
+        <div class="ticker-wrap border-top border-bottom">
+            <div class="ticker-label mono">PARTNERS &amp; COLLABORATORS</div>
+            <div class="ticker-track">
+                <div class="ticker-item"><span>✦</span> Samsung Electronics</div>
+                <div class="ticker-item"><span>✦</span> Samsung Global Research</div>
+                <div class="ticker-item"><span>✦</span> Microsoft</div>
+                <div class="ticker-item"><span>✦</span> NVIDIA</div>
+                <div class="ticker-item"><span>✦</span> The Walt Disney Company</div>
+                <div class="ticker-item"><span>✦</span> National Geographic</div>
+                <div class="ticker-item"><span>✦</span> Emart</div>
+                <div class="ticker-item"><span>✦</span> Shinsegae I&amp;C</div>
+                <div class="ticker-item"><span>✦</span> Hyundai Futurenet</div>
+                <div class="ticker-item"><span>✦</span> KITECH</div>
+                <div class="ticker-item"><span>✦</span> SID Partners U.S.</div>
+                <div class="ticker-item"><span>✦</span> XON Studios</div>
+                <div class="ticker-item"><span>✦</span> Gun Solution</div>
+                <div class="ticker-item"><span>✦</span> Pablo Air</div>
+                <div class="ticker-item"><span>✦</span> Design Focus</div>
+                <div class="ticker-item"><span>✦</span> CA Partners</div>
+                <div class="ticker-item"><span>✦</span> REPAN</div>
+                <div class="ticker-item"><span>✦</span> ITP</div>
+                <div class="ticker-item"><span>✦</span> STARTUPPARK</div>
+                <div class="ticker-item"><span>✦</span> Samsung Electronics</div>
+                <div class="ticker-item"><span>✦</span> Samsung Global Research</div>
+                <div class="ticker-item"><span>✦</span> Microsoft</div>
+                <div class="ticker-item"><span>✦</span> NVIDIA</div>
+                <div class="ticker-item"><span>✦</span> The Walt Disney Company</div>
+                <div class="ticker-item"><span>✦</span> National Geographic</div>
+                <div class="ticker-item"><span>✦</span> Emart</div>
+                <div class="ticker-item"><span>✦</span> Shinsegae I&amp;C</div>
+                <div class="ticker-item"><span>✦</span> Hyundai Futurenet</div>
+                <div class="ticker-item"><span>✦</span> KITECH</div>
+                <div class="ticker-item"><span>✦</span> SID Partners U.S.</div>
+                <div class="ticker-item"><span>✦</span> XON Studios</div>
+                <div class="ticker-item"><span>✦</span> Gun Solution</div>
+                <div class="ticker-item"><span>✦</span> Pablo Air</div>
+                <div class="ticker-item"><span>✦</span> Design Focus</div>
+                <div class="ticker-item"><span>✦</span> CA Partners</div>
+                <div class="ticker-item"><span>✦</span> REPAN</div>
+                <div class="ticker-item"><span>✦</span> ITP</div>
+                <div class="ticker-item"><span>✦</span> STARTUPPARK</div>
+            </div>
+        </div>
+
+        <section id="contact" class="contact-section border-top">
+            <div class="container section-pad">
+                <div class="grid-2">
+                    <div>
+                        <div class="section-label mono">TERMINAL ACCESS</div>
+                        <h2>Establish<br>Connection</h2>
+                        <p class="mono" style="margin-top:2rem;">
+                            SECURE CHANNEL OPEN.<br>
+                            AWAITING INPUT PARAMETERS.
+                        </p>
+
+                        <!-- 주소 정보 -->
+                        <div class="contact-addresses">
+                            <div class="address-block">
+                                <div class="mono address-label">HQ</div>
+                                <p class="address-text">116, Daejoo Knowledge Industry Center<br>395, Hambakmoe-ro, Namdong-gu<br>Incheon, Republic of Korea</p>
+                            </div>
+                            <div class="address-block">
+                                <div class="mono address-label">R&amp;D LAB — Dev Studio 1</div>
+                                <p class="address-text">515, Incheon Startup Park<br>204, Convensia-daero, Yeonsu-gu<br>Incheon, Republic of Korea</p>
+                            </div>
+                            <div class="address-block">
+                                <div class="mono address-label">Dev Studio 2</div>
+                                <p class="address-text">215, Incheon Startup Park<br>204, Convensia-daero, Yeonsu-gu<br>Incheon, Republic of Korea</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <form id="contact-form"
+                              action="https://formspree.io/f/mkoprdoy"
+                              method="POST">
+
+                            <!-- Formspree 수신 이메일 지정 -->
+                            <input type="hidden" name="_replyto" value="info@xrx.studio">
+                            <input type="hidden" name="_subject" value="[XRX] New Inquiry Received">
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="mono">NAME</label>
+                                    <input type="text" name="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mono">EMAIL</label>
+                                    <input type="email" name="email" placeholder="hello@company.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mono">INQUIRY TYPE</label>
+                                <div class="select-wrapper">
+                                    <select name="inquiry_type">
+                                        <option value="" disabled selected>Select inquiry type ↓</option>
+                                        <option value="business">Business Inquiry</option>
+                                        <option value="project">Project Inquiry</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mono">MESSAGE</label>
+                                <textarea name="message" placeholder="Tell us about your project or inquiry..."></textarea>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                                <button type="submit" class="submit-btn">Send Message</button>
+                                <span class="mono" id="form-status" style="color:var(--accent); opacity:0; transition:opacity 0.3s;"></span>
+                            </div>
+                        </form>
+
+                        <script>
+                            const form = document.getElementById('contact-form');
+                            const status = document.getElementById('form-status');
+                            form.addEventListener('submit', async (e) => {
+                                e.preventDefault();
+                                const data = new FormData(form);
+                                const res = await fetch(form.action, {
+                                    method: 'POST', body: data,
+                                    headers: { 'Accept': 'application/json' }
+                                });
+                                if (res.ok) {
+                                    status.textContent = '✓ 메시지가 전송되었습니다.';
+                                    status.style.opacity = '1';
+                                    form.reset();
+                                } else {
+                                    status.textContent = '⚠ 전송 실패. 다시 시도해 주세요.';
+                                    status.style.opacity = '1';
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="mono">© 2026 XRX INC. ALL RIGHTS RESERVED.</div>
+        <div class="mono" style="color:var(--mute)">SYS_STAT: NOMINAL</div>
+    </footer>
+
+    
+    <script>
+        
+        const words = ["Intelligence", "Spaces", "Experiences", "Relationships"];
+        const cycler = document.getElementById('cycler');
+        let currentIndex = 0;
+
+        function initCycler() {
+            if (!cycler) return;
+            cycler.innerHTML = '';
+            const el = document.createElement('span');
+            el.className = 'cycle-word entering';
+            el.textContent = words[0];
+            cycler.appendChild(el);
+            el.addEventListener('animationend', () => {
+                el.classList.remove('entering');
+            }, { once: true });
+        }
+
+        function cycleWords() {
+            if (!cycler) return;
+            const currentEl = Array.from(cycler.querySelectorAll('.cycle-word'))
+                .find(el => !el.classList.contains('leaving'));
+            if (!currentEl) { initCycler(); return; }
+
+            const nextIndex = (currentIndex + 1) % words.length;
+
+            // 현재 단어 → 위로 퇴장
+            currentEl.classList.add('leaving');
+            currentEl.addEventListener('animationend', () => {
+                if (currentEl.parentNode) currentEl.remove();
+            }, { once: true });
+
+            // 다음 단어 → 아래서 등장
+            const nextEl = document.createElement('span');
+            nextEl.className = 'cycle-word entering';
+            nextEl.textContent = words[nextIndex];
+            cycler.appendChild(nextEl);
+            nextEl.addEventListener('animationend', () => {
+                nextEl.classList.remove('entering');
+            }, { once: true });
+
+            currentIndex = nextIndex;
+        }
+
+        initCycler();
+        setInterval(cycleWords, 3000);
+
+
+        
+        
+        const container = document.getElementById('webgl-container');
+        
+        const scene = new THREE.Scene();
+        
+        scene.fog = new THREE.FogExp2(0x000000, 0.001);
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 30;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        container.appendChild(renderer.domElement);
+
+        
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesCount = 3000; 
+        const posArray = new Float32Array(particlesCount * 3);
+        const colorsArray = new Float32Array(particlesCount * 3);
+
+        const colorWhite = new THREE.Color(0x888888);
+        const colorAmber = new THREE.Color(0xFF9800);
+
+        for(let i = 0; i < particlesCount * 3; i+=3) {
+            
+            const r = 15 * Math.cbrt(Math.random());
+            const theta = Math.random() * 2 * Math.PI;
+            const phi = Math.acos(2 * Math.random() - 1);
+
+            posArray[i] = r * Math.sin(phi) * Math.cos(theta);     
+            posArray[i+1] = r * Math.sin(phi) * Math.sin(theta);   
+            posArray[i+2] = r * Math.cos(phi);                     
+
+            
+            const mixedColor = Math.random() > 0.95 ? colorAmber : colorWhite;
+            colorsArray[i] = mixedColor.r;
+            colorsArray[i+1] = mixedColor.g;
+            colorsArray[i+2] = mixedColor.b;
+        }
+
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
+
+        // Twinkle stars: 100개 별이 독립적으로 강하게 반짝임
+        const twinkleCount = 100;
+        const twinkleIndices = [];
+        const twinklePhases = [];
+        const twinkleSpeeds = [];
+        const twinkleIsAmber = [];
+
+        for (let i = 0; i < twinkleCount; i++) {
+            const idx = Math.floor(Math.random() * particlesCount);
+            twinkleIndices.push(idx);
+            twinklePhases.push(Math.random() * Math.PI * 2);
+            twinkleSpeeds.push(0.4 + Math.random() * 1.8);
+            const isAmber = Math.random() > 0.8;
+            twinkleIsAmber.push(isAmber);
+            // 초기 색상을 밝게 세팅
+            colorsArray[idx * 3]     = isAmber ? 1.0  : 1.0;
+            colorsArray[idx * 3 + 1] = isAmber ? 0.6  : 1.0;
+            colorsArray[idx * 3 + 2] = isAmber ? 0.0  : 1.0;
+        }
+        const colorsAttr = particlesGeometry.getAttribute('color');
+
+        
+        const particlesMaterial = new THREE.PointsMaterial({
+            size: 0.05,
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+
+        
+        const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+        
+        particleMesh.position.x = 10;
+        scene.add(particleMesh);
+
+        
+        const coreGeo = new THREE.IcosahedronGeometry(4, 1);
+        const coreMat = new THREE.MeshBasicMaterial({
+            color: 0x333333,
+            wireframe: true,
+            transparent: true,
+            opacity: 0.3
+        });
+        const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+        coreMesh.position.x = 10;
+        scene.add(coreMesh);
+
+
+        
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        let windowHalfX = window.innerWidth / 2;
+        let windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
+
+        
+        const clock = new THREE.Clock();
+
+        function animate() {
+            requestAnimationFrame(animate);
+            const elapsedTime = clock.getElapsedTime();
+
+            targetX = mouseX * 0.001;
+            targetY = mouseY * 0.001;
+
+            
+            particleMesh.rotation.y += 0.001;
+            particleMesh.rotation.x += 0.0005;
+
+            coreMesh.rotation.y -= 0.002;
+            coreMesh.rotation.z += 0.001;
+
+            
+            particleMesh.rotation.y += 0.05 * (targetX - particleMesh.rotation.y);
+            particleMesh.rotation.x += 0.05 * (targetY - particleMesh.rotation.x);
+
+            
+            const scale = 1 + Math.sin(elapsedTime * 2) * 0.05;
+            coreMesh.scale.set(scale, scale, scale);
+
+            // 반짝이는 별 업데이트: 평소 거의 꺼짐 → 순간 확 밝아짐
+            for (let i = 0; i < twinkleCount; i++) {
+                const idx = twinkleIndices[i];
+                const t = Math.sin(elapsedTime * twinkleSpeeds[i] + twinklePhases[i]);
+                // 양수 구간에서만 밝아지고, 제곱으로 날카롭게 피크
+                const brightness = Math.pow(Math.max(0, t), 2) * 3.0;
+                if (twinkleIsAmber[i]) {
+                    colorsAttr.setXYZ(idx, brightness, brightness * 0.6, 0);
+                } else {
+                    colorsAttr.setXYZ(idx, brightness, brightness, brightness);
+                }
+            }
+            colorsAttr.needsUpdate = true;
+
+            renderer.render(scene, camera);
+        }
+
+        animate();
+
+        
+        window.addEventListener('resize', () => {
+            windowHalfX = window.innerWidth / 2;
+            windowHalfY = window.innerHeight / 2;
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+    </script>
+
+</body></html>
