@@ -188,9 +188,10 @@
 
         
         .container {
-            padding: 0 var(--layout-pad);
-            max-width: 1800px;
-            margin: 0 auto;
+            width: min(100% - 4rem, 1800px);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 0;
         }
 
         .section-pad {
@@ -223,7 +224,7 @@
             top: 0;
             left: 0;
             width: 100%;
-            padding: 1rem var(--layout-pad);
+            padding: 1rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -273,6 +274,7 @@
             flex-direction: column;
             justify-content: center;
             overflow: hidden;
+            width: 100%;
             max-width: none;
         }
 
@@ -885,7 +887,10 @@
         }
 
         footer {
-            padding: 2rem var(--layout-pad);
+            width: min(100% - 4rem, 1800px);
+            margin-left: auto;
+            margin-right: auto;
+            padding: 2rem 0;
             display: flex;
             justify-content: space-between;
             border-top: 1px solid var(--border);
