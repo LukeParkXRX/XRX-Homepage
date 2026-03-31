@@ -1665,11 +1665,30 @@
 
         
         const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-        
-        particleMesh.position.x = 10;
+
+        particleMesh.position.x = 14;
         scene.add(particleMesh);
 
-        
+        // Edge lines between nearby particles
+        const edgeMaxDist = 2.8;
+        const edgeMaxLines = 120;
+        const edgeLineGeo = new THREE.BufferGeometry();
+        const edgeLinePositions = new Float32Array(edgeMaxLines * 6);
+        const edgeLineColors = new Float32Array(edgeMaxLines * 6);
+        edgeLineGeo.setAttribute('position', new THREE.BufferAttribute(edgeLinePositions, 3));
+        edgeLineGeo.setAttribute('color', new THREE.BufferAttribute(edgeLineColors, 3));
+        edgeLineGeo.setDrawRange(0, 0);
+        const edgeLineMat = new THREE.LineBasicMaterial({
+            vertexColors: true,
+            transparent: true,
+            opacity: 0.25,
+            blending: THREE.AdditiveBlending
+        });
+        const edgeLines = new THREE.LineSegments(edgeLineGeo, edgeLineMat);
+        edgeLines.position.x = 14;
+        scene.add(edgeLines);
+
+
         const coreGeo = new THREE.IcosahedronGeometry(4, 1);
         const coreMat = new THREE.MeshBasicMaterial({
             color: 0x333333,
@@ -1678,7 +1697,7 @@
             opacity: 0.3
         });
         const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-        coreMesh.position.x = 10;
+        coreMesh.position.x = 14;
         scene.add(coreMesh);
 
 
@@ -1721,19 +1740,50 @@
             const scale = 1 + Math.sin(elapsedTime * 2) * 0.05;
             coreMesh.scale.set(scale, scale, scale);
 
-            // 반짝이는 별 업데이트: 평소 거의 꺼짐 → 순간 확 밝아짐
+            // 반짝이는 별 업데이트: 더 밝고 날카롭게
             for (let i = 0; i < twinkleCount; i++) {
                 const idx = twinkleIndices[i];
-                const t = Math.sin(elapsedTime * twinkleSpeeds[i] + twinklePhases[i]);
-                // 양수 구간에서만 밝아지고, 제곱으로 날카롭게 피크
-                const brightness = Math.pow(Math.max(0, t), 2) * 3.0;
+                const t = Math.sin(elapsedTime * twinkleSpeeds[i] * 1.4 + twinklePhases[i]);
+                const brightness = Math.pow(Math.max(0, t), 1.5) * 4.5;
                 if (twinkleIsAmber[i]) {
                     colorsAttr.setXYZ(idx, brightness, brightness * 0.6, 0);
                 } else {
-                    colorsAttr.setXYZ(idx, brightness, brightness, brightness);
+                    colorsAttr.setXYZ(idx, brightness, brightness, brightness * 0.95);
                 }
             }
             colorsAttr.needsUpdate = true;
+
+            // Edge lines: connect nearby bright particles
+            if (Math.floor(elapsedTime * 10) % 2 === 0) {
+                const posAttr = particlesGeometry.getAttribute('position');
+                let lineIdx = 0;
+                const ep = edgeLineGeo.getAttribute('position');
+                const ec = edgeLineGeo.getAttribute('color');
+                for (let i = 0; i < twinkleCount && lineIdx < edgeMaxLines; i++) {
+                    const a = twinkleIndices[i];
+                    const ax = posAttr.getX(a), ay = posAttr.getY(a), az = posAttr.getZ(a);
+                    for (let j = i + 1; j < twinkleCount && lineIdx < edgeMaxLines; j++) {
+                        const b = twinkleIndices[j];
+                        const dx = posAttr.getX(b) - ax, dy = posAttr.getY(b) - ay, dz = posAttr.getZ(b) - az;
+                        const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
+                        if (dist < edgeMaxDist) {
+                            const fade = 1 - dist / edgeMaxDist;
+                            const o = lineIdx * 6;
+                            ep.array[o] = ax; ep.array[o+1] = ay; ep.array[o+2] = az;
+                            ep.array[o+3] = posAttr.getX(b); ep.array[o+4] = posAttr.getY(b); ep.array[o+5] = posAttr.getZ(b);
+                            const c = fade * 0.4;
+                            ec.array[o] = c; ec.array[o+1] = c; ec.array[o+2] = c;
+                            ec.array[o+3] = c; ec.array[o+4] = c; ec.array[o+5] = c;
+                            lineIdx++;
+                        }
+                    }
+                }
+                edgeLineGeo.setDrawRange(0, lineIdx * 2);
+                ep.needsUpdate = true;
+                ec.needsUpdate = true;
+            }
+            // Edge lines rotate with particles
+            edgeLines.rotation.copy(particleMesh.rotation);
 
             renderer.render(scene, camera);
         }
