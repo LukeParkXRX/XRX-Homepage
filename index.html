@@ -16,7 +16,7 @@
     <meta property="og:url" content="https://xrx.studio">
     <meta property="og:title" content="XRX | Breathing Life into AI">
     <meta property="og:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
-    <meta property="og:image" content="https://xrx.studio/img/og-image.png">
+    <meta property="og:image" content="https://xrx.studio/og-image.png">
     <meta property="og:site_name" content="XRX">
     <meta property="og:locale" content="en_US">
 
@@ -25,7 +25,7 @@
     <meta name="twitter:url" content="https://xrx.studio">
     <meta name="twitter:title" content="XRX | Breathing Life into AI">
     <meta name="twitter:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
-    <meta name="twitter:image" content="https://xrx.studio/img/og-image.png">
+    <meta name="twitter:image" content="https://xrx.studio/og-image.png">
 
     <!-- ═══ JSON-LD STRUCTURED DATA (Google, AI crawlers) ═══ -->
     <script type="application/ld+json">
@@ -38,7 +38,7 @@
           "name": "XRX",
           "legalName": "XRX Inc.",
           "url": "https://xrx.studio",
-          "logo": "https://xrx.studio/img/xrx_w_logo_White.svg",
+          "logo": "https://xrx.studio/xrx_w_logo_White.svg",
           "foundingDate": "2023",
           "foundingLocation": "Incheon, Republic of Korea",
           "description": "XRX is an AI & XR startup building spatial intelligence infrastructure. We develop ALIVE Engine (AI persona and memory platform), ONTO (OntologyHub.ai, personal knowledge graph and MCP-compatible ontology platform), ALIVE Park (AI-powered interactive theme park), and XDT (digital twin solution).",
@@ -102,8 +102,8 @@
     </script>
 
     <!-- ═══ FAVICON ═══ -->
-    <link rel="icon" type="image/svg+xml" href="img/xrx_w_logo_White.svg">
-    <link rel="icon" type="image/png" href="img/og-image.png">
+    <link rel="icon" type="image/svg+xml" href="xrx_w_logo_White.svg">
+    <link rel="icon" type="image/png" href="og-image.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
@@ -578,34 +578,6 @@
         }
         .product-card:hover::before { opacity: 1; }
 
-
-        .card-img {
-            width: calc(100% + 6rem);
-            margin: -3rem -3rem 2rem -3rem;
-            height: 220px;
-            overflow: hidden;
-            position: relative;
-        }
-        .card-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0.7;
-            transition: opacity 0.4s ease, transform 0.6s ease;
-            display: block;
-        }
-        .product-card:hover .card-img img {
-            opacity: 0.9;
-            transform: scale(1.04);
-        }
-        .card-img::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0; right: 0;
-            height: 80px;
-            background: linear-gradient(to bottom, transparent, #030303);
-            pointer-events: none;
-        }
         .card-header {
             display: flex;
             justify-content: space-between;
@@ -1022,7 +994,7 @@
 <body>
 
     <nav>
-        <a class="logo" href="#"><img src="img/xrx_w_logo_White.svg" alt="XRX" /></a>
+        <a class="logo" href="#"><img src="xrx_w_logo_White.svg" alt="XRX" /></a>
         <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
             <span></span><span></span><span></span>
         </button>
@@ -1099,7 +1071,6 @@
 
                 <!-- ALIVE -->
                 <div class="product-card">
-                    <div class="card-img"><img src="img/alive-engine.jpg" alt="ALIVE Engine" loading="lazy"></div>
                     <div>
                         <div class="card-header">
                             <h3 class="card-title">ALIVE</h3>
@@ -1121,7 +1092,6 @@
 
                 <!-- ALIVE PARK -->
                 <div class="product-card">
-                    <div class="card-img"><img src="img/alive-park.png" alt="ALIVE Park" loading="lazy"></div>
                     <div>
                         <div class="card-header">
                             <h3 class="card-title">ALIVE Park</h3>
@@ -1143,7 +1113,6 @@
 
                 <!-- ONTO -->
                 <div class="product-card">
-                    <div class="card-img"><img src="img/onto.jpg" alt="ONTO" loading="lazy"></div>
                     <div>
                         <div class="card-header">
                             <h3 class="card-title">ONTO</h3>
@@ -1165,7 +1134,6 @@
 
                 <!-- XDT -->
                 <div class="product-card">
-                    <div class="card-img"><img src="img/xdt.jpg" alt="XDT" loading="lazy"></div>
                     <div>
                         <div class="card-header">
                             <h3 class="card-title">XDT</h3>
@@ -1313,7 +1281,8 @@
         </section>
 
         <!-- ONTO PROTOCOL -->
-        <section class="container section-pad border-top">
+        <section class="container section-pad border-top" style="position:relative; overflow:hidden;">
+            <div style="position:absolute; inset:0; background:url('img/onto_02.jpg') center/cover no-repeat; opacity:0.15; pointer-events:none;"></div>
             <h2><a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">ONTO <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
             <p class="mono" style="margin-bottom:2rem; color:var(--mute);">Knowledge Graph Pipeline — <a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">OntologyHub.ai</a></p>
             <div class="process-container">
