@@ -1666,7 +1666,7 @@
         
         const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 
-        particleMesh.position.x = 14;
+        particleMesh.position.x = 3;
         scene.add(particleMesh);
 
         // Edge lines between nearby particles
@@ -1685,19 +1685,30 @@
             blending: THREE.AdditiveBlending
         });
         const edgeLines = new THREE.LineSegments(edgeLineGeo, edgeLineMat);
-        edgeLines.position.x = 14;
+        edgeLines.position.x = 3;
         scene.add(edgeLines);
 
 
-        const coreGeo = new THREE.IcosahedronGeometry(4, 1);
+        // Heart shape
+        const heartShape = new THREE.Shape();
+        const s = 0.28;
+        heartShape.moveTo(0, -2 * s);
+        heartShape.bezierCurveTo(0, -3.2 * s, -5 * s, -5.5 * s, -5 * s, -2 * s);
+        heartShape.bezierCurveTo(-5 * s, 1 * s, -3 * s, 4 * s, 0, 5.5 * s);
+        heartShape.bezierCurveTo(3 * s, 4 * s, 5 * s, 1 * s, 5 * s, -2 * s);
+        heartShape.bezierCurveTo(5 * s, -5.5 * s, 0, -3.2 * s, 0, -2 * s);
+
+        const heartExtrudeSettings = { depth: 0.3, bevelEnabled: true, bevelThickness: 0.15, bevelSize: 0.1, bevelSegments: 2, curveSegments: 24 };
+        const coreGeo = new THREE.ExtrudeGeometry(heartShape, heartExtrudeSettings);
+        coreGeo.center();
         const coreMat = new THREE.MeshBasicMaterial({
-            color: 0x333333,
+            color: 0x8B0000,
             wireframe: true,
             transparent: true,
-            opacity: 0.3
+            opacity: 0.35
         });
         const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-        coreMesh.position.x = 14;
+        coreMesh.position.x = 3;
         scene.add(coreMesh);
 
 
