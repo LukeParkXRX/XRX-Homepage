@@ -123,6 +123,7 @@
             --mute: #808080;
             --border: #1F1F1F;
             --accent: #FF9800;
+            --accent-2: #00D4FF;
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --layout-pad: clamp(24px, 5vw, 120px);
@@ -321,6 +322,7 @@
             height: 1.15em;
             vertical-align: bottom;
             color: var(--accent);
+            text-shadow: 0 0 40px rgba(255, 152, 0, 0.3);
             -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
             mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
         }
@@ -434,10 +436,10 @@
         }
 
         .ticker-item span {
-            color: var(--accent);
+            color: var(--accent-2);
             margin-right: 0.8rem;
             font-size: 0.6rem;
-            opacity: 0.7;
+            opacity: 0.8;
         }
 
         .contact-addresses {
@@ -530,7 +532,8 @@
 
         .phase-label {
             margin-bottom: 1rem;
-            color: var(--mute);
+            color: var(--accent-2);
+            opacity: 0.7;
         }
 
         
@@ -542,7 +545,7 @@
             max-width: 90%;
         }
         .intro-text span {
-            color: var(--accent);
+            color: var(--accent-2);
         }
 
         
@@ -609,7 +612,7 @@
 
         .belief-num {
             font-family: var(--font-mono);
-            color: var(--accent);
+            color: var(--accent-2);
             font-size: 1rem;
         }
 
@@ -689,16 +692,17 @@
         .step-node {
             width: 12px;
             height: 12px;
-            border: 1px solid var(--accent);
+            border: 1px solid var(--accent-2);
             background: var(--bg);
             border-radius: 50%;
             margin-bottom: 1.5rem;
-            transform: translateY(-6px); 
-            transition: background 0.3s;
+            transform: translateY(-6px);
+            transition: background 0.3s, box-shadow 0.3s;
         }
 
         .process-step:hover .step-node {
-            background: var(--accent);
+            background: var(--accent-2);
+            box-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
         }
 
         .step-title {
