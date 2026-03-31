@@ -126,7 +126,7 @@
             --accent-2: #00D4FF;
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            --layout-pad: max(4%, 32px);
+            --layout-pad: max(5%, 32px);
         }
 
         * {
@@ -915,7 +915,7 @@
 
         /* ═══ TABLET & SNAP MODE (≤1024px) ═══ */
         @media (max-width: 1024px) {
-            :root { --layout-pad: max(4%, 24px); }
+            :root { --layout-pad: max(5%, 24px); }
             .nav-toggle { display: flex; }
             .nav-links {
                 position: fixed;
@@ -957,7 +957,7 @@
 
         /* ═══ NARROW SNAP / SMALL TABLET (≤768px) ═══ */
         @media (max-width: 768px) {
-            :root { --layout-pad: max(4%, 20px); }
+            :root { --layout-pad: max(5%, 20px); }
             .process-container { grid-template-columns: 1fr; }
             .product-card { padding: 1.5rem; }
             .card-title { font-size: 1.6rem; }
@@ -969,7 +969,7 @@
 
         /* ═══ MOBILE (≤600px) ═══ */
         @media (max-width: 600px) {
-            :root { --layout-pad: 4%; }
+            :root { --layout-pad: 5%; }
             h1 { font-size: clamp(2rem, 11vw, 4rem); }
             .logo img { height: 32px; }
             .form-grid { gap: 2rem; }
