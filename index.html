@@ -713,7 +713,7 @@
         .process-step {
             position: relative;
             z-index: 1;
-            background: var(--bg); 
+            background: transparent;
             padding-right: 2rem;
         }
 
@@ -721,7 +721,7 @@
             width: 12px;
             height: 12px;
             border: 1px solid var(--accent-2);
-            background: var(--bg);
+            background: transparent;
             border-radius: 50%;
             margin-bottom: 1.5rem;
             transform: translateY(-6px);
@@ -1281,7 +1281,6 @@
         <!-- ALIVE PROTOCOL -->
         <section id="work" style="position:relative; overflow:hidden; padding:var(--layout-pad);">
             <div style="position:absolute; inset:0; background:url('img/alive_park2.png') center/cover no-repeat; pointer-events:none;"></div>
-            <div style="position:absolute; inset:0; background:linear-gradient(to bottom, rgba(3,3,3,0.4) 0%, rgba(3,3,3,0.25) 40%, rgba(3,3,3,0.6) 100%); pointer-events:none;"></div>
             <div style="position:relative; z-index:1; min-height:480px; display:flex; flex-direction:column; justify-content:space-between;">
                 <div style="padding-top:2rem;">
                     <h2 style="margin-bottom:0.5rem; text-shadow:0 2px 20px rgba(0,0,0,0.8);">ALIVE &amp; ALIVE Park</h2>
@@ -1313,69 +1312,67 @@
         </section>
 
         <!-- ONTO PROTOCOL -->
-        <section class="container section-pad border-top" style="position:relative; overflow:hidden;">
-            <div style="position:absolute; inset:0; background:url('img/onto_02.jpg') center/cover no-repeat; opacity:0.15; pointer-events:none;"></div>
-            <h2><a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">ONTO <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
-            <p class="mono" style="margin-bottom:2rem; color:var(--mute);">Knowledge Graph Pipeline — <a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">OntologyHub.ai</a></p>
-            <div class="process-container">
-                <div class="process-line"></div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 01</div>
-                    <h4 class="step-title">Knowledge Ingestion</h4>
-                    <p class="mono">Collecting and parsing target information — documents, conversations, domains — as raw semantic input.</p>
+        <section style="position:relative; overflow:hidden; padding:var(--layout-pad);">
+            <div style="position:absolute; inset:0; background:url('img/onto_02.jpg') center/cover no-repeat; pointer-events:none;"></div>
+            <div style="position:relative; z-index:1; min-height:480px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div style="padding-top:2rem;">
+                    <h2 style="margin-bottom:0.5rem; text-shadow:0 2px 20px rgba(0,0,0,0.8);"><a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">ONTO <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
+                    <p class="mono" style="color:#ccc; text-shadow:0 1px 8px rgba(0,0,0,0.9);">Knowledge Graph Pipeline — <a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">OntologyHub.ai</a></p>
                 </div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 02</div>
-                    <h4 class="step-title">Ontology Construction</h4>
-                    <p class="mono">Applying XRX reasoning algorithms to structure concepts, entities, and relationships into a knowledge graph.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 03</div>
-                    <h4 class="step-title">Personal AI Mapping</h4>
-                    <p class="mono">Modeling individuals or organizations as living ontologies — enabling sustainable, context-aware AI relationships.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 04</div>
-                    <h4 class="step-title">MCP Integration</h4>
-                    <p class="mono">Connecting the ontology to GPT, Claude, Gemini, and custom AI agents via Model Context Protocol for real-time use.</p>
+                <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem; padding-bottom:2rem;">
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 01</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Knowledge Ingestion</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Collecting and parsing target information — documents, conversations, domains — as raw semantic input.</p>
+                    </div>
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 02</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Ontology Construction</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Applying XRX reasoning algorithms to structure concepts, entities, and relationships into a knowledge graph.</p>
+                    </div>
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 03</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Personal AI Mapping</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Modeling individuals or organizations as living ontologies — enabling sustainable, context-aware AI relationships.</p>
+                    </div>
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 04</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">MCP Integration</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Connecting the ontology to GPT, Claude, Gemini, and custom AI agents via Model Context Protocol for real-time use.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
         <!-- XDT PROTOCOL -->
-        <section class="container section-pad border-top" style="position:relative; overflow:hidden;">
-            <div style="position:absolute; inset:0; background:url('img/XDT2.jpg') center/cover no-repeat; opacity:0.15; pointer-events:none;"></div>
-            <h2><a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">XDT <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
-            <p class="mono" style="margin-bottom:2rem; color:var(--mute);">Digital Twin Pipeline — <a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">xdt.co.kr</a></p>
-            <div class="process-container">
-                <div class="process-line"></div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 01</div>
-                    <h4 class="step-title">Device Registration</h4>
-                    <p class="mono">Registering all field devices — robots, sensors, PLCs — via JSON configuration. No custom coding required.</p>
+        <section style="position:relative; overflow:hidden; padding:var(--layout-pad);">
+            <div style="position:absolute; inset:0; background:url('img/XDT2.jpg') center/cover no-repeat; pointer-events:none;"></div>
+            <div style="position:relative; z-index:1; min-height:480px; display:flex; flex-direction:column; justify-content:space-between;">
+                <div style="padding-top:2rem;">
+                    <h2 style="margin-bottom:0.5rem; text-shadow:0 2px 20px rgba(0,0,0,0.8);"><a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">XDT <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
+                    <p class="mono" style="color:#ccc; text-shadow:0 1px 8px rgba(0,0,0,0.9);">Digital Twin Pipeline — <a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">xdt.co.kr</a></p>
                 </div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 02</div>
-                    <h4 class="step-title">Protocol Bridging</h4>
-                    <p class="mono">Unifying heterogeneous communication standards — ROS 2, MQTT, OPC-UA, Modbus — into a single platform layer.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 03</div>
-                    <h4 class="step-title">Twin Rendering</h4>
-                    <p class="mono">Generating a real-time 3D digital twin of the physical site — visualizing every device, state, and flow simultaneously.</p>
-                </div>
-                <div class="process-step">
-                    <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 04</div>
-                    <h4 class="step-title">AI Analytics</h4>
-                    <p class="mono">Running AI-based anomaly detection across all connected assets. Data-driven decisions triggered in real time.</p>
+                <div style="display:grid; grid-template-columns:repeat(4, 1fr); gap:2rem; padding-bottom:2rem;">
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 01</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Device Registration</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Registering all field devices — robots, sensors, PLCs — via JSON configuration. No custom coding required.</p>
+                    </div>
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 02</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Protocol Bridging</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Unifying heterogeneous communication standards — ROS 2, MQTT, OPC-UA, Modbus — into a single platform layer.</p>
+                    </div>
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 03</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Twin Rendering</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Generating a real-time 3D digital twin of the physical site — visualizing every device, state, and flow simultaneously.</p>
+                    </div>
+                    <div>
+                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 04</div>
+                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">AI Analytics</h4>
+                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Running AI-based anomaly detection across all connected assets. Data-driven decisions triggered in real time.</p>
+                    </div>
                 </div>
             </div>
         </section>
