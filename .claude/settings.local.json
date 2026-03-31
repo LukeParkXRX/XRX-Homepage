@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx vercel:*)",
+      "Bash(curl -sI https://xrx.studio/)",
+      "Bash(curl -s https://xrx.studio/)",
+      "Bash(curl -sI https://xrx.studio/xrx_w_logo_White.svg)",
+      "Bash(curl -sI https://xrx.studio/og-image.png)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)"
+    ]
+  }
+}

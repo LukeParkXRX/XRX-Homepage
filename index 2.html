@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en" vid="0"><head vid="1">
+    <meta charset="UTF-8" vid="2">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" vid="3">
 
     <!-- ═══ PRIMARY SEO ═══ -->
-    <title>XRX | Breathing Life into AI</title>
-    <meta name="description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
+    <title vid="4">XRX | AI & XR Spatial Intelligence — ALIVE Engine, ONTO, OntologyHub</title>
+    <meta name="description" content="XRX is a Korean AI & XR startup building the infrastructure for spatial intelligence. Products include ALIVE Engine (AI persona & memory platform), ONTO (OntologyHub.ai — personal knowledge graph & MCP-compatible ontology hub), ALIVE Park, and XDT (digital twin). AI agents, ontology, extended reality.">
     <meta name="keywords" content="XRX, AI XR, spatial intelligence, ALIVE Engine, ONTO, OntologyHub, ontology, knowledge graph, AI agent, MCP, Model Context Protocol, AI relationship, digital twin, XDT, ALIVE Park, extended reality, generative AI, Korean AI startup, AI persona, vector graph, spatial computing, immersive AI">
     <meta name="author" content="XRX Inc.">
     <meta name="robots" content="index, follow">
@@ -14,8 +13,8 @@
     <!-- ═══ OPEN GRAPH (Facebook, LinkedIn, KakaoTalk) ═══ -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://xrx.studio">
-    <meta property="og:title" content="XRX | Breathing Life into AI">
-    <meta property="og:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
+    <meta property="og:title" content="XRX | AI & XR Spatial Intelligence">
+    <meta property="og:description" content="Breathing Life into Intelligence. XRX builds AI-native spatial infrastructure — ALIVE Engine, ONTO (OntologyHub.ai), ALIVE Park, XDT. Connect your knowledge to AI agents via MCP.">
     <meta property="og:image" content="https://xrx.studio/og-image.png">
     <meta property="og:site_name" content="XRX">
     <meta property="og:locale" content="en_US">
@@ -23,8 +22,8 @@
     <!-- ═══ TWITTER CARD ═══ -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:url" content="https://xrx.studio">
-    <meta name="twitter:title" content="XRX | Breathing Life into AI">
-    <meta name="twitter:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
+    <meta name="twitter:title" content="XRX | AI & XR Spatial Intelligence">
+    <meta name="twitter:description" content="Breathing Life into Intelligence. ALIVE Engine · ONTO (OntologyHub.ai) · ALIVE Park · XDT. AI agents, ontology, spatial computing.">
     <meta name="twitter:image" content="https://xrx.studio/og-image.png">
 
     <!-- ═══ JSON-LD STRUCTURED DATA (Google, AI crawlers) ═══ -->
@@ -101,22 +100,15 @@
     }
     </script>
 
-    <!-- ═══ FAVICON ═══ -->
-    <link rel="icon" type="image/svg+xml" href="xrx_w_logo_White.svg">
-    <link rel="icon" type="image/png" href="og-image.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" vid="5">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" vid="6">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;400;700&amp;family=Outfit:wght@200;300;400;500;700&amp;display=swap" rel="stylesheet" vid="7">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="dns-prefetch" href="https://formspree.io">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Outfit:wght@200;300;400;500;700&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Outfit:wght@200;300;400;500;700&amp;display=swap" rel="stylesheet"></noscript>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" vid="8"></script>
 
     
 
-    <style>
+    <style vid="9">
         :root {
             --bg: #030303;
             --fg: #F4F4F4;
@@ -231,6 +223,7 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+            box-sizing: border-box;
         }
 
         .logo {
@@ -257,8 +250,7 @@
             transition: color 0.3s ease;
             font-size: 0.85rem;
         }
-        .nav-links a:hover,
-        .nav-links a.active {
+        .nav-links a:hover {
             color: var(--accent);
         }
 
@@ -271,6 +263,7 @@
             flex-direction: column;
             justify-content: center;
             overflow: hidden;
+            box-sizing: border-box;
         }
 
         
@@ -479,21 +472,6 @@
             letter-spacing: 0.1em;
         }
 
-        a.protocol-tag {
-            text-decoration: none;
-            transition: background 0.3s, color 0.3s;
-        }
-
-        a.protocol-tag:hover {
-            background: var(--accent);
-            color: var(--bg);
-        }
-
-        a.protocol-tag::after {
-            content: ' ↗';
-            font-size: 0.7em;
-        }
-
         @keyframes ticker {
             0% { transform: translateX(0); }
             100% { transform: translateX(-50%); }
@@ -525,9 +503,10 @@
             gap: var(--layout-pad);
         }
 
-        .phase-label {
-            margin-bottom: 1rem;
-            color: var(--mute);
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--layout-pad);
         }
 
         
@@ -735,6 +714,10 @@
             color: #D8D8D8;
         }
 
+        /* 섹션 라벨 (장식용은 유지, 약간 밝게) */
+        .section-label {
+            color: #909090;
+        }
 
         
         .contact-section {
@@ -799,12 +782,6 @@
             padding-right: 2rem;
         }
 
-        select option {
-            background: #1a1a1a;
-            color: var(--fg);
-            padding: 0.5rem;
-        }
-
         input:focus, select:focus, textarea:focus {
             border-bottom-color: var(--accent);
         }
@@ -846,7 +823,6 @@
             align-items: center;
             gap: 1rem;
             margin-bottom: 3rem;
-            color: #909090;
         }
         .section-label::before {
             content: '';
@@ -866,63 +842,70 @@
 
         
         @media (max-width: 1024px) {
-            .grid-2, .form-grid { grid-template-columns: 1fr; }
+            .grid-2, .grid-3, .form-grid { grid-template-columns: 1fr; }
             .hero-content { grid-template-columns: 1fr; }
             .hero-meta { display: none; }
             .process-container { flex-direction: column; gap: 3rem; }
             .process-line { display: none; }
             .step-node { transform: none; margin-bottom: 1rem; }
-            h1 { font-size: 10vw; }
-            h2 { font-size: clamp(1.6rem, 5vw, 3rem); }
-            p { font-size: 1.1rem; }
-            .intro-text { font-size: clamp(1.2rem, 4vw, 2rem); max-width: 100%; }
-            .container { padding: 0 5vw; }
-            .section-pad { padding: 10vh 0; }
-            .product-card { padding: 2rem; min-height: auto; }
-            .belief-item { grid-template-columns: 40px 1fr; gap: 1rem; }
-            .belief-title { font-size: 1.4rem; }
-            .protocol-header { flex-direction: column; gap: 0.5rem; align-items: flex-start; }
-        }
-
-        @media (max-width: 600px) {
-            h1 { font-size: 11vw; }
-            .nav-links { gap: 4vw; }
-            .nav-links a { font-size: 0.7rem; }
-            .logo img { height: 32px; }
-            .form-grid { gap: 2rem; }
-            .card-specs { grid-template-columns: 1fr; }
-            .ticker-item { padding: 0 1.5rem; font-size: 0.9rem; }
-            .ticker-slogan { font-size: 0.95rem; padding: 0 2rem; }
+            h1 { font-size: 12vw; }
         }
     </style>
 </head>
-<body>
+<body vid="10">
 
-    <nav>
-        <a class="logo" href="#"><img src="xrx_w_logo_White.svg" alt="XRX" /></a>
-        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-        </button>
-        <div class="nav-links mono">
-            <a href="#about">ABOUT</a>
-            <a href="#business">BUSINESS</a>
-            <a href="#work">WORK</a>
-            <a href="#contact">CONTACT</a>
+    <nav vid="11">
+        <a class="logo" href="#" vid="12"><img src="xrx_w_logo_White.svg" alt="XRX" /></a>
+        <div class="nav-links mono" vid="14">
+            <a href="#about" vid="16">ABOUT</a>
+            <a href="#business" vid="17">BUSINESS</a>
+            <a href="#work" vid="18">WORK</a>
+            <a href="#contact" vid="19">CONTACT</a>
         </div>
     </nav>
 
-    <main>
+    <main vid="20">
         
-        <section id="home" class="hero container">
-            <div id="webgl-container"></div>
+        <section id="home" class="hero container" vid="21">
+            <div class="reg-mark rm-tl" vid="22">+</div>
+            <div class="reg-mark rm-tr" vid="23">+</div>
+            <div class="reg-mark rm-bl" vid="24">+</div>
+            <div class="reg-mark rm-br" vid="25">+</div>
 
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1>Breathing Life<br><span style="white-space:nowrap;">into <span class="word-cycler" id="cycler"></span></span>
+            <div class="bg-text" vid="26">ENGINE</div>
+            
+            <div id="webgl-container" vid="27"></div>
+
+            <div class="hero-content" vid="28">
+                <div class="hero-text" vid="29">
+                    <div class="mono" vid="30">Initiate sequence v.2.4.0 <span style="margin-left:20px; color: var(--mute);" vid="31">SYS.ONLINE</span></div>
+                    <h1 vid="32">Breathing Life<br><span style="white-space:nowrap;">into <span class="word-cycler" id="cycler" vid="34"></span></span>
                     </h1>
                 </div>
             </div>
 
+            <div class="hero-meta" vid="36">
+                <div class="rotated-text mono" vid="37">
+                    <span class="status-dot" vid="38"></span>
+                    L.20 Spatial Experiment
+                    <span style="color:var(--mute)" vid="39">// RUNNING</span>
+                </div>
+                
+                <div class="hero-data-box mono" vid="40">
+                    <div class="data-block" vid="41">
+                        <span style="color:var(--mute)" vid="42">LATITUDE</span>
+                        <span vid="43">37.5665° N</span>
+                    </div>
+                    <div class="data-block" vid="44">
+                        <span style="color:var(--mute)" vid="45">LONGITUDE</span>
+                        <span vid="46">126.9780° E</span>
+                    </div>
+                    <div class="data-block" vid="47">
+                        <span style="color:var(--accent)" vid="48">[ SYSTEM ]</span>
+                        <span vid="49">OPTIMAL</span>
+                    </div>
+                </div>
+            </div>
         </section>
 
 
@@ -948,20 +931,20 @@
             </div>
         </div>
 
-        <section id="about" class="container section-pad">
-            <div class="grid-2">
-                <div>
-                    <div class="section-label mono">IDENTIFICATION</div>
-                    <p class="intro-text">
-                        We construct <span>cognitive spatial frameworks</span>. By fusing generative AI with extended reality, XRX builds the infrastructure for next-generation dimensional interaction.
+        <section id="about" class="container section-pad" vid="76">
+            <div class="grid-2" vid="77">
+                <div vid="78">
+                    <div class="section-label mono" vid="79">IDENTIFICATION</div>
+                    <p class="intro-text" vid="80">
+                        We construct <span vid="81">cognitive spatial frameworks</span>. By fusing generative AI with extended reality, XRX builds the infrastructure for next-generation dimensional interaction.
                     </p>
                 </div>
-                <div style="display: flex; align-items: flex-end; justify-content: flex-end;">
-                    <p class="mono" style="text-align: right; max-width: 300px; color: var(--mute);">
-                        ESTABLISHED 2023<br><br>
-                        SPECIALIZATION:<br>
-                        NEURAL RENDERING<br>
-                        SPATIAL COMPUTING<br>
+                <div style="display: flex; align-items: flex-end; justify-content: flex-end;" vid="82">
+                    <p class="mono" style="text-align: right; max-width: 300px; color: var(--mute);" vid="83">
+                        ESTABLISHED 2023<br vid="84"><br vid="85">
+                        SPECIALIZATION:<br vid="86">
+                        NEURAL RENDERING<br vid="87">
+                        SPATIAL COMPUTING<br vid="88">
                         AUTONOMOUS AGENTS
                     </p>
                 </div>
@@ -969,48 +952,48 @@
         </section>
 
         
-        <section id="business" class="container section-pad border-top">
-            <div class="section-label mono">CORE SYSTEMS</div>
-            <div class="grid-2">
+        <section id="business" class="container section-pad border-top" vid="89">
+            <div class="section-label mono" vid="90">CORE SYSTEMS</div>
+            <div class="grid-2" vid="91">
 
                 <!-- ALIVE -->
-                <div class="product-card">
-                    <div>
-                        <div class="card-header">
-                            <h3 class="card-title">ALIVE</h3>
-                            <span class="mono mono-accent">[ CORE ]</span>
+                <div class="product-card" vid="92">
+                    <div vid="93">
+                        <div class="card-header" vid="94">
+                            <h3 class="card-title" vid="95">ALIVE</h3>
+                            <span class="mono mono-accent" vid="96">[ CORE ]</span>
                         </div>
-                        <p>AI persona, memory &amp; relationship platform. A proprietary generative neural framework that injects real-time behavioral intelligence into immersive 3D environments.</p>
+                        <p vid="97">AI persona, memory &amp; relationship platform. A proprietary generative neural framework that injects real-time behavioral intelligence into immersive 3D environments.</p>
                     </div>
-                    <div class="card-specs mono">
-                        <div class="data-block">
-                            <span style="color:var(--mute)">LATENCY</span>
-                            <span>&lt; 12ms</span>
+                    <div class="card-specs mono" vid="98">
+                        <div class="data-block" vid="99">
+                            <span style="color:var(--mute)" vid="100">LATENCY</span>
+                            <span vid="101">&lt; 12ms</span>
                         </div>
-                        <div class="data-block">
-                            <span style="color:var(--mute)">INTEGRATION</span>
-                            <span>Unreal / Unity</span>
+                        <div class="data-block" vid="102">
+                            <span style="color:var(--mute)" vid="103">INTEGRATION</span>
+                            <span vid="104">Unreal / Unity</span>
                         </div>
                     </div>
                 </div>
 
                 <!-- ALIVE PARK -->
-                <div class="product-card">
-                    <div>
-                        <div class="card-header">
-                            <h3 class="card-title">ALIVE Park</h3>
-                            <span class="mono" style="color:var(--mute)">[ PLATFORM ]</span>
+                <div class="product-card" vid="105">
+                    <div vid="106">
+                        <div class="card-header" vid="107">
+                            <h3 class="card-title" vid="108">ALIVE Park</h3>
+                            <span class="mono" style="color:var(--mute)" vid="109">[ PLATFORM ]</span>
                         </div>
-                        <p>AI-powered interactive theme park platform. Brings ALIVE Engine's real-time reactive spatial experiences into the physical world.</p>
+                        <p vid="110">AI-powered interactive theme park platform. Brings ALIVE Engine's real-time reactive spatial experiences into the physical world.</p>
                     </div>
-                    <div class="card-specs mono">
-                        <div class="data-block">
-                            <span style="color:var(--mute)">CONCURRENCY</span>
-                            <span>10M+ Entities</span>
+                    <div class="card-specs mono" vid="111">
+                        <div class="data-block" vid="112">
+                            <span style="color:var(--mute)" vid="113">CONCURRENCY</span>
+                            <span vid="114">10M+ Entities</span>
                         </div>
-                        <div class="data-block">
-                            <span style="color:var(--mute)">TOPOLOGY</span>
-                            <span>Distributed Mesh</span>
+                        <div class="data-block" vid="115">
+                            <span style="color:var(--mute)" vid="116">TOPOLOGY</span>
+                            <span vid="117">Distributed Mesh</span>
                         </div>
                     </div>
                 </div>
@@ -1060,46 +1043,46 @@
             </div>
         </section>
 
-        <section class="container section-pad">
-            <div class="grid-2">
-                <div>
-                    <div class="section-label mono">AXIOMS</div>
-                    <h2>Foundational<br>Principles</h2>
+        <section class="container section-pad" vid="118">
+            <div class="grid-2" vid="119">
+                <div vid="120">
+                    <div class="section-label mono" vid="121">AXIOMS</div>
+                    <h2 vid="122">Foundational<br vid="123">Principles</h2>
                 </div>
-                <div>
-                    <div class="belief-item">
-                        <div class="belief-num">01</div>
-                        <div>
-                            <h4 class="belief-title">Intelligence requires space.</h4>
-                            <p class="mono" style="margin-top: 1rem;">Disembodied AI is limited. Cognition must be spatialized to achieve true utility.</p>
+                <div vid="124">
+                    <div class="belief-item" vid="125">
+                        <div class="belief-num" vid="126">01</div>
+                        <div vid="127">
+                            <h4 class="belief-title" vid="128">Intelligence requires space.</h4>
+                            <p class="mono" style="margin-top: 1rem;" vid="129">Disembodied AI is limited. Cognition must be spatialized to achieve true utility.</p>
                         </div>
                     </div>
-                    <div class="belief-item">
-                        <div class="belief-num">02</div>
-                        <div>
-                            <h4 class="belief-title">Reality is a spectrum.</h4>
-                            <p class="mono" style="margin-top: 1rem;">The binary of physical and digital is obsolete. We engineer the gradient between them.</p>
+                    <div class="belief-item" vid="130">
+                        <div class="belief-num" vid="131">02</div>
+                        <div vid="132">
+                            <h4 class="belief-title" vid="133">Reality is a spectrum.</h4>
+                            <p class="mono" style="margin-top: 1rem;" vid="134">The binary of physical and digital is obsolete. We engineer the gradient between them.</p>
                         </div>
                     </div>
-                    <div class="belief-item">
-                        <div class="belief-num">03</div>
-                        <div>
-                            <h4 class="belief-title">Data is material.</h4>
-                            <p class="mono" style="margin-top: 1rem;">Information is not just read; it is rendered, inhabited, and manipulated structurally.</p>
+                    <div class="belief-item" vid="135">
+                        <div class="belief-num" vid="136">03</div>
+                        <div vid="137">
+                            <h4 class="belief-title" vid="138">Data is material.</h4>
+                            <p class="mono" style="margin-top: 1rem;" vid="139">Information is not just read; it is rendered, inhabited, and manipulated structurally.</p>
                         </div>
                     </div>
-                    <div class="belief-item">
-                        <div class="belief-num">04</div>
-                        <div>
-                            <h4 class="belief-title">Precision over scale.</h4>
-                            <p class="mono" style="margin-top: 1rem;">Density of intent matters more than volume of output. Every interaction is calculated.</p>
+                    <div class="belief-item" vid="140">
+                        <div class="belief-num" vid="141">04</div>
+                        <div vid="142">
+                            <h4 class="belief-title" vid="143">Precision over scale.</h4>
+                            <p class="mono" style="margin-top: 1rem;" vid="144">Density of intent matters more than volume of output. Every interaction is calculated.</p>
                         </div>
                     </div>
-                    <div class="belief-item">
-                        <div class="belief-num">05</div>
-                        <div>
-                            <h4 class="belief-title">Autonomy is the interface.</h4>
-                            <p class="mono" style="margin-top: 1rem;">The future of UI is not clicking; it is co-existing with proactive, intelligent agents.</p>
+                    <div class="belief-item" vid="145">
+                        <div class="belief-num" vid="146">05</div>
+                        <div vid="147">
+                            <h4 class="belief-title" vid="148">Autonomy is the interface.</h4>
+                            <p class="mono" style="margin-top: 1rem;" vid="149">The future of UI is not clicking; it is co-existing with proactive, intelligent agents.</p>
                         </div>
                     </div>
                 </div>
@@ -1107,43 +1090,43 @@
         </section>
 
         
-        <section class="container section-pad border-top">
-            <div class="section-label mono">DIFFERENTIATION MATRIX</div>
+        <section class="container section-pad border-top" vid="150">
+            <div class="section-label mono" vid="151">DIFFERENTIATION MATRIX</div>
             
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter</th>
-                            <th>Legacy XR Systems</th>
-                            <th>XRX ALIVE Framework</th>
-                            <th>Delta Advantage</th>
+            <div class="table-wrap" vid="152">
+                <table vid="153">
+                    <thead vid="154">
+                        <tr vid="155">
+                            <th vid="156">Parameter</th>
+                            <th vid="157">Legacy XR Systems</th>
+                            <th vid="158">XRX ALIVE Framework</th>
+                            <th vid="159">Delta Advantage</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td>Entity Behavior</td>
-                            <td>Scripted / Finite State Machines</td>
-                            <td>Generative / Context-Aware LLM</td>
-                            <td class="mono mono-accent">+ Dynamic Adaptability</td>
+                    <tbody vid="160">
+                        <tr vid="161">
+                            <td vid="162">Entity Behavior</td>
+                            <td vid="163">Scripted / Finite State Machines</td>
+                            <td vid="164">Generative / Context-Aware LLM</td>
+                            <td class="mono mono-accent" vid="165">+ Dynamic Adaptability</td>
                         </tr>
-                        <tr>
-                            <td>Asset Generation</td>
-                            <td>Manual / Pre-rendered Pipeline</td>
-                            <td>Procedural Neural Rendering</td>
-                            <td class="mono mono-accent">- 80% Production Time</td>
+                        <tr vid="166">
+                            <td vid="167">Asset Generation</td>
+                            <td vid="168">Manual / Pre-rendered Pipeline</td>
+                            <td vid="169">Procedural Neural Rendering</td>
+                            <td class="mono mono-accent" vid="170">- 80% Production Time</td>
                         </tr>
-                        <tr>
-                            <td>Spatial Memory</td>
-                            <td>Session-based Local Storage</td>
-                            <td>Persistent Vector Graph DB</td>
-                            <td class="mono mono-accent">+ Infinite Recall</td>
+                        <tr vid="171">
+                            <td vid="172">Spatial Memory</td>
+                            <td vid="173">Session-based Local Storage</td>
+                            <td vid="174">Persistent Vector Graph DB</td>
+                            <td class="mono mono-accent" vid="175">+ Infinite Recall</td>
                         </tr>
-                        <tr>
-                            <td>Interaction Model</td>
-                            <td>Menu-driven GUI</td>
-                            <td>Natural Language &amp; Gestural</td>
-                            <td class="mono mono-accent">Frictionless UX</td>
+                        <tr vid="176">
+                            <td vid="177">Interaction Model</td>
+                            <td vid="178">Menu-driven GUI</td>
+                            <td vid="179">Natural Language &amp; Gestural</td>
+                            <td class="mono mono-accent" vid="180">Frictionless UX</td>
                         </tr>
                     </tbody>
                 </table>
@@ -1162,25 +1145,25 @@
                 <div class="process-line"></div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 01</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 01</div>
                     <h4 class="step-title">Cognitive Mapping</h4>
                     <p class="mono">Defining the LLM parameters and behavioral boundaries for the target spatial environment.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 02</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 02</div>
                     <h4 class="step-title">Spatial Architecture</h4>
                     <p class="mono">Constructing the 3D topological framework and integrating physics/collision logic.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 03</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 03</div>
                     <h4 class="step-title">Neural Synthesis</h4>
                     <p class="mono">Fusing the cognitive model with the spatial architecture via ALIVE Engine APIs.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 04</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 04</div>
                     <h4 class="step-title">Live Deployment</h4>
                     <p class="mono">Publishing to ALIVE Park or custom endpoints. Continuous behavioral learning initiated.</p>
                 </div>
@@ -1191,32 +1174,32 @@
         <section class="container section-pad border-top">
             <div class="protocol-header">
                 <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
-                <a href="https://ontologyhub.ai" target="_blank" rel="noopener" class="protocol-tag mono">ONTO — OntologyHub.ai</a>
+                <span class="protocol-tag mono">ONTO — OntologyHub.ai</span>
             </div>
             <h2>Knowledge Graph Pipeline</h2>
             <div class="process-container">
                 <div class="process-line"></div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 01</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 01</div>
                     <h4 class="step-title">Knowledge Ingestion</h4>
                     <p class="mono">Collecting and parsing target information — documents, conversations, domains — as raw semantic input.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 02</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 02</div>
                     <h4 class="step-title">Ontology Construction</h4>
                     <p class="mono">Applying XRX reasoning algorithms to structure concepts, entities, and relationships into a knowledge graph.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 03</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 03</div>
                     <h4 class="step-title">Personal AI Mapping</h4>
                     <p class="mono">Modeling individuals or organizations as living ontologies — enabling sustainable, context-aware AI relationships.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 04</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 04</div>
                     <h4 class="step-title">MCP Integration</h4>
                     <p class="mono">Connecting the ontology to GPT, Claude, Gemini, and custom AI agents via Model Context Protocol for real-time use.</p>
                 </div>
@@ -1227,32 +1210,32 @@
         <section class="container section-pad border-top">
             <div class="protocol-header">
                 <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
-                <a href="https://xdt.co.kr" target="_blank" rel="noopener" class="protocol-tag mono">XDT — xdt.co.kr</a>
+                <span class="protocol-tag mono">XDT — xdt.co.kr</span>
             </div>
             <h2>Digital Twin Pipeline</h2>
             <div class="process-container">
                 <div class="process-line"></div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 01</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 01</div>
                     <h4 class="step-title">Device Registration</h4>
                     <p class="mono">Registering all field devices — robots, sensors, PLCs — via JSON configuration. No custom coding required.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 02</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 02</div>
                     <h4 class="step-title">Protocol Bridging</h4>
                     <p class="mono">Unifying heterogeneous communication standards — ROS 2, MQTT, OPC-UA, Modbus — into a single platform layer.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 03</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 03</div>
                     <h4 class="step-title">Twin Rendering</h4>
                     <p class="mono">Generating a real-time 3D digital twin of the physical site — visualizing every device, state, and flow simultaneously.</p>
                 </div>
                 <div class="process-step">
                     <div class="step-node"></div>
-                    <div class="mono phase-label">PHASE 04</div>
+                    <div class="mono" style="margin-bottom:1rem; color:var(--mute)">PHASE 04</div>
                     <h4 class="step-title">AI Analytics</h4>
                     <p class="mono">Running AI-based anomaly detection across all connected assets. Data-driven decisions triggered in real time.</p>
                 </div>
@@ -1305,14 +1288,14 @@
             </div>
         </div>
 
-        <section id="contact" class="contact-section border-top">
-            <div class="container section-pad">
-                <div class="grid-2">
-                    <div>
-                        <div class="section-label mono">TERMINAL ACCESS</div>
-                        <h2>Establish<br>Connection</h2>
-                        <p class="mono" style="margin-top:2rem;">
-                            SECURE CHANNEL OPEN.<br>
+        <section id="contact" class="contact-section border-top" vid="206">
+            <div class="container section-pad" vid="207">
+                <div class="grid-2" vid="208">
+                    <div vid="209">
+                        <div class="section-label mono" vid="210">TERMINAL ACCESS</div>
+                        <h2 vid="211">Establish<br vid="212">Connection</h2>
+                        <p class="mono" style="margin-top:2rem;" vid="213">
+                            SECURE CHANNEL OPEN.<br vid="214">
                             AWAITING INPUT PARAMETERS.
                         </p>
 
@@ -1333,7 +1316,7 @@
                         </div>
                     </div>
                     
-                    <div>
+                    <div vid="215">
                         <form id="contact-form"
                               action="https://formspree.io/f/mkoprdoy"
                               method="POST">
@@ -1342,21 +1325,21 @@
                             <input type="hidden" name="_replyto" value="info@xrx.studio">
                             <input type="hidden" name="_subject" value="[XRX] New Inquiry Received">
 
-                            <div class="form-grid">
-                                <div class="form-group">
-                                    <label class="mono">NAME</label>
-                                    <input type="text" name="name" placeholder="John Doe" required>
+                            <div class="form-grid" vid="217">
+                                <div class="form-group" vid="218">
+                                    <label class="mono" vid="219">NAME</label>
+                                    <input type="text" name="name" placeholder="John Doe" required vid="220">
                                 </div>
-                                <div class="form-group">
-                                    <label class="mono">EMAIL</label>
-                                    <input type="email" name="email" placeholder="hello@company.com" required>
+                                <div class="form-group" vid="221">
+                                    <label class="mono" vid="222">EMAIL</label>
+                                    <input type="email" name="email" placeholder="hello@company.com" required vid="223">
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="mono">INQUIRY TYPE</label>
+                            <div class="form-group" vid="224">
+                                <label class="mono" vid="225">INQUIRY TYPE</label>
                                 <div class="select-wrapper">
-                                    <select name="inquiry_type">
+                                    <select name="inquiry_type" vid="226">
                                         <option value="" disabled selected>Select inquiry type ↓</option>
                                         <option value="business">Business Inquiry</option>
                                         <option value="project">Project Inquiry</option>
@@ -1365,13 +1348,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="mono">MESSAGE</label>
-                                <textarea name="message" placeholder="Tell us about your project or inquiry..."></textarea>
+                            <div class="form-group" vid="231">
+                                <label class="mono" vid="232">MESSAGE</label>
+                                <textarea name="message" placeholder="Tell us about your project or inquiry..." vid="233"></textarea>
                             </div>
 
                             <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
-                                <button type="submit" class="submit-btn">Send Message</button>
+                                <button type="submit" class="submit-btn" vid="234">Send Message</button>
                                 <span class="mono" id="form-status" style="color:var(--accent); opacity:0; transition:opacity 0.3s;"></span>
                             </div>
                         </form>
@@ -1403,13 +1386,13 @@
 
     </main>
 
-    <footer>
-        <div class="mono">© 2026 XRX INC. ALL RIGHTS RESERVED.</div>
-        <div class="mono" style="color:var(--mute)">SYS_STAT: NOMINAL</div>
+    <footer vid="235">
+        <div class="mono" vid="236">© 2025 XRX INC. ALL RIGHTS RESERVED.</div>
+        <div class="mono" style="color:var(--mute)" vid="237">SYS_STAT: NOMINAL</div>
     </footer>
 
     
-    <script>
+    <script vid="238">
         
         const words = ["Intelligence", "Spaces", "Experiences", "Relationships"];
         const cycler = document.getElementById('cycler');
@@ -1468,7 +1451,7 @@
         const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
         camera.position.z = 30;
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         container.appendChild(renderer.domElement);
@@ -1557,8 +1540,8 @@
         let targetX = 0;
         let targetY = 0;
 
-        let windowHalfX = window.innerWidth / 2;
-        let windowHalfY = window.innerHeight / 2;
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
 
         document.addEventListener('mousemove', (event) => {
             mouseX = (event.clientX - windowHalfX);
@@ -1611,39 +1594,11 @@
 
         
         window.addEventListener('resize', () => {
-            windowHalfX = window.innerWidth / 2;
-            windowHalfY = window.innerHeight / 2;
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
         });
 
-    </script>
-
-    <script>
-        // Nav active highlight on scroll
-        const sections = document.querySelectorAll('section[id]');
-        const navLinks = document.querySelectorAll('.nav-links a');
-
-        function updateActiveNav() {
-            const scrollY = window.scrollY + 120;
-            sections.forEach(section => {
-                const top = section.offsetTop;
-                const height = section.offsetHeight;
-                const id = section.getAttribute('id');
-                if (scrollY >= top && scrollY < top + height) {
-                    navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        if (link.getAttribute('href') === '#' + id) {
-                            link.classList.add('active');
-                        }
-                    });
-                }
-            });
-        }
-
-        window.addEventListener('scroll', updateActiveNav, { passive: true });
-        updateActiveNav();
     </script>
 
 </body></html>

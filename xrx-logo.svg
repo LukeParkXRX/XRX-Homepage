@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 220 80" fill="none">
+  <!-- X (left) -->
+  <!-- Top-left diagonal -->
+  <polygon points="8,4 28,4 20,38 0,38" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Top-right diagonal -->
+  <polygon points="28,4 48,4 56,38 36,38" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Bottom-left diagonal -->
+  <polygon points="0,42 20,42 28,76 8,76" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Bottom-right diagonal -->
+  <polygon points="36,42 56,42 48,76 28,76" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+
+  <!-- R -->
+  <!-- Vertical stem -->
+  <polygon points="68,4 84,4 84,76 68,76" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Top horizontal -->
+  <polygon points="84,4 110,4 110,16 84,16" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Diagonal top-right -->
+  <polygon points="110,4 126,4 118,38 102,38" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Middle horizontal -->
+  <polygon points="84,34 108,34 108,46 84,46" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Leg diagonal -->
+  <polygon points="100,46 118,46 134,76 116,76" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+
+  <!-- X (right) -->
+  <!-- Top-left diagonal -->
+  <polygon points="148,4 168,4 160,38 140,38" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Top-right diagonal -->
+  <polygon points="168,4 188,4 196,38 176,38" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Bottom-left diagonal -->
+  <polygon points="140,42 160,42 168,76 148,76" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+  <!-- Bottom-right diagonal -->
+  <polygon points="176,42 196,42 188,76 168,76" stroke="white" stroke-width="1" fill="none" opacity="0.9"/>
+</svg>
