@@ -127,6 +127,9 @@
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
             --layout-pad: max(6%, 32px);
+            --fg-dim: #ddd;
+            --fg-muted: #ccc;
+            --overlay: rgba(0,0,0,0.7);
         }
 
         * {
@@ -750,6 +753,22 @@
             line-height: 1.7;
         }
 
+        /* ═══ PROTOCOL SECTION (배경이미지 섹션 공통) ═══ */
+        .protocol-section { position: relative; overflow: hidden; padding: var(--layout-pad); }
+        .protocol-bg { position: absolute; inset: 0; background-size: cover; background-position: center; background-repeat: no-repeat; pointer-events: none; }
+        .protocol-overlay { position: absolute; inset: 0; background: var(--overlay); pointer-events: none; }
+        .protocol-inner { position: relative; z-index: 1; min-height: 480px; display: flex; flex-direction: column; justify-content: space-between; }
+        .protocol-header { padding-top: 2rem; }
+        .protocol-header h2 { margin-bottom: 0.5rem; text-shadow: 0 2px 20px rgba(0,0,0,0.8); }
+        .protocol-header .protocol-subtitle { color: var(--fg-muted); text-shadow: 0 1px 8px rgba(0,0,0,0.9); }
+        .protocol-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; padding-bottom: 2rem; }
+        .protocol-inner .phase-label { margin-bottom: 0.5rem; text-shadow: 0 1px 6px rgba(0,0,0,0.9); }
+        .protocol-inner .step-title { text-shadow: 0 2px 10px rgba(0,0,0,0.9); }
+        .protocol-inner .phase-desc {
+            font-size: 0.9rem; color: var(--fg-dim); text-transform: none;
+            letter-spacing: 0.02em; line-height: 1.7; text-shadow: 0 1px 6px rgba(0,0,0,0.9);
+        }
+
         /* 프로덕트 카드 설명 */
         .product-card > div > p {
             color: #C0C0C0;
@@ -997,7 +1016,7 @@
             :root { --layout-pad: max(6%, 20px); }
             .process-container { grid-template-columns: 1fr; }
             .protocol-grid { grid-template-columns: 1fr; }
-            .protocol-inner { min-height: auto !important; }
+            .protocol-inner { min-height: auto; }
             .product-card { padding: 1.5rem; }
             .card-img { width: calc(100% + 3rem); margin: -1.5rem -1.5rem 1.5rem -1.5rem; }
             .card-title { font-size: 1.6rem; }
@@ -1289,102 +1308,102 @@
 
         
         <!-- ALIVE PROTOCOL -->
-        <section id="work" style="position:relative; overflow:hidden; padding:var(--layout-pad);">
-            <div style="position:absolute; inset:0; background:url('img/alive_park2.png') center/cover no-repeat; pointer-events:none;"></div>
-            <div style="position:absolute; inset:0; background:rgba(0,0,0,0.7); pointer-events:none;"></div>
-            <div style="position:relative; z-index:1; min-height:480px; display:flex; flex-direction:column; justify-content:space-between;" class="protocol-inner">
-                <div style="padding-top:2rem;">
-                    <h2 style="margin-bottom:0.5rem; text-shadow:0 2px 20px rgba(0,0,0,0.8);">ALIVE &amp; ALIVE Park</h2>
-                    <p class="mono" style="color:#ccc; text-shadow:0 1px 8px rgba(0,0,0,0.9);">Methodology</p>
+        <section id="work" class="protocol-section">
+            <div class="protocol-bg" style="background-image:url('img/alive_park2.jpg');"></div>
+            <div class="protocol-overlay"></div>
+            <div class="protocol-inner">
+                <div class="protocol-header">
+                    <h2>ALIVE &amp; ALIVE Park</h2>
+                    <p class="mono protocol-subtitle">Methodology</p>
                 </div>
-                <div class="protocol-grid" style="display:grid; gap:2rem; padding-bottom:2rem;">
+                <div class="protocol-grid">
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 01</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Cognitive Mapping</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Defining the LLM parameters and behavioral boundaries for the target spatial environment.</p>
+                        <div class="mono phase-label">PHASE 01</div>
+                        <h4 class="step-title">Cognitive Mapping</h4>
+                        <p class="mono phase-desc">Defining the LLM parameters and behavioral boundaries for the target spatial environment.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 02</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Spatial Architecture</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Constructing the 3D topological framework and integrating physics/collision logic.</p>
+                        <div class="mono phase-label">PHASE 02</div>
+                        <h4 class="step-title">Spatial Architecture</h4>
+                        <p class="mono phase-desc">Constructing the 3D topological framework and integrating physics/collision logic.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 03</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Neural Synthesis</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Fusing the cognitive model with the spatial architecture via ALIVE Engine APIs.</p>
+                        <div class="mono phase-label">PHASE 03</div>
+                        <h4 class="step-title">Neural Synthesis</h4>
+                        <p class="mono phase-desc">Fusing the cognitive model with the spatial architecture via ALIVE Engine APIs.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 04</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Live Deployment</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Publishing to ALIVE Park or custom endpoints. Continuous behavioral learning initiated.</p>
+                        <div class="mono phase-label">PHASE 04</div>
+                        <h4 class="step-title">Live Deployment</h4>
+                        <p class="mono phase-desc">Publishing to ALIVE Park or custom endpoints. Continuous behavioral learning initiated.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ONTO PROTOCOL -->
-        <section style="position:relative; overflow:hidden; padding:var(--layout-pad);">
-            <div style="position:absolute; inset:0; background:url('img/onto_02.jpg') center/cover no-repeat; pointer-events:none;"></div>
-            <div style="position:absolute; inset:0; background:rgba(0,0,0,0.7); pointer-events:none;"></div>
-            <div style="position:relative; z-index:1; min-height:480px; display:flex; flex-direction:column; justify-content:space-between;" class="protocol-inner">
-                <div style="padding-top:2rem;">
-                    <h2 style="margin-bottom:0.5rem; text-shadow:0 2px 20px rgba(0,0,0,0.8);"><a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">ONTO <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
-                    <p class="mono" style="color:#ccc; text-shadow:0 1px 8px rgba(0,0,0,0.9);">Knowledge Graph Pipeline — <a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">OntologyHub.ai</a></p>
+        <section class="protocol-section">
+            <div class="protocol-bg" style="background-image:url('img/onto_02.jpg');"></div>
+            <div class="protocol-overlay"></div>
+            <div class="protocol-inner">
+                <div class="protocol-header">
+                    <h2><a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">ONTO <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
+                    <p class="mono protocol-subtitle">Knowledge Graph Pipeline — <a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">OntologyHub.ai</a></p>
                 </div>
-                <div class="protocol-grid" style="display:grid; gap:2rem; padding-bottom:2rem;">
+                <div class="protocol-grid">
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 01</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Knowledge Ingestion</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Collecting and parsing target information — documents, conversations, domains — as raw semantic input.</p>
+                        <div class="mono phase-label">PHASE 01</div>
+                        <h4 class="step-title">Knowledge Ingestion</h4>
+                        <p class="mono phase-desc">Collecting and parsing target information — documents, conversations, domains — as raw semantic input.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 02</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Ontology Construction</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Applying XRX reasoning algorithms to structure concepts, entities, and relationships into a knowledge graph.</p>
+                        <div class="mono phase-label">PHASE 02</div>
+                        <h4 class="step-title">Ontology Construction</h4>
+                        <p class="mono phase-desc">Applying XRX reasoning algorithms to structure concepts, entities, and relationships into a knowledge graph.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 03</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Personal AI Mapping</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Modeling individuals or organizations as living ontologies — enabling sustainable, context-aware AI relationships.</p>
+                        <div class="mono phase-label">PHASE 03</div>
+                        <h4 class="step-title">Personal AI Mapping</h4>
+                        <p class="mono phase-desc">Modeling individuals or organizations as living ontologies — enabling sustainable, context-aware AI relationships.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 04</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">MCP Integration</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Connecting the ontology to GPT, Claude, Gemini, and custom AI agents via Model Context Protocol for real-time use.</p>
+                        <div class="mono phase-label">PHASE 04</div>
+                        <h4 class="step-title">MCP Integration</h4>
+                        <p class="mono phase-desc">Connecting the ontology to GPT, Claude, Gemini, and custom AI agents via Model Context Protocol for real-time use.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- XDT PROTOCOL -->
-        <section style="position:relative; overflow:hidden; padding:var(--layout-pad);">
-            <div style="position:absolute; inset:0; background:url('img/XDT2.jpg') center/cover no-repeat; pointer-events:none;"></div>
-            <div style="position:absolute; inset:0; background:rgba(0,0,0,0.7); pointer-events:none;"></div>
-            <div style="position:relative; z-index:1; min-height:480px; display:flex; flex-direction:column; justify-content:space-between;" class="protocol-inner">
-                <div style="padding-top:2rem;">
-                    <h2 style="margin-bottom:0.5rem; text-shadow:0 2px 20px rgba(0,0,0,0.8);"><a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">XDT <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
-                    <p class="mono" style="color:#ccc; text-shadow:0 1px 8px rgba(0,0,0,0.9);">Digital Twin Pipeline — <a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">xdt.co.kr</a></p>
+        <section class="protocol-section">
+            <div class="protocol-bg" style="background-image:url('img/XDT2.jpg');"></div>
+            <div class="protocol-overlay"></div>
+            <div class="protocol-inner">
+                <div class="protocol-header">
+                    <h2><a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">XDT <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
+                    <p class="mono protocol-subtitle">Digital Twin Pipeline — <a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">xdt.co.kr</a></p>
                 </div>
-                <div class="protocol-grid" style="display:grid; gap:2rem; padding-bottom:2rem;">
+                <div class="protocol-grid">
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 01</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Device Registration</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Registering all field devices — robots, sensors, PLCs — via JSON configuration. No custom coding required.</p>
+                        <div class="mono phase-label">PHASE 01</div>
+                        <h4 class="step-title">Device Registration</h4>
+                        <p class="mono phase-desc">Registering all field devices — robots, sensors, PLCs — via JSON configuration. No custom coding required.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 02</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Protocol Bridging</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Unifying heterogeneous communication standards — ROS 2, MQTT, OPC-UA, Modbus — into a single platform layer.</p>
+                        <div class="mono phase-label">PHASE 02</div>
+                        <h4 class="step-title">Protocol Bridging</h4>
+                        <p class="mono phase-desc">Unifying heterogeneous communication standards — ROS 2, MQTT, OPC-UA, Modbus — into a single platform layer.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 03</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">Twin Rendering</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Generating a real-time 3D digital twin of the physical site — visualizing every device, state, and flow simultaneously.</p>
+                        <div class="mono phase-label">PHASE 03</div>
+                        <h4 class="step-title">Twin Rendering</h4>
+                        <p class="mono phase-desc">Generating a real-time 3D digital twin of the physical site — visualizing every device, state, and flow simultaneously.</p>
                     </div>
                     <div>
-                        <div class="mono phase-label" style="margin-bottom:0.5rem; text-shadow:0 1px 6px rgba(0,0,0,0.9);">PHASE 04</div>
-                        <h4 class="step-title" style="text-shadow:0 2px 10px rgba(0,0,0,0.9);">AI Analytics</h4>
-                        <p class="mono" style="font-size:0.9rem; color:#ddd; text-transform:none; letter-spacing:0.02em; line-height:1.7; text-shadow:0 1px 6px rgba(0,0,0,0.9);">Running AI-based anomaly detection across all connected assets. Data-driven decisions triggered in real time.</p>
+                        <div class="mono phase-label">PHASE 04</div>
+                        <h4 class="step-title">AI Analytics</h4>
+                        <p class="mono phase-desc">Running AI-based anomaly detection across all connected assets. Data-driven decisions triggered in real time.</p>
                     </div>
                 </div>
             </div>
@@ -1683,6 +1702,7 @@
 
         // Edge lines between nearby particles
         const edgeMaxDist = 2.8;
+        const edgeMaxDistSq = edgeMaxDist * edgeMaxDist;
         const edgeMaxLines = 120;
         const edgeLineGeo = new THREE.BufferGeometry();
         const edgeLinePositions = new Float32Array(edgeMaxLines * 6);
@@ -1729,8 +1749,10 @@
 
         
         const clock = new THREE.Clock();
+        let frameCount = 0;
 
         function animate() {
+            frameCount++;
             requestAnimationFrame(animate);
             const elapsedTime = clock.getElapsedTime();
 
@@ -1765,8 +1787,8 @@
             }
             colorsAttr.needsUpdate = true;
 
-            // Edge lines: connect nearby bright particles
-            if (Math.floor(elapsedTime * 10) % 2 === 0) {
+            // Edge lines: connect nearby bright particles (every 3rd frame)
+            if (frameCount % 3 === 0) {
                 const posAttr = particlesGeometry.getAttribute('position');
                 let lineIdx = 0;
                 const ep = edgeLineGeo.getAttribute('position');
@@ -1777,9 +1799,9 @@
                     for (let j = i + 1; j < twinkleCount && lineIdx < edgeMaxLines; j++) {
                         const b = twinkleIndices[j];
                         const dx = posAttr.getX(b) - ax, dy = posAttr.getY(b) - ay, dz = posAttr.getZ(b) - az;
-                        const dist = Math.sqrt(dx*dx + dy*dy + dz*dz);
-                        if (dist < edgeMaxDist) {
-                            const fade = 1 - dist / edgeMaxDist;
+                        const distSq = dx*dx + dy*dy + dz*dz;
+                        if (distSq < edgeMaxDistSq) {
+                            const fade = 1 - Math.sqrt(distSq) / edgeMaxDist;
                             const o = lineIdx * 6;
                             ep.array[o] = ax; ep.array[o+1] = ay; ep.array[o+2] = az;
                             ep.array[o+3] = posAttr.getX(b); ep.array[o+4] = posAttr.getY(b); ep.array[o+5] = posAttr.getZ(b);
