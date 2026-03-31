@@ -1686,56 +1686,20 @@
             blending: THREE.AdditiveBlending
         });
         const edgeLines = new THREE.LineSegments(edgeLineGeo, edgeLineMat);
-        edgeLines.position.x = 3;
+        edgeLines.position.x = 8;
         scene.add(edgeLines);
 
 
-        // Brain shape — 두뇌 실루엣 (좌뇌+우뇌 + 중앙 분리선)
-        const brainGroup = new THREE.Group();
-
-        // 좌뇌
-        const leftBrain = new THREE.Shape();
-        leftBrain.moveTo(0, -3);
-        leftBrain.bezierCurveTo(-1.5, -3.2, -3.5, -2.5, -3.8, -0.5);
-        leftBrain.bezierCurveTo(-4.0, 1.0, -3.8, 2.5, -2.8, 3.5);
-        leftBrain.bezierCurveTo(-2.0, 4.2, -1.0, 4.5, -0.3, 4.0);
-        leftBrain.bezierCurveTo(-0.5, 3.2, -0.2, 2.0, 0, 1.0);
-        leftBrain.bezierCurveTo(0.1, -0.5, 0, -2.0, 0, -3);
-
-        // 우뇌
-        const rightBrain = new THREE.Shape();
-        rightBrain.moveTo(0, -3);
-        rightBrain.bezierCurveTo(1.5, -3.2, 3.5, -2.5, 3.8, -0.5);
-        rightBrain.bezierCurveTo(4.0, 1.0, 3.8, 2.5, 2.8, 3.5);
-        rightBrain.bezierCurveTo(2.0, 4.2, 1.0, 4.5, 0.3, 4.0);
-        rightBrain.bezierCurveTo(0.5, 3.2, 0.2, 2.0, 0, 1.0);
-        rightBrain.bezierCurveTo(-0.1, -0.5, 0, -2.0, 0, -3);
-
-        const brainExtrude = { depth: 1.5, bevelEnabled: true, bevelThickness: 0.3, bevelSize: 0.2, bevelSegments: 2, curveSegments: 20 };
-
-        const leftGeo = new THREE.ExtrudeGeometry(leftBrain, brainExtrude);
-        leftGeo.center();
-        const rightGeo = new THREE.ExtrudeGeometry(rightBrain, brainExtrude);
-        rightGeo.center();
-
-        const brainMat = new THREE.MeshBasicMaterial({
-            color: 0x4A90D9,
+        const coreGeo = new THREE.IcosahedronGeometry(4, 1);
+        const coreMat = new THREE.MeshBasicMaterial({
+            color: 0x333333,
             wireframe: true,
             transparent: true,
             opacity: 0.3
         });
-
-        const leftMesh = new THREE.Mesh(leftGeo, brainMat);
-        leftMesh.position.x = -0.3;
-        const rightMesh = new THREE.Mesh(rightGeo, brainMat);
-        rightMesh.position.x = 0.3;
-
-        brainGroup.add(leftMesh);
-        brainGroup.add(rightMesh);
-        brainGroup.position.x = 3;
-        scene.add(brainGroup);
-
-        const coreMesh = brainGroup;
+        const coreMesh = new THREE.Mesh(coreGeo, coreMat);
+        coreMesh.position.x = 3;
+        scene.add(coreMesh);
 
 
         
