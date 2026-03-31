@@ -856,7 +856,26 @@
             background: var(--accent);
         }
 
-        
+        /* ═══ HERO CTA ═══ */
+        .hero-cta {
+            display: inline-flex;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding: 0.9rem 2.5rem;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            text-decoration: none;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: background 0.3s, color 0.3s;
+            width: fit-content;
+        }
+        .hero-cta:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
         footer {
             padding: 2rem var(--layout-pad);
             display: flex;
@@ -864,8 +883,48 @@
             border-top: 1px solid var(--border);
         }
 
-        
+        /* ═══ HAMBURGER BUTTON ═══ */
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            z-index: 110;
+            flex-direction: column;
+            gap: 5px;
+        }
+        .nav-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--fg);
+            transition: transform 0.3s, opacity 0.3s;
+        }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
         @media (max-width: 1024px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 100%;
+                height: 100vh;
+                background: rgba(0, 0, 0, 0.95);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                transform: translateX(100%);
+                transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+                z-index: 105;
+            }
+            .nav-links.open { transform: translateX(0); }
+            .nav-links a { font-size: 1.2rem; }
             .grid-2, .form-grid { grid-template-columns: 1fr; }
             .hero-content { grid-template-columns: 1fr; }
             .hero-meta { display: none; }
@@ -886,13 +945,19 @@
 
         @media (max-width: 600px) {
             h1 { font-size: 11vw; }
-            .nav-links { gap: 4vw; }
-            .nav-links a { font-size: 0.7rem; }
             .logo img { height: 32px; }
             .form-grid { gap: 2rem; }
             .card-specs { grid-template-columns: 1fr; }
             .ticker-item { padding: 0 1.5rem; font-size: 0.9rem; }
             .ticker-slogan { font-size: 0.95rem; padding: 0 2rem; }
+        }
+
+        /* ═══ REDUCED MOTION ═══ */
+        @media (prefers-reduced-motion: reduce) {
+            .ticker-track { animation: none; }
+            .cycle-word { animation: none !important; }
+            .status-dot { animation: none; }
+            @keyframes pulse { 0%, 50%, 100% { opacity: 1; box-shadow: none; } }
         }
     </style>
 </head>
@@ -920,6 +985,7 @@
                 <div class="hero-text">
                     <h1>Breathing Life<br><span style="white-space:nowrap;">into <span class="word-cycler" id="cycler"></span></span>
                     </h1>
+                    <a href="#business" class="hero-cta mono">Explore Our Work <span style="margin-left:0.5rem;">→</span></a>
                 </div>
             </div>
 
@@ -1338,8 +1404,6 @@
                               action="https://formspree.io/f/mkoprdoy"
                               method="POST">
 
-                            <!-- Formspree 수신 이메일 지정 -->
-                            <input type="hidden" name="_replyto" value="info@xrx.studio">
                             <input type="hidden" name="_subject" value="[XRX] New Inquiry Received">
 
                             <div class="form-grid">
@@ -1410,7 +1474,22 @@
 
     
     <script>
-        
+        // ═══ MOBILE NAV TOGGLE ═══
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', navToggle.classList.contains('open'));
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+                navToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
         const words = ["Intelligence", "Spaces", "Experiences", "Relationships"];
         const cycler = document.getElementById('cycler');
         let currentIndex = 0;
