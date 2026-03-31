@@ -7,7 +7,8 @@
       "Bash(curl -sI https://xrx.studio/xrx_w_logo_White.svg)",
       "Bash(curl -sI https://xrx.studio/og-image.png)",
       "Bash(git commit:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(dig:*)"
     ]
   }
 }

@@ -125,7 +125,7 @@
             --accent: #FF9800;
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
-            --layout-pad: 3vw;
+            --layout-pad: 5vw;
         }
 
         * {
@@ -320,6 +320,8 @@
             height: 1.15em;
             vertical-align: bottom;
             color: var(--accent);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
         }
 
         @keyframes wordSlideIn {
@@ -339,11 +341,11 @@
         }
 
         .cycle-word.entering {
-            animation: wordSlideIn 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: wordSlideIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .cycle-word.leaving {
-            animation: wordSlideOut 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation: wordSlideOut 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         }
 
         .hero-meta {
@@ -426,7 +428,7 @@
             font-family: var(--font-display);
             font-weight: 400;
             font-size: 1.05rem;
-            color: #555;
+            color: var(--fg);
             letter-spacing: 0.04em;
         }
 
@@ -539,7 +541,7 @@
             max-width: 90%;
         }
         .intro-text span {
-            color: var(--mute);
+            color: var(--accent);
         }
 
         
@@ -935,7 +937,7 @@
             h2 { font-size: clamp(1.6rem, 5vw, 3rem); }
             p { font-size: 1.1rem; }
             .intro-text { font-size: clamp(1.2rem, 4vw, 2rem); max-width: 100%; }
-            .container { padding: 0 5vw; }
+            .container { padding: 0 6vw; }
             .section-pad { padding: 10vh 0; }
             .product-card { padding: 2rem; min-height: auto; }
             .belief-item { grid-template-columns: 40px 1fr; gap: 1rem; }
@@ -944,12 +946,15 @@
         }
 
         @media (max-width: 600px) {
+            :root { --layout-pad: 7vw; }
             h1 { font-size: 11vw; }
             .logo img { height: 32px; }
+            .container { padding: 0 7vw; }
             .form-grid { gap: 2rem; }
             .card-specs { grid-template-columns: 1fr; }
             .ticker-item { padding: 0 1.5rem; font-size: 0.9rem; }
             .ticker-slogan { font-size: 0.95rem; padding: 0 2rem; }
+            nav { padding: 1rem 7vw; }
         }
 
         /* ═══ REDUCED MOTION ═══ */
@@ -1219,11 +1224,8 @@
         
         <!-- ALIVE PROTOCOL -->
         <section id="work" class="container section-pad">
-            <div class="protocol-header">
-                <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
-                <span class="protocol-tag mono">ALIVE &amp; ALIVE PARK</span>
-            </div>
-            <h2>Methodology</h2>
+            <h2>ALIVE &amp; ALIVE Park</h2>
+            <p class="mono" style="margin-bottom:2rem; color:var(--mute);">Methodology</p>
             <div class="process-container">
                 <div class="process-line"></div>
                 <div class="process-step">
@@ -1255,11 +1257,8 @@
 
         <!-- ONTO PROTOCOL -->
         <section class="container section-pad border-top">
-            <div class="protocol-header">
-                <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
-                <a href="https://ontologyhub.ai" target="_blank" rel="noopener" class="protocol-tag mono">ONTO — OntologyHub.ai</a>
-            </div>
-            <h2>Knowledge Graph Pipeline</h2>
+            <h2><a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">ONTO <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
+            <p class="mono" style="margin-bottom:2rem; color:var(--mute);">Knowledge Graph Pipeline — <a href="https://ontologyhub.ai" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">OntologyHub.ai</a></p>
             <div class="process-container">
                 <div class="process-line"></div>
                 <div class="process-step">
@@ -1291,11 +1290,8 @@
 
         <!-- XDT PROTOCOL -->
         <section class="container section-pad border-top">
-            <div class="protocol-header">
-                <div class="section-label mono">DEPLOYMENT PROTOCOL</div>
-                <a href="https://xdt.co.kr" target="_blank" rel="noopener" class="protocol-tag mono">XDT — xdt.co.kr</a>
-            </div>
-            <h2>Digital Twin Pipeline</h2>
+            <h2><a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--fg); text-decoration:none;">XDT <span style="font-size:0.5em; color:var(--accent);">↗</span></a></h2>
+            <p class="mono" style="margin-bottom:2rem; color:var(--mute);">Digital Twin Pipeline — <a href="https://xdt.co.kr" target="_blank" rel="noopener" style="color:var(--accent); text-decoration:none;">xdt.co.kr</a></p>
             <div class="process-container">
                 <div class="process-line"></div>
                 <div class="process-step">
@@ -1375,12 +1371,7 @@
             <div class="container section-pad">
                 <div class="grid-2">
                     <div>
-                        <div class="section-label mono">TERMINAL ACCESS</div>
-                        <h2>Establish<br>Connection</h2>
-                        <p class="mono" style="margin-top:2rem;">
-                            SECURE CHANNEL OPEN.<br>
-                            AWAITING INPUT PARAMETERS.
-                        </p>
+                        <h2>Contact Us</h2>
 
                         <!-- 주소 정보 -->
                         <div class="contact-addresses">
@@ -1537,7 +1528,7 @@
         }
 
         initCycler();
-        setInterval(cycleWords, 3000);
+        setInterval(cycleWords, 4000);
 
 
         
