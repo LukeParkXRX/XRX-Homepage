@@ -969,7 +969,7 @@
 
         /* ═══ MOBILE (≤600px) ═══ */
         @media (max-width: 600px) {
-            :root { --layout-pad: 20px; }
+            :root { --layout-pad: clamp(20px, 6vw, 40px); }
             h1 { font-size: clamp(2rem, 11vw, 4rem); }
             .logo img { height: 32px; }
             .form-grid { gap: 2rem; }
