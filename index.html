@@ -1700,11 +1700,13 @@
         
         const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 
-        // 파티클 위치를 뷰포트 기준 오른쪽 30% 지점에 고정
+        // 파티클 위치를 화면 오른쪽 60% 지점에 고정 (화면 폭 무관)
         function getParticleX() {
             const vFov = camera.fov * Math.PI / 180;
             const halfVisibleWidth = Math.tan(vFov / 2) * camera.position.z * camera.aspect;
-            return halfVisibleWidth * 0.45; // 중앙에서 오른쪽 45% 지점
+            // 왼쪽 끝 = -halfVisibleWidth, 오른쪽 끝 = +halfVisibleWidth
+            // 화면 왼쪽에서 62% 지점 = -1 + 2*0.62 = 0.24 비율
+            return halfVisibleWidth * 0.24;
         }
         particleMesh.position.x = getParticleX();
         scene.add(particleMesh);
