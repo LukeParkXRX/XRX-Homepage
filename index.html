@@ -334,8 +334,8 @@
             vertical-align: bottom;
             color: var(--accent);
             text-shadow: 0 0 40px rgba(255, 152, 0, 0.3);
-            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
-            mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 95%, transparent 100%);
+            mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 95%, transparent 100%);
         }
 
         @keyframes wordSlideIn {
@@ -556,7 +556,11 @@
             max-width: 90%;
         }
         .intro-text span {
-            color: var(--accent-2);
+            background: var(--accent);
+            color: #000;
+            padding: 0.05em 0.3em;
+            box-decoration-break: clone;
+            -webkit-box-decoration-break: clone;
         }
 
         
