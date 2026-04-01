@@ -280,6 +280,8 @@
             flex-direction: column;
             justify-content: center;
             overflow: hidden;
+            width: 100%;
+            max-width: none;
         }
 
         
@@ -315,6 +317,8 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             align-items: center;
+            width: min(100% - 4rem, 1800px);
+            margin: 0 auto;
         }
 
         .hero-text {
@@ -1700,15 +1704,7 @@
         
         const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
 
-        // 파티클 위치를 화면 오른쪽 60% 지점에 고정 (화면 폭 무관)
-        function getParticleX() {
-            const vFov = camera.fov * Math.PI / 180;
-            const halfVisibleWidth = Math.tan(vFov / 2) * camera.position.z * camera.aspect;
-            // 왼쪽 끝 = -halfVisibleWidth, 오른쪽 끝 = +halfVisibleWidth
-            // 화면 왼쪽에서 62% 지점 = -1 + 2*0.62 = 0.24 비율
-            return halfVisibleWidth * 0.24;
-        }
-        particleMesh.position.x = getParticleX();
+        particleMesh.position.x = 8;
         scene.add(particleMesh);
 
         // Edge lines between nearby particles
@@ -1728,7 +1724,7 @@
             blending: THREE.AdditiveBlending
         });
         const edgeLines = new THREE.LineSegments(edgeLineGeo, edgeLineMat);
-        edgeLines.position.x = getParticleX();
+        edgeLines.position.x = 8;
         scene.add(edgeLines);
 
 
@@ -1740,7 +1736,7 @@
             opacity: 0.3
         });
         const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-        coreMesh.position.x = getParticleX();
+        coreMesh.position.x = 8;
         scene.add(coreMesh);
 
 
@@ -1842,11 +1838,6 @@
             camera.aspect = window.innerWidth / window.innerHeight;
             camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            // 파티클 위치를 뷰포트에 맞게 재계산
-            const newX = getParticleX();
-            particleMesh.position.x = newX;
-            edgeLines.position.x = newX;
-            coreMesh.position.x = newX;
         });
 
     </script>
