@@ -9,14 +9,14 @@
     <meta name="keywords" content="XRX, AI XR, spatial intelligence, ALIVE Engine, ONTO, OntologyHub, ontology, knowledge graph, AI agent, MCP, Model Context Protocol, AI relationship, digital twin, XDT, ALIVE Park, extended reality, generative AI, Korean AI startup, AI persona, vector graph, spatial computing, immersive AI">
     <meta name="author" content="XRX Inc.">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://xrx.studio">
+    <link rel="canonical" href="https://www.xrx.studio">
 
     <!-- ═══ OPEN GRAPH (Facebook, LinkedIn, KakaoTalk) ═══ -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://xrx.studio">
+    <meta property="og:url" content="https://www.xrx.studio">
     <meta property="og:title" content="XRX | Breathing Life into AI">
     <meta property="og:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
-    <meta property="og:image" content="https://xrx.studio/img/og-image.png">
+    <meta property="og:image" content="https://www.xrx.studio/img/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/png">
@@ -25,10 +25,10 @@
 
     <!-- ═══ TWITTER CARD ═══ -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:url" content="https://xrx.studio">
+    <meta name="twitter:url" content="https://www.xrx.studio">
     <meta name="twitter:title" content="XRX | Breathing Life into AI">
     <meta name="twitter:description" content="XRX is a creative technology powerhouse that breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines.">
-    <meta name="twitter:image" content="https://xrx.studio/img/og-image.png">
+    <meta name="twitter:image" content="https://www.xrx.studio/img/og-image.png">
 
     <!-- ═══ JSON-LD STRUCTURED DATA (Google, AI crawlers) ═══ -->
     <script type="application/ld+json">
@@ -37,11 +37,11 @@
       "@graph": [
         {
           "@type": "Organization",
-          "@id": "https://xrx.studio/#organization",
+          "@id": "https://www.xrx.studio/#organization",
           "name": "XRX",
           "legalName": "XRX Inc.",
-          "url": "https://xrx.studio",
-          "logo": "https://xrx.studio/img/xrx_w_logo_White.svg",
+          "url": "https://www.xrx.studio",
+          "logo": "https://www.xrx.studio/img/xrx_w_logo_White.svg",
           "foundingDate": "2023",
           "foundingLocation": "Incheon, Republic of Korea",
           "description": "XRX is an AI & XR startup building spatial intelligence infrastructure. We develop ALIVE Engine (AI persona and memory platform), ONTO (OntologyHub.ai, personal knowledge graph and MCP-compatible ontology platform), ALIVE Park (AI-powered interactive theme park), and XDT (digital twin solution).",
@@ -53,7 +53,7 @@
             "addressCountry": "KR"
           },
           "sameAs": [
-            "https://xrx.studio",
+            "https://www.xrx.studio",
             "https://ontologyhub.ai",
             "https://xdt.co.kr"
           ],
@@ -72,17 +72,17 @@
         },
         {
           "@type": "WebSite",
-          "@id": "https://xrx.studio/#website",
-          "url": "https://xrx.studio",
+          "@id": "https://www.xrx.studio/#website",
+          "url": "https://www.xrx.studio",
           "name": "XRX",
-          "publisher": { "@id": "https://xrx.studio/#organization" }
+          "publisher": { "@id": "https://www.xrx.studio/#organization" }
         },
         {
           "@type": "SoftwareApplication",
           "name": "ALIVE Engine",
           "applicationCategory": "AI Platform",
           "description": "AI persona, memory and relationship platform. Generative neural framework for real-time behavioral intelligence in immersive 3D environments.",
-          "creator": { "@id": "https://xrx.studio/#organization" }
+          "creator": { "@id": "https://www.xrx.studio/#organization" }
         },
         {
           "@type": "SoftwareApplication",
@@ -90,7 +90,7 @@
           "url": "https://ontologyhub.ai",
           "applicationCategory": "Knowledge Graph / AI Agent Platform",
           "description": "Personal knowledge graph and ontology hub. MCP-compatible platform that structures knowledge for AI agents (GPT, Claude, Gemini) and human reasoning. Build your personal ontology and connect it to AI via Model Context Protocol.",
-          "creator": { "@id": "https://xrx.studio/#organization" }
+          "creator": { "@id": "https://www.xrx.studio/#organization" }
         },
         {
           "@type": "SoftwareApplication",
@@ -98,7 +98,7 @@
           "url": "https://xdt.co.kr",
           "applicationCategory": "Digital Twin Platform",
           "description": "Industrial digital twin platform unifying ROS2, MQTT, OPC-UA, Modbus devices into real-time 3D visualization with AI anomaly detection.",
-          "creator": { "@id": "https://xrx.studio/#organization" }
+          "creator": { "@id": "https://www.xrx.studio/#organization" }
         }
       ]
     }
@@ -116,6 +116,14 @@
     <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&amp;family=Outfit:wght@200;300;400;500;700&amp;display=swap" rel="stylesheet"></noscript>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+                "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+            }
+        }
+    </script>
 
     
 
@@ -293,6 +301,27 @@
             height: 100%;
             z-index: 0;
             pointer-events: none;
+        }
+
+        .hero-blur-layer {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            z-index: 1;
+            pointer-events: none;
+            mask-image: radial-gradient(circle 220px at var(--blur-x, 62%) var(--blur-y, 50%), transparent 0%, black 100%);
+            -webkit-mask-image: radial-gradient(circle 220px at var(--blur-x, 62%) var(--blur-y, 50%), transparent 0%, black 100%);
+        }
+
+        .hero-noise-overlay {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 2;
+            opacity: 0.08;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
 
         
@@ -1066,10 +1095,10 @@
             <span></span><span></span><span></span>
         </button>
         <div class="nav-links mono">
-            <a href="#about">ABOUT</a>
-            <a href="#business">BUSINESS</a>
-            <a href="#work">WORK</a>
-            <a href="#contact">CONTACT</a>
+            <a href="about.html">ABOUT</a>
+            <a href="business.html">BUSINESS</a>
+            <a href="work.html">WORK</a>
+            <a href="contact.html">CONTACT</a>
         </div>
     </nav>
 
@@ -1077,6 +1106,8 @@
         
         <section id="home" class="hero container">
             <div id="webgl-container"></div>
+            <div class="hero-blur-layer"></div>
+            <div class="hero-noise-overlay"></div>
 
             <div class="hero-content">
                 <div class="hero-text">
@@ -1497,7 +1528,7 @@
                             <input type="hidden" name="access_key" value="e66d9690-e0b0-4520-96e4-3e47810bf4f5">
                             <input type="hidden" name="subject" value="[XRX] 회사 홈페이지를 통해 새 문의가 접수 되었습니다.">
                             <input type="hidden" name="from_name" value="XRX Contact Form">
-                            <input type="hidden" name="redirect" value="https://xrx.studio/#contact">
+                            <input type="hidden" name="redirect" value="https://www.xrx.studio/#contact">
                             <input type="checkbox" name="botcheck" style="display:none">
 
                             <div class="form-grid">
@@ -1632,217 +1663,130 @@
 
         
         
+        // ═══ PCD POINT CLOUD HERO (replaces old particle field) ═══
+        // Rollback: revert this block + remove importmap + blur/noise layers
         const container = document.getElementById('webgl-container');
-        
-        const scene = new THREE.Scene();
-        
-        scene.fog = new THREE.FogExp2(0x000000, 0.001);
+        const heroBlur = document.querySelector('.hero-blur-layer');
 
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 30;
+        // Use module-loaded Three.js for PCDLoader
+        const pcdScript = document.createElement('script');
+        pcdScript.type = 'module';
+        pcdScript.textContent = `
+            import * as THREE from 'three';
+            import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+            import { PCDLoader } from 'three/addons/loaders/PCDLoader.js';
 
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        container.appendChild(renderer.domElement);
+            const container = document.getElementById('webgl-container');
+            const heroBlur = document.querySelector('.hero-blur-layer');
 
-        
-        const particlesGeometry = new THREE.BufferGeometry();
-        const particlesCount = 3000; 
-        const posArray = new Float32Array(particlesCount * 3);
-        const colorsArray = new Float32Array(particlesCount * 3);
-
-        const colorWhite = new THREE.Color(0x888888);
-        const colorAmber = new THREE.Color(0xFF9800);
-
-        for(let i = 0; i < particlesCount * 3; i+=3) {
-            
-            const r = 15 * Math.cbrt(Math.random());
-            const theta = Math.random() * 2 * Math.PI;
-            const phi = Math.acos(2 * Math.random() - 1);
-
-            posArray[i] = r * Math.sin(phi) * Math.cos(theta);     
-            posArray[i+1] = r * Math.sin(phi) * Math.sin(theta);   
-            posArray[i+2] = r * Math.cos(phi);                     
-
-            
-            const mixedColor = Math.random() > 0.95 ? colorAmber : colorWhite;
-            colorsArray[i] = mixedColor.r;
-            colorsArray[i+1] = mixedColor.g;
-            colorsArray[i+2] = mixedColor.b;
-        }
-
-        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        particlesGeometry.setAttribute('color', new THREE.BufferAttribute(colorsArray, 3));
-
-        // Twinkle stars: 100개 별이 독립적으로 강하게 반짝임
-        const twinkleCount = 100;
-        const twinkleIndices = [];
-        const twinklePhases = [];
-        const twinkleSpeeds = [];
-        const twinkleIsAmber = [];
-
-        for (let i = 0; i < twinkleCount; i++) {
-            const idx = Math.floor(Math.random() * particlesCount);
-            twinkleIndices.push(idx);
-            twinklePhases.push(Math.random() * Math.PI * 2);
-            twinkleSpeeds.push(0.4 + Math.random() * 1.8);
-            const isAmber = Math.random() > 0.8;
-            twinkleIsAmber.push(isAmber);
-            // 초기 색상을 밝게 세팅
-            colorsArray[idx * 3]     = isAmber ? 1.0  : 1.0;
-            colorsArray[idx * 3 + 1] = isAmber ? 0.6  : 1.0;
-            colorsArray[idx * 3 + 2] = isAmber ? 0.0  : 1.0;
-        }
-        const colorsAttr = particlesGeometry.getAttribute('color');
-
-        
-        const particlesMaterial = new THREE.PointsMaterial({
-            size: 0.05,
-            vertexColors: true,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
-        });
-
-        
-        const particleMesh = new THREE.Points(particlesGeometry, particlesMaterial);
-
-        particleMesh.position.x = 8;
-        scene.add(particleMesh);
-
-        // Edge lines between nearby particles
-        const edgeMaxDist = 2.8;
-        const edgeMaxDistSq = edgeMaxDist * edgeMaxDist;
-        const edgeMaxLines = 120;
-        const edgeLineGeo = new THREE.BufferGeometry();
-        const edgeLinePositions = new Float32Array(edgeMaxLines * 6);
-        const edgeLineColors = new Float32Array(edgeMaxLines * 6);
-        edgeLineGeo.setAttribute('position', new THREE.BufferAttribute(edgeLinePositions, 3));
-        edgeLineGeo.setAttribute('color', new THREE.BufferAttribute(edgeLineColors, 3));
-        edgeLineGeo.setDrawRange(0, 0);
-        const edgeLineMat = new THREE.LineBasicMaterial({
-            vertexColors: true,
-            transparent: true,
-            opacity: 0.25,
-            blending: THREE.AdditiveBlending
-        });
-        const edgeLines = new THREE.LineSegments(edgeLineGeo, edgeLineMat);
-        edgeLines.position.x = 8;
-        scene.add(edgeLines);
-
-
-        const coreGeo = new THREE.IcosahedronGeometry(4, 1);
-        const coreMat = new THREE.MeshBasicMaterial({
-            color: 0x333333,
-            wireframe: true,
-            transparent: true,
-            opacity: 0.3
-        });
-        const coreMesh = new THREE.Mesh(coreGeo, coreMat);
-        coreMesh.position.x = 8;
-        scene.add(coreMesh);
-
-
-        
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-
-        let windowHalfX = window.innerWidth / 2;
-        let windowHalfY = window.innerHeight / 2;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX - windowHalfX);
-            mouseY = (event.clientY - windowHalfY);
-        });
-
-        
-        const clock = new THREE.Clock();
-        let frameCount = 0;
-
-        function animate() {
-            frameCount++;
-            requestAnimationFrame(animate);
-            const elapsedTime = clock.getElapsedTime();
-
-            targetX = mouseX * 0.001;
-            targetY = mouseY * 0.001;
-
-            
-            particleMesh.rotation.y += 0.001;
-            particleMesh.rotation.x += 0.0005;
-
-            coreMesh.rotation.y -= 0.002;
-            coreMesh.rotation.z += 0.001;
-
-            
-            particleMesh.rotation.y += 0.05 * (targetX - particleMesh.rotation.y);
-            particleMesh.rotation.x += 0.05 * (targetY - particleMesh.rotation.x);
-
-            
-            const scale = 1 + Math.sin(elapsedTime * 2) * 0.05;
-            coreMesh.scale.set(scale, scale, scale);
-
-            // 반짝이는 별 업데이트: 더 밝고 날카롭게
-            for (let i = 0; i < twinkleCount; i++) {
-                const idx = twinkleIndices[i];
-                const t = Math.sin(elapsedTime * twinkleSpeeds[i] * 1.4 + twinklePhases[i]);
-                const brightness = Math.pow(Math.max(0, t), 1.5) * 4.5;
-                if (twinkleIsAmber[i]) {
-                    colorsAttr.setXYZ(idx, brightness, brightness * 0.6, 0);
-                } else {
-                    colorsAttr.setXYZ(idx, brightness, brightness, brightness * 0.95);
-                }
-            }
-            colorsAttr.needsUpdate = true;
-
-            // Edge lines: connect nearby bright particles (every 3rd frame)
-            if (frameCount % 3 === 0) {
-                const posAttr = particlesGeometry.getAttribute('position');
-                let lineIdx = 0;
-                const ep = edgeLineGeo.getAttribute('position');
-                const ec = edgeLineGeo.getAttribute('color');
-                for (let i = 0; i < twinkleCount && lineIdx < edgeMaxLines; i++) {
-                    const a = twinkleIndices[i];
-                    const ax = posAttr.getX(a), ay = posAttr.getY(a), az = posAttr.getZ(a);
-                    for (let j = i + 1; j < twinkleCount && lineIdx < edgeMaxLines; j++) {
-                        const b = twinkleIndices[j];
-                        const dx = posAttr.getX(b) - ax, dy = posAttr.getY(b) - ay, dz = posAttr.getZ(b) - az;
-                        const distSq = dx*dx + dy*dy + dz*dz;
-                        if (distSq < edgeMaxDistSq) {
-                            const fade = 1 - Math.sqrt(distSq) / edgeMaxDist;
-                            const o = lineIdx * 6;
-                            ep.array[o] = ax; ep.array[o+1] = ay; ep.array[o+2] = az;
-                            ep.array[o+3] = posAttr.getX(b); ep.array[o+4] = posAttr.getY(b); ep.array[o+5] = posAttr.getZ(b);
-                            const c = fade * 0.4;
-                            ec.array[o] = c; ec.array[o+1] = c; ec.array[o+2] = c;
-                            ec.array[o+3] = c; ec.array[o+4] = c; ec.array[o+5] = c;
-                            lineIdx++;
-                        }
-                    }
-                }
-                edgeLineGeo.setDrawRange(0, lineIdx * 2);
-                ep.needsUpdate = true;
-                ec.needsUpdate = true;
-            }
-            // Edge lines rotate with particles
-            edgeLines.rotation.copy(particleMesh.rotation);
-
-            renderer.render(scene, camera);
-        }
-
-        animate();
-
-        
-        window.addEventListener('resize', () => {
-            windowHalfX = window.innerWidth / 2;
-            windowHalfY = window.innerHeight / 2;
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+            const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
             renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+            renderer.setClearColor(0x000000, 0);
+            container.appendChild(renderer.domElement);
+
+            const scene = new THREE.Scene();
+
+            const camera = new THREE.PerspectiveCamera(30, window.innerWidth / window.innerHeight, 0.01, 40);
+            camera.position.set(0, 0, 1);
+            scene.add(camera);
+
+            const controls = new OrbitControls(camera, renderer.domElement);
+            controls.minDistance = 0.5;
+            controls.maxDistance = 10;
+            controls.enableDamping = true;
+            controls.autoRotate = true;
+            controls.autoRotateSpeed = 0.6;
+            controls.enableZoom = false;
+            controls.enablePan = false;
+
+            // Offset the point cloud to the right side (matching old layout)
+            const pcdGroup = new THREE.Group();
+            pcdGroup.position.x = 0.15;
+            pcdGroup.position.y = -0.02;
+            scene.add(pcdGroup);
+
+            const loader = new PCDLoader();
+            loader.load(
+                'https://threejs.org/examples/models/pcd/binary/Zaghetto.pcd',
+                function (points) {
+                    points.geometry.center();
+                    points.geometry.rotateX(Math.PI);
+                    points.material.size = 0.003;
+                    points.material.color.setHex(0xFF9800);
+                    points.material.transparent = true;
+                    points.material.opacity = 0.85;
+                    points.material.blending = THREE.AdditiveBlending;
+                    pcdGroup.add(points);
+                },
+                undefined,
+                function () {
+                    // Fallback: generate human-like particle cloud
+                    const count = 12000;
+                    const positions = new Float32Array(count * 3);
+                    const colors = new Float32Array(count * 3);
+                    const color = new THREE.Color(0xFF9800);
+
+                    for (let i = 0; i < count; i++) {
+                        const i3 = i * 3;
+                        const r = 0.3 + Math.random() * 0.15;
+                        const theta = Math.random() * Math.PI * 2;
+                        const phi = Math.acos(2 * Math.random() - 1);
+                        positions[i3] = r * Math.sin(phi) * Math.cos(theta);
+                        positions[i3+1] = r * Math.sin(phi) * Math.sin(theta) * 1.6;
+                        positions[i3+2] = r * Math.cos(phi);
+                        colors[i3] = color.r;
+                        colors[i3+1] = color.g;
+                        colors[i3+2] = color.b;
+                    }
+
+                    const geo = new THREE.BufferGeometry();
+                    geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+                    geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                    const mat = new THREE.PointsMaterial({
+                        size: 0.003, vertexColors: true,
+                        transparent: true, opacity: 0.8,
+                        blending: THREE.AdditiveBlending
+                    });
+                    pcdGroup.add(new THREE.Points(geo, mat));
+                }
+            );
+
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+
+            // Mouse tracking for blur reveal
+            let mouseX = window.innerWidth / 2;
+            let mouseY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animate() {
+                requestAnimationFrame(animate);
+                controls.update();
+
+                // Update blur layer mask position
+                if (heroBlur) {
+                    const xPct = (mouseX / window.innerWidth) * 100;
+                    const yPct = (mouseY / window.innerHeight) * 100;
+                    heroBlur.style.setProperty('--blur-x', xPct + '%');
+                    heroBlur.style.setProperty('--blur-y', yPct + '%');
+                }
+
+                renderer.render(scene, camera);
+            }
+            animate();
+
+            window.addEventListener('resize', () => {
+                camera.aspect = window.innerWidth / window.innerHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(window.innerWidth, window.innerHeight);
+            });
+        `;
+        document.body.appendChild(pcdScript);
 
     </script>
 

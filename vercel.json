@@ -5,6 +5,10 @@
   "outputDirectory": ".",
   "framework": null,
   "rewrites": [
-    { "source": "/", "destination": "/index.html" }
+    { "source": "/", "destination": "/index.html" },
+    { "source": "/about", "destination": "/about.html" },
+    { "source": "/business", "destination": "/business.html" },
+    { "source": "/work", "destination": "/work.html" },
+    { "source": "/contact", "destination": "/contact.html" }
   ]
 }

@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — XRX</title>
+    <meta name="description" content="Get in touch with XRX. Business inquiries, project collaboration, and partnership opportunities.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.xrx.studio/contact.html">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.xrx.studio/contact.html">
+    <meta property="og:title" content="Contact — XRX | Get in Touch">
+    <meta property="og:description" content="Get in touch with XRX. Business inquiries, project collaboration, and partnership opportunities.">
+    <meta property="og:image" content="https://www.xrx.studio/img/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:site_name" content="XRX">
+
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Contact — XRX | Get in Touch">
+    <meta name="twitter:description" content="Get in touch with XRX. Business inquiries, project collaboration, and partnership opportunities.">
+    <meta name="twitter:image" content="https://www.xrx.studio/img/og-image.png">
+
+    <link rel="icon" type="image/svg+xml" href="img/xrx_w_logo_White.svg">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030303; --fg: #F4F4F4; --mute: #808080;
+            --border: #1F1F1F; --accent: #FF9800; --accent-2: #00D4FF;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: var(--bg); color: var(--fg);
+            font-family: var(--font-display);
+            -webkit-font-smoothing: antialiased; overflow-x: hidden;
+        }
+        ::selection { background: var(--accent); color: var(--bg); }
+        .mono {
+            font-family: var(--font-mono); font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 0.1em; color: var(--mute);
+        }
+
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            background: rgba(0,0,0,0.82);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 44px; width: auto; filter: brightness(0) invert(1); }
+        .nav-links { display: flex; gap: clamp(1rem,3vw,3rem); }
+        .nav-links a {
+            color: var(--fg); text-decoration: none;
+            font-family: var(--font-mono); font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--fg); transition: 0.3s; }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .container { width: min(100% - 4rem, 1400px); margin: 0 auto; }
+
+        .page-hero {
+            padding: 160px 0 80px;
+            border-bottom: 1px solid var(--border);
+        }
+        .page-hero h1 {
+            font-size: clamp(2.5rem,5vw,6rem);
+            font-weight: 200; line-height: 1.1;
+            letter-spacing: -0.02em; margin-bottom: 2rem;
+        }
+        .page-hero p {
+            font-size: 1.3rem; font-weight: 300; line-height: 1.7;
+            color: #C8C8C8; max-width: 700px;
+        }
+
+        .section { padding: 10vh 0; border-bottom: 1px solid var(--border); }
+        .section-label { margin-bottom: 3rem; }
+
+        h2 {
+            font-size: clamp(1.8rem,3vw,3.5rem);
+            font-weight: 200; line-height: 1.1;
+            letter-spacing: -0.02em; margin-bottom: 1.5rem;
+        }
+        p { font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: #C8C8C8; }
+
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+
+        /* Office Cards */
+        .office-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .office-card {
+            padding: 2.5rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .office-card:hover { border-color: var(--accent); }
+        .office-card .office-type {
+            font-family: var(--font-mono); font-size: 0.75rem;
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 1.5rem;
+        }
+        .office-card h3 { font-size: 1.1rem; font-weight: 500; margin-bottom: 1rem; }
+        .office-card p { font-size: 0.95rem; }
+
+        /* Contact Form */
+        .form-section { padding: 10vh 0; }
+
+        .form-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label {
+            display: block; margin-bottom: 0.5rem;
+            font-family: var(--font-mono); font-size: 0.75rem;
+            color: var(--mute); text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%; padding: 1rem;
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            color: var(--fg);
+            font-family: var(--font-display);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none; border-color: var(--accent);
+        }
+        .form-group textarea { min-height: 160px; resize: vertical; }
+        .form-group select { cursor: pointer; }
+        .form-group select option { background: var(--bg); color: var(--fg); }
+
+        .select-wrapper { position: relative; }
+        .select-wrapper::after {
+            content: '↓'; position: absolute;
+            right: 1rem; top: 50%; transform: translateY(-50%);
+            color: var(--mute); pointer-events: none;
+            font-family: var(--font-mono); font-size: 0.85rem;
+        }
+
+        .submit-btn {
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-family: var(--font-mono);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        .submit-btn:hover {
+            background: var(--accent);
+            color: var(--bg);
+        }
+
+        /* Info Links */
+        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 2rem; }
+        .info-item {
+            padding: 2rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: border-color 0.3s;
+        }
+        .info-item:hover { border-color: var(--accent); }
+        .info-item .info-label {
+            font-family: var(--font-mono); font-size: 0.75rem;
+            color: var(--mute); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 0.75rem;
+        }
+        .info-item a {
+            color: var(--fg); text-decoration: none;
+            font-size: 1.1rem; transition: color 0.3s;
+        }
+        .info-item a:hover { color: var(--accent); }
+
+        footer {
+            padding: 2rem;
+            display: flex; justify-content: space-between;
+            border-top: 1px solid var(--border);
+        }
+        .back-link {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            color: var(--accent); text-decoration: none;
+            font-family: var(--font-mono); font-size: 0.8rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            margin-top: 2rem; transition: gap 0.3s;
+        }
+        .back-link:hover { gap: 1rem; }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: 0;
+                height: 100vh; width: 260px;
+                flex-direction: column; padding: 6rem 2rem;
+                background: rgba(0,0,0,0.95);
+                transform: translateX(100%); transition: transform 0.3s;
+            }
+            .nav-links.open { transform: translateX(0); }
+            .grid-2, .office-grid { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .info-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="logo" href="index.html"><img src="img/xrx_w_logo_White.svg" alt="XRX"></a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links mono">
+            <a href="about.html">ABOUT</a>
+            <a href="business.html">BUSINESS</a>
+            <a href="work.html">WORK</a>
+            <a href="contact.html" class="active">CONTACT</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section class="page-hero">
+                <div class="section-label mono">GET IN TOUCH</div>
+                <h1>Contact Us</h1>
+                <p>Whether you're interested in our platforms, exploring partnership opportunities, or have a project in mind — we'd love to hear from you.</p>
+            </section>
+
+            <!-- Offices -->
+            <section class="section">
+                <div class="section-label mono">OUR LOCATIONS</div>
+                <div class="office-grid">
+                    <div class="office-card">
+                        <div class="office-type">HEADQUARTERS</div>
+                        <h3>Incheon HQ</h3>
+                        <p>116, Daejoo Knowledge Industry Center<br>395, Hambakmoe-ro, Namdong-gu<br>Incheon, Republic of Korea</p>
+                    </div>
+                    <div class="office-card">
+                        <div class="office-type">R&D LAB — DEV STUDIO 1</div>
+                        <h3>Startup Park 515</h3>
+                        <p>515, Incheon Startup Park<br>204, Convensia-daero, Yeonsu-gu<br>Incheon, Republic of Korea</p>
+                    </div>
+                    <div class="office-card">
+                        <div class="office-type">DEV STUDIO 2</div>
+                        <h3>Startup Park 215</h3>
+                        <p>215, Incheon Startup Park<br>204, Convensia-daero, Yeonsu-gu<br>Incheon, Republic of Korea</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quick Links -->
+            <section class="section">
+                <div class="section-label mono">QUICK LINKS</div>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <div class="info-label">EMAIL</div>
+                        <a href="mailto:info@xrx.studio">info@xrx.studio</a>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">WEBSITE</div>
+                        <a href="https://www.xrx.studio" target="_blank">www.xrx.studio</a>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">ONTOLOGYHUB</div>
+                        <a href="https://ontologyhub.ai" target="_blank">ontologyhub.ai ↗</a>
+                    </div>
+                    <div class="info-item">
+                        <div class="info-label">XDT PLATFORM</div>
+                        <a href="https://xdt.co.kr" target="_blank">xdt.co.kr ↗</a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Contact Form -->
+            <section class="form-section">
+                <div class="grid-2">
+                    <div>
+                        <div class="section-label mono">SEND A MESSAGE</div>
+                        <h2>Let's Talk</h2>
+                        <p>Fill out the form and our team will get back to you within 24 hours. For urgent inquiries, email us directly at <a href="mailto:info@xrx.studio" style="color:var(--accent); text-decoration:none;">info@xrx.studio</a>.</p>
+                    </div>
+                    <div>
+                        <form id="contact-form"
+                              action="https://api.web3forms.com/submit"
+                              method="POST">
+
+                            <input type="hidden" name="access_key" value="e66d9690-e0b0-4520-96e4-3e47810bf4f5">
+                            <input type="hidden" name="subject" value="[XRX] 회사 홈페이지를 통해 새 문의가 접수 되었습니다.">
+                            <input type="hidden" name="from_name" value="XRX Contact Form">
+                            <input type="hidden" name="redirect" value="https://www.xrx.studio/contact.html">
+                            <input type="checkbox" name="botcheck" style="display:none">
+
+                            <div class="form-grid">
+                                <div class="form-group">
+                                    <label class="mono">NAME</label>
+                                    <input type="text" name="name" placeholder="John Doe" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="mono">EMAIL</label>
+                                    <input type="email" name="email" placeholder="hello@company.com" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mono">COMPANY</label>
+                                <input type="text" name="company" placeholder="Your company name">
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mono">INQUIRY TYPE</label>
+                                <div class="select-wrapper">
+                                    <select name="inquiry_type">
+                                        <option value="" disabled selected>Select inquiry type ↓</option>
+                                        <option value="business">Business Inquiry</option>
+                                        <option value="partnership">Partnership</option>
+                                        <option value="project">Project Inquiry</option>
+                                        <option value="alive">ALIVE Engine</option>
+                                        <option value="onto">ONTO / OntologyHub</option>
+                                        <option value="xdt">XDT / Digital Twin</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="mono">MESSAGE</label>
+                                <textarea name="message" placeholder="Tell us about your project or inquiry..."></textarea>
+                            </div>
+
+                            <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
+                                <button type="submit" class="submit-btn">Send Message</button>
+                                <span class="mono" id="form-status" style="color:var(--accent); opacity:0; transition:opacity 0.3s;"></span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <a class="back-link" href="index.html">← Back to Home</a>
+            <div style="height: 4rem;"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="mono">© 2026 XRX INC. ALL RIGHTS RESERVED.</div>
+        <div class="mono" style="color:var(--mute)">SYS_STAT: NOMINAL</div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        const form = document.getElementById('contact-form');
+        const status = document.getElementById('form-status');
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const data = new FormData(form);
+            const res = await fetch(form.action, {
+                method: 'POST', body: data,
+                headers: { 'Accept': 'application/json' }
+            });
+            if (res.ok) {
+                status.textContent = '✓ 메시지가 전송되었습니다.';
+                status.style.opacity = '1';
+                form.reset();
+            } else {
+                status.textContent = '⚠ 전송 실패. 다시 시도해 주세요.';
+                status.style.opacity = '1';
+            }
+        });
+    </script>
+</body>
+</html>
