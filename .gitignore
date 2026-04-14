@@ -1,1 +1,15 @@
+# Vercel
 .vercel
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Duplicate files from Finder copies (name with trailing " 2")
+**/* 2.jpg
+**/* 2.png
+**/* 2.html
+
+# Claude Code local settings
+.claude/
+.omc/
