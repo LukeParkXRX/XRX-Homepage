@@ -144,13 +144,6 @@
             <label for="lg-pass">Password</label>
             <input id="lg-pass" type="password" autocomplete="current-password">
 
-            <label for="lg-token">GitHub Token <span style="color:var(--mute);text-transform:none;letter-spacing:0;">(first time only)</span></label>
-            <input id="lg-token" type="password" placeholder="github_pat_... or ghp_...">
-            <div class="hint">
-                First time? <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">Generate a fine-grained PAT ↗</a><br>
-                Scope: Contents write on LukeParkXRX/XRX-Homepage. Token is stored only in this browser session.
-            </div>
-
             <button class="btn" id="lg-submit" style="width:100%; margin-top: 1.75rem;">Sign In</button>
             <div id="lg-status"></div>
         </div>
@@ -188,27 +181,13 @@
 
     <script>
         // ═══ CONFIG ═══
-        const REPO_OWNER = 'LukeParkXRX';
-        const REPO_NAME = 'XRX-Homepage';
-        const FILE_PATH = 'data/projects.json';
-        const BRANCH = 'main';
-
-        // Credentials (hashed — not the real security layer; GitHub PAT is)
-        // 'lukepark' / 'lukepark1004' SHA-256
-        const EXPECTED_USER_HASH = '15d57cca18f6c42b42b7d062dbe8ac5cc70ea618f82e3dbcf08b86c55ffbdcbc';
-        const EXPECTED_PASS_HASH = '33e4b56e45e385671708cff26482a9fba3d9b00e7b7c867c30c646442f7fb670';
-
-        const TOKEN_KEY = 'xrx_gh_pat';
-        const AUTH_KEY = 'xrx_admin_auth';
+        // Credentials verified server-side via /api/login.
+        // Auth state is kept in-memory + sessionStorage.
+        const CRED_KEY = 'xrx_admin_cred'; // stores { user, pass } only for session
 
         // ═══ HELPERS ═══
         function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
         function setText(e, t) { e.textContent = (t === undefined || t === null) ? '' : t; }
-        async function sha256(text) {
-            const buf = new TextEncoder().encode(text);
-            const hash = await crypto.subtle.digest('SHA-256', buf);
-            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
-        }
         function showStatus(containerId, type, message) {
             const c = document.getElementById(containerId);
             while (c.firstChild) c.removeChild(c.firstChild);
@@ -219,7 +198,7 @@
 
         // ═══ LOGIN ═══
         document.getElementById('lg-submit').addEventListener('click', handleLogin);
-        ['lg-user','lg-pass','lg-token'].forEach(id => {
+        ['lg-user','lg-pass'].forEach(id => {
             document.getElementById(id).addEventListener('keydown', e => {
                 if (e.key === 'Enter') handleLogin();
             });
@@ -228,7 +207,6 @@
         async function handleLogin() {
             const user = document.getElementById('lg-user').value.trim();
             const pass = document.getElementById('lg-pass').value;
-            const token = document.getElementById('lg-token').value.trim();
 
             if (!user || !pass) {
                 showStatus('lg-status', 'err', 'Please enter ID and password.');
@@ -236,41 +214,41 @@
             }
             showStatus('lg-status', 'info', 'Verifying…');
 
-            const uH = await sha256(user.toLowerCase());
-            const pH = await sha256(pass);
-            if (uH !== EXPECTED_USER_HASH || pH !== EXPECTED_PASS_HASH) {
-                showStatus('lg-status', 'err', 'Invalid credentials.');
-                return;
+            try {
+                const res = await fetch('/api/login', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user, pass })
+                });
+                if (res.status === 200) {
+                    sessionStorage.setItem(CRED_KEY, JSON.stringify({ user, pass }));
+                    enterEditor();
+                } else if (res.status === 401) {
+                    showStatus('lg-status', 'err', 'Invalid credentials.');
+                } else if (res.status === 500) {
+                    const j = await res.json().catch(() => ({}));
+                    showStatus('lg-status', 'err', j.error || 'Server not configured. Contact admin.');
+                } else {
+                    showStatus('lg-status', 'err', 'Unexpected response: ' + res.status);
+                }
+            } catch (err) {
+                showStatus('lg-status', 'err', 'Network error: ' + err.message);
             }
-
-            // Token: if provided, save to session. Otherwise check existing.
-            const existingToken = sessionStorage.getItem(TOKEN_KEY);
-            if (token) {
-                sessionStorage.setItem(TOKEN_KEY, token);
-            } else if (!existingToken) {
-                showStatus('lg-status', 'err', 'GitHub token required on first login. See instructions above.');
-                return;
-            }
-
-            sessionStorage.setItem(AUTH_KEY, '1');
-            enterEditor();
         }
 
-        // Auto re-enter editor if already authenticated
-        if (sessionStorage.getItem(AUTH_KEY) === '1' && sessionStorage.getItem(TOKEN_KEY)) {
+        // Auto re-enter editor if already authenticated this session
+        if (sessionStorage.getItem(CRED_KEY)) {
             enterEditor();
         }
 
         document.getElementById('logout').addEventListener('click', () => {
-            sessionStorage.removeItem(AUTH_KEY);
-            sessionStorage.removeItem(TOKEN_KEY);
+            sessionStorage.removeItem(CRED_KEY);
             location.reload();
         });
 
         // ═══ EDITOR STATE ═══
         let projects = [];
         let currentIndex = -1;
-        let fileSha = null;
         let dirty = false;
 
         async function enterEditor() {
@@ -281,22 +259,19 @@
 
         async function loadProjects() {
             try {
-                const token = sessionStorage.getItem(TOKEN_KEY);
-                const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`, {
-                    headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
-                });
+                const res = await fetch('data/projects.json?t=' + Date.now(), { cache: 'no-cache' });
                 if (!res.ok) throw new Error('HTTP ' + res.status);
-                const data = await res.json();
-                fileSha = data.sha;
-                const jsonText = atob(data.content.replace(/\s/g, ''));
-                // UTF-8 safe decode
-                const decoded = decodeURIComponent(escape(jsonText));
-                projects = JSON.parse(decoded);
+                projects = await res.json();
                 renderList();
             } catch (err) {
                 console.error(err);
-                alert('Could not load projects.json from GitHub. Check your PAT permissions (Contents write on LukeParkXRX/XRX-Homepage).');
+                alert('Could not load projects.json');
             }
+        }
+
+        function getCred() {
+            try { return JSON.parse(sessionStorage.getItem(CRED_KEY) || '{}'); }
+            catch { return {}; }
         }
 
         function renderList() {
@@ -592,42 +567,28 @@
 
         // ═══ SAVE / DELETE ═══
         async function saveAll() {
-            if (!projects.length) return;
             const btn = document.getElementById('save-btn');
             btn.disabled = true;
             setText(btn, 'Saving…');
             try {
-                const token = sessionStorage.getItem(TOKEN_KEY);
-                const pretty = JSON.stringify(projects, null, 2);
-                // UTF-8 safe encode
-                const b64 = btoa(unescape(encodeURIComponent(pretty)));
-
-                const commitMsg = 'Admin: update projects.json (' + projects.length + ' projects)';
-                const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
-                    method: 'PUT',
-                    headers: {
-                        'Authorization': 'Bearer ' + token,
-                        'Accept': 'application/vnd.github+json',
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify({
-                        message: commitMsg,
-                        content: b64,
-                        sha: fileSha,
-                        branch: BRANCH
-                    })
+                const { user, pass } = getCred();
+                const res = await fetch('/api/save-project', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ user, pass, projects })
                 });
-                if (!res.ok) {
-                    const errText = await res.text();
-                    throw new Error('HTTP ' + res.status + ': ' + errText);
+                if (res.status === 401) {
+                    throw new Error('Session expired. Please sign in again.');
                 }
-                const result = await res.json();
-                fileSha = result.content.sha;
+                if (!res.ok) {
+                    const j = await res.json().catch(() => ({}));
+                    throw new Error(j.error || ('HTTP ' + res.status));
+                }
                 dirty = false;
                 renderList();
                 setText(btn, 'Save & Publish');
                 btn.disabled = false;
-                showStatus('save-status', 'ok', '✓ Saved. Vercel will auto-deploy in ~1 min.');
+                showStatus('save-status', 'ok', '✓ Saved. Site will update in ~1 min after deploy.');
                 const footer = document.getElementById('save-footer');
                 if (footer) {
                     footer.classList.remove('is-dirty');
@@ -638,7 +599,7 @@
                 console.error(err);
                 setText(btn, 'Save & Publish');
                 btn.disabled = false;
-                showStatus('save-status', 'err', 'Save failed: ' + err.message + ' — refresh & retry if it was a sha conflict.');
+                showStatus('save-status', 'err', 'Save failed: ' + err.message);
             }
         }
 
