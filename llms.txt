@@ -1,0 +1,43 @@
+# XRX — eXtended Reality eXperience
+
+> XRX is an AI & XR deep-tech startup based in Incheon, Republic of Korea (founded 2023). We fuse Artificial Intelligence (AI) and eXtended Reality (XR) to evolve digital content into a "Living Being" that authentically interacts with users. Our core philosophy is "Breathing Life into AI."
+
+## What we build
+
+- **ALIVE Engine** — Proprietary AI persona, memory, and relationship platform. Real-time behavioral intelligence for immersive 3D environments. Sub-12ms latency. Unreal Engine / Unity native integration.
+- **ALIVE Park** — AI-powered interactive theme park platform that brings ALIVE Engine into the physical world. Supports 10M+ concurrent entities via distributed mesh topology.
+- **ONTO (OntologyHub.ai)** — Personal and organizational knowledge graph & ontology hub. MCP (Model Context Protocol) compatible. Enables cross-AI-agent interoperability (GPT, Claude, Gemini).
+- **XDT (xdt.co.kr)** — XR-based digital twin platform synchronizing physical and digital spaces in real time. Unifies ROS 2, MQTT, OPC-UA, Modbus. Deployed in industrial and smart-facility sites with AI anomaly detection.
+
+## Key facts
+
+- Legal name: XRX Inc.
+- Founded: 2023
+- Headquarters: 116, Daejoo Knowledge Industry Center, 395 Hambakmoe-ro, Namdong-gu, Incheon, Republic of Korea
+- Contact: business@xrx.studio
+- Website: https://www.xrx.studio
+- Related domains: https://ontologyhub.ai, https://xdt.co.kr
+- Partners include: Samsung Electronics, Samsung Global Research, Microsoft (Launcher Program), NVIDIA (Inception Program), The Walt Disney Company, National Geographic, Emart, Shinsegae I&C, Hyundai Futurenet, KITECH, Pablo Air, Mana Tech.
+
+## Selected milestones
+
+- **2026** — Strategic partnership with Pablo Air (XR-based drone control). Designated as "Global IP Star Company."
+- **2025** — Samsung Electronics AI & XR Technology Partner (ALIVE-based Safety Education Content for Samsung EHS). Strategic collaborations initiated with Meta, Toyota, Netflix. US expansion with Mana Tech (ALIVE AI Virtual Human Kiosks in Miami). Selected for CES 2026.
+- **2024** — Strategic discussions with The Walt Disney Company. NVIDIA Inception Program + Microsoft Launcher Program selected. 3rd place at UKC Startup Pitch (Atlanta). Core technology patents registered for "Real-Time Responsive Ultra-High-Resolution Content Generation and Playback System."
+- **2023** — XRX Inc. founded.
+
+## Core concepts
+
+- **"Breathing Life into AI"** — XRX's guiding philosophy. Making AI that inhabits space, sustains memory, and evolves through relationships.
+- **Ontology-based AI relationships** — AI that recognizes individuals, engages with emotions, and maintains a continuous evolving relationship via personal ontologies.
+- **Spatial intelligence** — AI that understands and operates within three-dimensional environments, not just text or 2D interfaces.
+
+## Links
+
+- [Home](https://www.xrx.studio/)
+- [About](https://www.xrx.studio/about.html)
+- [Business — Products](https://www.xrx.studio/business.html)
+- [Work — Methodology](https://www.xrx.studio/work.html)
+- [Contact](https://www.xrx.studio/contact.html)
+- [OntologyHub.ai (ONTO)](https://ontologyhub.ai)
+- [xdt.co.kr (XDT)](https://xdt.co.kr)
