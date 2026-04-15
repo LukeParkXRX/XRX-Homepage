@@ -23,7 +23,10 @@
     <meta name="twitter:image" content="https://www.xrx.studio/img/og-image.png">
 
     <link rel="icon" type="image/svg+xml" href="img/xrx_w_logo_White.svg">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet"></noscript>
     <style>
         :root {
             --bg: #030303;
@@ -34,6 +37,7 @@
             --accent-2: #00D4FF;
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+            --fg-dim: #C8C8C8;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -99,7 +103,7 @@
         }
         .page-hero p {
             font-size: 1.3rem; font-weight: 300; line-height: 1.7;
-            color: #C8C8C8; max-width: 700px;
+            color: var(--fg-dim); max-width: 700px;
         }
 
         .section { padding: 10vh 0; border-bottom: 1px solid var(--border); }
@@ -116,7 +120,7 @@
         }
         h3 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.75rem; }
 
-        p { font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: #C8C8C8; }
+        p { font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--fg-dim); }
 
         .value-card {
             padding: 2.5rem;
@@ -241,7 +245,7 @@
                 <div class="grid-2">
                     <div>
                         <div class="about-logo-wrap">
-                            <img src="img/xrx_w_logo_White.svg" alt="XRX Logo">
+                            <img src="img/xrx_w_logo_White.svg" alt="XRX">
                         </div>
                         <h2>A creative technology powerhouse</h2>
                         <p>XRX breathes life into static digital content through the seamless fusion of visionary experience design and advanced real-time interaction engines. Our mission is to make AI truly spatial — inhabiting environments, understanding context, and relating to humans in three dimensions.</p>

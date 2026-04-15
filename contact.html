@@ -23,13 +23,17 @@
     <meta name="twitter:image" content="https://www.xrx.studio/img/og-image.png">
 
     <link rel="icon" type="image/svg+xml" href="img/xrx_w_logo_White.svg">
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet"></noscript>
     <style>
         :root {
             --bg: #030303; --fg: #F4F4F4; --mute: #808080;
             --border: #1F1F1F; --accent: #FF9800; --accent-2: #00D4FF;
             --font-display: 'Outfit', sans-serif;
             --font-mono: 'JetBrains Mono', monospace;
+            --fg-dim: #C8C8C8;
         }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         body {
@@ -80,7 +84,7 @@
         }
         .page-hero p {
             font-size: 1.3rem; font-weight: 300; line-height: 1.7;
-            color: #C8C8C8; max-width: 700px;
+            color: var(--fg-dim); max-width: 700px;
         }
 
         .section { padding: 10vh 0; border-bottom: 1px solid var(--border); }
@@ -91,7 +95,7 @@
             font-weight: 200; line-height: 1.1;
             letter-spacing: -0.02em; margin-bottom: 1.5rem;
         }
-        p { font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: #C8C8C8; }
+        p { font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--fg-dim); }
 
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
 
@@ -141,6 +145,8 @@
         .form-group textarea { min-height: 160px; resize: vertical; }
         .form-group select { cursor: pointer; }
         .form-group select option { background: var(--bg); color: var(--fg); }
+
+        .honeypot { position: absolute; left: -9999px; opacity: 0; pointer-events: none; }
 
         .select-wrapper { position: relative; }
         .select-wrapper::after {
@@ -301,29 +307,28 @@
                             <input type="hidden" name="access_key" value="e66d9690-e0b0-4520-96e4-3e47810bf4f5">
                             <input type="hidden" name="subject" value="[XRX] 회사 홈페이지를 통해 새 문의가 접수 되었습니다.">
                             <input type="hidden" name="from_name" value="XRX Contact Form">
-                            <input type="hidden" name="redirect" value="https://www.xrx.studio/contact.html">
-                            <input type="checkbox" name="botcheck" style="display:none">
+                            <input type="checkbox" name="botcheck" class="honeypot" tabindex="-1" autocomplete="off">
 
                             <div class="form-grid">
                                 <div class="form-group">
-                                    <label class="mono">NAME</label>
-                                    <input type="text" name="name" placeholder="John Doe" required>
+                                    <label class="mono" for="cf-name">NAME</label>
+                                    <input id="cf-name" type="text" name="name" placeholder="John Doe" required>
                                 </div>
                                 <div class="form-group">
-                                    <label class="mono">EMAIL</label>
-                                    <input type="email" name="email" placeholder="hello@company.com" required>
+                                    <label class="mono" for="cf-email">EMAIL</label>
+                                    <input id="cf-email" type="email" name="email" placeholder="hello@company.com" required>
                                 </div>
                             </div>
 
                             <div class="form-group">
-                                <label class="mono">COMPANY</label>
-                                <input type="text" name="company" placeholder="Your company name">
+                                <label class="mono" for="cf-company">COMPANY</label>
+                                <input id="cf-company" type="text" name="company" placeholder="Your company name">
                             </div>
 
                             <div class="form-group">
-                                <label class="mono">INQUIRY TYPE</label>
+                                <label class="mono" for="cf-inquiry">INQUIRY TYPE</label>
                                 <div class="select-wrapper">
-                                    <select name="inquiry_type">
+                                    <select id="cf-inquiry" name="inquiry_type">
                                         <option value="" disabled selected>Select inquiry type ↓</option>
                                         <option value="business">Business Inquiry</option>
                                         <option value="partnership">Partnership</option>
@@ -337,8 +342,8 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="mono">MESSAGE</label>
-                                <textarea name="message" placeholder="Tell us about your project or inquiry..."></textarea>
+                                <label class="mono" for="cf-message">MESSAGE</label>
+                                <textarea id="cf-message" name="message" placeholder="Tell us about your project or inquiry..."></textarea>
                             </div>
 
                             <div style="display:flex; align-items:center; gap:2rem; flex-wrap:wrap;">
