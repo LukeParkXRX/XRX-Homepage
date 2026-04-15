@@ -8,6 +8,8 @@
     { "source": "/about", "destination": "/about.html" },
     { "source": "/business", "destination": "/business.html" },
     { "source": "/work", "destination": "/work.html" },
-    { "source": "/contact", "destination": "/contact.html" }
+    { "source": "/contact", "destination": "/contact.html" },
+    { "source": "/admin", "destination": "/admin.html" },
+    { "source": "/project", "destination": "/project.html" }
   ]
 }

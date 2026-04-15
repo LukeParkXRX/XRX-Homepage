@@ -3,6 +3,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /admin
+Disallow: /admin.html
 
 # Common AI crawlers (explicit allow)
 User-agent: GPTBot

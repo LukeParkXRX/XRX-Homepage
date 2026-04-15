@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project — XRX</title>
+    <meta name="description" content="XRX project case study.">
+    <meta name="author" content="XRX Inc.">
+    <meta name="robots" content="index, follow">
+
+    <link rel="icon" type="image/svg+xml" href="img/xrx_w_logo_White.svg">
+    <meta name="theme-color" content="#030303">
+    <meta name="color-scheme" content="dark">
+    <meta name="google-site-verification" content="uxEbDyy_G5HB-v8D2OxsBZlMNS91Fn-KP6tUsohP1lQ">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet"></noscript>
+    <style>
+        :root {
+            --bg: #030303; --fg: #F4F4F4; --mute: #808080;
+            --border: #1F1F1F; --accent: #FF9800; --accent-2: #00D4FF;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --fg-dim: #C8C8C8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--fg); font-family: var(--font-display); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        ::selection { background: var(--accent); color: var(--bg); }
+        .mono { font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--mute); }
+
+        nav {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 1rem 2rem;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            background: rgba(0,0,0,0.82);
+            backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img { height: 44px; width: auto; filter: brightness(0) invert(1); }
+        .nav-links { display: flex; gap: clamp(1rem,3vw,3rem); }
+        .nav-links a {
+            color: var(--fg); text-decoration: none;
+            font-family: var(--font-mono); font-size: 0.85rem;
+            text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .nav-toggle { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+        .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--fg); transition: 0.3s; }
+        .nav-toggle.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+        .nav-toggle.open span:nth-child(2) { opacity: 0; }
+        .nav-toggle.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+        .container { width: min(100% - 4rem, 1400px); margin: 0 auto; }
+
+        .project-hero { padding: 160px 0 80px; border-bottom: 1px solid var(--border); text-align: center; }
+        .project-client { font-family: var(--font-mono); font-size: 0.85rem; color: var(--accent); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.5rem; }
+        .project-hero h1 { font-size: clamp(2.5rem, 5vw, 5.5rem); font-weight: 200; line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; }
+        .project-hero p.lead { font-size: 1.25rem; font-weight: 300; line-height: 1.7; color: var(--fg-dim); max-width: 720px; margin: 0 auto; }
+
+        .project-meta-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; padding: 2rem 0; border-bottom: 1px solid var(--border); max-width: 1000px; margin: 3rem auto 0; }
+        .meta-cell { text-align: center; }
+        .meta-cell .label { font-family: var(--font-mono); font-size: 0.7rem; color: var(--mute); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 0.5rem; }
+        .meta-cell .value { font-size: 1rem; color: var(--fg); word-break: break-word; }
+
+        .project-body { padding: 10vh 0; }
+        .image-block { margin: 3rem 0; border-radius: 4px; overflow: hidden; border: 1px solid var(--border); }
+        .image-block img, .image-block video, .image-block iframe { width: 100%; height: auto; display: block; }
+        .image-block iframe { aspect-ratio: 16/9; height: auto; border: 0; }
+        .project-body h2 { font-size: clamp(1.6rem, 2.5vw, 2.5rem); font-weight: 200; line-height: 1.2; letter-spacing: -0.02em; margin: 3rem auto 1.5rem; max-width: 800px; }
+        .project-body p { font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: var(--fg-dim); max-width: 800px; margin: 0 auto 1.2rem; }
+        .project-body ul { max-width: 800px; margin: 1.5rem auto; padding-left: 1.5rem; }
+        .project-body li { font-size: 1.05rem; color: var(--fg-dim); margin-bottom: 0.6rem; line-height: 1.6; }
+        .project-body a { color: var(--accent); text-decoration: none; }
+        .project-body a:hover { text-decoration: underline; }
+
+        .project-nav { display: flex; justify-content: space-between; padding: 4rem 0; border-top: 1px solid var(--border); flex-wrap: wrap; gap: 1rem; }
+        .project-nav a { display: inline-flex; align-items: center; gap: 0.75rem; color: var(--accent); text-decoration: none; font-family: var(--font-mono); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.1em; transition: gap 0.3s; }
+        .project-nav a:hover { gap: 1.25rem; }
+
+        footer { padding: 2rem; display: flex; justify-content: space-between; border-top: 1px solid var(--border); }
+
+        .loading-state { padding: 20vh 2rem; text-align: center; color: var(--mute); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.1em; }
+
+        @media (max-width: 768px) {
+            .nav-toggle { display: flex; }
+            .nav-links {
+                position: fixed; top: 0; right: 0;
+                height: 100vh; width: 260px;
+                flex-direction: column; padding: 6rem 2rem;
+                background: rgba(0,0,0,0.95);
+                transform: translateX(100%); transition: transform 0.3s;
+            }
+            .nav-links.open { transform: translateX(0); }
+            .project-meta-bar { grid-template-columns: repeat(2, 1fr); }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a class="logo" href="index.html"><img src="img/xrx_w_logo_White.svg" alt="XRX"></a>
+        <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="nav-links mono">
+            <a href="about.html">ABOUT</a>
+            <a href="business.html">BUSINESS</a>
+            <a href="work.html" class="active">WORK</a>
+            <a href="contact.html">CONTACT</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container" id="project-root">
+            <div class="loading-state">Loading…</div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="mono">© 2026 XRX INC. ALL RIGHTS RESERVED.</div>
+        <div class="mono" style="color:var(--mute)">SYS_STAT: NOMINAL</div>
+    </footer>
+
+    <script>
+        const navToggle = document.querySelector('.nav-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        navToggle.addEventListener('click', () => {
+            navToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Project page: load by ?slug=
+        const root = document.getElementById('project-root');
+        const params = new URLSearchParams(location.search);
+        const slug = params.get('slug');
+
+        function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
+        function setText(e, t) { e.textContent = t || ''; }
+
+        function showMessage(msg) {
+            while (root.firstChild) root.removeChild(root.firstChild);
+            const d = el('div', 'loading-state');
+            setText(d, msg);
+            root.appendChild(d);
+        }
+
+        function renderMediaItem(item) {
+            const wrap = el('div', 'image-block');
+            if (item.type === 'image') {
+                const picture = document.createElement('picture');
+                if (item.webp) {
+                    const s = document.createElement('source');
+                    s.setAttribute('srcset', item.webp);
+                    s.setAttribute('type', 'image/webp');
+                    picture.appendChild(s);
+                }
+                const img = document.createElement('img');
+                img.src = item.src || '';
+                img.alt = item.alt || '';
+                if (item.loading !== 'eager') img.loading = 'lazy';
+                picture.appendChild(img);
+                wrap.appendChild(picture);
+            } else if (item.type === 'video') {
+                const v = document.createElement('video');
+                v.src = item.src;
+                v.controls = true;
+                v.muted = true;
+                v.playsInline = true;
+                wrap.appendChild(v);
+            } else if (item.type === 'youtube' || item.type === 'vimeo') {
+                const f = document.createElement('iframe');
+                f.src = item.src;
+                f.setAttribute('allowfullscreen', '');
+                f.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture');
+                wrap.appendChild(f);
+            } else if (item.type === 'embed') {
+                const f = document.createElement('iframe');
+                f.src = item.src;
+                f.setAttribute('allowfullscreen', '');
+                wrap.appendChild(f);
+            }
+            return wrap;
+        }
+
+        // Safely render body HTML from project data — parse & copy with DOMParser + allowlist.
+        // projects.json is maintained by the site owner (via authenticated admin), so content is trusted.
+        // We still filter to a basic allowlist to avoid surprises.
+        const ALLOWED = new Set(['H2','H3','P','UL','OL','LI','STRONG','EM','B','I','BR','A','BLOCKQUOTE','CODE','HR','SPAN']);
+        function sanitizeInto(target, htmlString) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString('<div>' + (htmlString || '') + '</div>', 'text/html');
+            const srcRoot = doc.body.firstChild;
+            function walk(src, dest) {
+                Array.from(src.childNodes).forEach(node => {
+                    if (node.nodeType === 3) {
+                        dest.appendChild(document.createTextNode(node.nodeValue));
+                    } else if (node.nodeType === 1 && ALLOWED.has(node.tagName)) {
+                        const copy = document.createElement(node.tagName);
+                        if (node.tagName === 'A') {
+                            const href = node.getAttribute('href') || '';
+                            if (/^(https?:|mailto:|\/|\.\/|#)/.test(href)) copy.setAttribute('href', href);
+                            if (node.getAttribute('target')) copy.setAttribute('target', '_blank');
+                            copy.setAttribute('rel', 'noopener');
+                        }
+                        walk(node, copy);
+                        dest.appendChild(copy);
+                    }
+                });
+            }
+            walk(srcRoot, target);
+        }
+
+        function renderProject(p) {
+            document.title = p.title + ' — XRX';
+            const descMeta = document.querySelector('meta[name="description"]');
+            if (descMeta && p.lead) descMeta.setAttribute('content', p.lead);
+
+            while (root.firstChild) root.removeChild(root.firstChild);
+
+            // Hero
+            const hero = el('section', 'project-hero');
+            const client = el('div', 'project-client');
+            setText(client, [p.client, p.category && p.category.toUpperCase(), p.year].filter(Boolean).join(' · '));
+            hero.appendChild(client);
+
+            const h1 = document.createElement('h1');
+            setText(h1, p.title);
+            hero.appendChild(h1);
+
+            if (p.lead) {
+                const lead = el('p', 'lead');
+                setText(lead, p.lead);
+                hero.appendChild(lead);
+            }
+
+            if (Array.isArray(p.meta) && p.meta.length) {
+                const bar = el('div', 'project-meta-bar');
+                p.meta.forEach(m => {
+                    const cell = el('div', 'meta-cell');
+                    const lab = el('div', 'label'); setText(lab, m.label); cell.appendChild(lab);
+                    const val = el('div', 'value'); setText(val, m.value); cell.appendChild(val);
+                    bar.appendChild(cell);
+                });
+                hero.appendChild(bar);
+            }
+            root.appendChild(hero);
+
+            // Body
+            const body = el('section', 'project-body');
+
+            // Cover image (from project main image)
+            if (p.image) {
+                const cover = el('div', 'image-block');
+                const pic = document.createElement('picture');
+                if (p.imageWebp) {
+                    const s = document.createElement('source');
+                    s.setAttribute('srcset', p.imageWebp);
+                    s.setAttribute('type', 'image/webp');
+                    pic.appendChild(s);
+                }
+                const img = document.createElement('img');
+                img.src = p.image;
+                img.alt = p.title || '';
+                if (p.imageWidth) img.width = p.imageWidth;
+                if (p.imageHeight) img.height = p.imageHeight;
+                pic.appendChild(img);
+                cover.appendChild(pic);
+                body.appendChild(cover);
+            }
+
+            // Body HTML (allowlisted)
+            if (p.bodyHtml) {
+                sanitizeInto(body, p.bodyHtml);
+            }
+
+            // Additional media
+            if (Array.isArray(p.media)) {
+                p.media.forEach(m => body.appendChild(renderMediaItem(m)));
+            }
+
+            root.appendChild(body);
+
+            // Nav
+            const nav = el('div', 'project-nav');
+            const back = el('a'); back.href = 'work.html'; setText(back, '← Back to Projects'); nav.appendChild(back);
+            const contact = el('a'); contact.href = 'contact.html'; setText(contact, 'Discuss a project →'); nav.appendChild(contact);
+            root.appendChild(nav);
+        }
+
+        if (!slug) {
+            showMessage('No project specified.');
+        } else {
+            fetch('data/projects.json', { cache: 'no-cache' })
+                .then(r => r.ok ? r.json() : Promise.reject(r.status))
+                .then(list => {
+                    const p = list.find(x => x.slug === slug);
+                    if (p) renderProject(p);
+                    else showMessage('Project not found.');
+                })
+                .catch(() => showMessage('Unable to load project.'));
+        }
+    </script>
+</body>
+</html>

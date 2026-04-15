@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XRX Admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="googlebot" content="noindex, nofollow">
+    <link rel="icon" type="image/svg+xml" href="img/xrx_w_logo_White.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Outfit:wght@200;300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg: #030303; --fg: #F4F4F4; --mute: #808080;
+            --border: #1F1F1F; --accent: #FF9800; --danger: #FF4040;
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+            --fg-dim: #C8C8C8;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background: var(--bg); color: var(--fg); font-family: var(--font-display); min-height: 100vh; }
+        ::selection { background: var(--accent); color: var(--bg); }
+        .mono { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* Login screen */
+        .login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 2rem; }
+        .login-card { width: 100%; max-width: 420px; padding: 3rem 2.5rem; border: 1px solid var(--border); border-radius: 6px; background: #0a0a0a; }
+        .login-card .brand { text-align: center; margin-bottom: 2.5rem; }
+        .login-card .brand img { height: 40px; filter: brightness(0) invert(1); }
+        .login-card h1 { font-size: 1.5rem; font-weight: 300; margin-bottom: 0.5rem; text-align: center; }
+        .login-card .sub { color: var(--mute); font-family: var(--font-mono); font-size: 0.75rem; text-align: center; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+
+        label { display: block; margin-top: 1.25rem; margin-bottom: 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--mute); text-transform: uppercase; letter-spacing: 0.12em; }
+        input[type="text"], input[type="password"], input[type="email"], input[type="url"], input[type="number"], textarea, select {
+            width: 100%; padding: 0.85rem 1rem;
+            background: transparent; border: 1px solid var(--border);
+            color: var(--fg); font-family: var(--font-display); font-size: 0.95rem; border-radius: 4px;
+            transition: border-color 0.2s;
+        }
+        input:focus, textarea:focus, select:focus { outline: none; border-color: var(--accent); }
+        textarea { min-height: 110px; resize: vertical; font-family: var(--font-mono); font-size: 0.85rem; line-height: 1.5; }
+        select { cursor: pointer; appearance: none; background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path fill='%23808080' d='M6 8L0 0h12z'/></svg>"); background-repeat: no-repeat; background-position: right 1rem center; padding-right: 2.5rem; }
+        .hint { font-family: var(--font-mono); font-size: 0.7rem; color: var(--mute); margin-top: 0.35rem; line-height: 1.5; }
+        .hint a { color: var(--accent); text-decoration: none; }
+        .hint a:hover { text-decoration: underline; }
+
+        .btn {
+            padding: 0.85rem 1.5rem; border: 1px solid var(--accent); background: var(--accent); color: var(--bg);
+            font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em;
+            cursor: pointer; border-radius: 4px; transition: all 0.2s; font-weight: 700;
+        }
+        .btn:hover { background: transparent; color: var(--accent); }
+        .btn.secondary { background: transparent; color: var(--fg-dim); border-color: var(--border); font-weight: 400; }
+        .btn.secondary:hover { border-color: var(--accent); color: var(--accent); }
+        .btn.danger { background: transparent; color: var(--danger); border-color: var(--danger); }
+        .btn.danger:hover { background: var(--danger); color: var(--fg); }
+
+        .status { margin-top: 1rem; padding: 0.75rem 1rem; border-radius: 4px; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.05em; }
+        .status.ok { background: rgba(0,200,100,0.1); color: #4ade80; border: 1px solid rgba(74,222,128,0.3); }
+        .status.err { background: rgba(255,64,64,0.1); color: var(--danger); border: 1px solid rgba(255,64,64,0.3); }
+        .status.info { background: rgba(255,152,0,0.08); color: var(--accent); border: 1px solid rgba(255,152,0,0.3); }
+
+        /* Editor layout */
+        .editor-shell { display: none; min-height: 100vh; }
+        .editor-shell.active { display: block; }
+
+        .top-bar {
+            position: sticky; top: 0; z-index: 10;
+            padding: 0.85rem 2rem;
+            background: rgba(10,10,10,0.92); backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
+        }
+        .top-bar .brand { display: flex; align-items: center; gap: 0.75rem; }
+        .top-bar .brand img { height: 28px; filter: brightness(0) invert(1); }
+        .top-bar .brand .label { font-family: var(--font-mono); font-size: 0.75rem; color: var(--mute); letter-spacing: 0.1em; }
+        .top-bar .actions { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+
+        .editor-body { display: grid; grid-template-columns: 320px 1fr; min-height: calc(100vh - 60px); }
+
+        .sidebar { border-right: 1px solid var(--border); background: #060606; overflow-y: auto; max-height: calc(100vh - 60px); position: sticky; top: 60px; }
+        .sidebar-head { padding: 1rem 1.25rem; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        .sidebar-head h3 { font-size: 0.75rem; font-family: var(--font-mono); color: var(--mute); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 400; }
+
+        .project-list { list-style: none; padding: 0.5rem 0; }
+        .project-list li { padding: 0.75rem 1.25rem; cursor: pointer; border-left: 2px solid transparent; transition: all 0.2s; }
+        .project-list li:hover { background: rgba(255,152,0,0.05); }
+        .project-list li.active { background: rgba(255,152,0,0.1); border-left-color: var(--accent); }
+        .project-list .pl-title { font-size: 0.95rem; color: var(--fg); }
+        .project-list .pl-meta { font-family: var(--font-mono); font-size: 0.68rem; color: var(--mute); margin-top: 0.2rem; letter-spacing: 0.05em; text-transform: uppercase; }
+        .project-list .pl-badge { display: inline-block; padding: 1px 6px; border-radius: 2px; font-size: 0.6rem; margin-left: 0.4rem; background: rgba(255,152,0,0.15); color: var(--accent); }
+
+        .new-btn-wrap { padding: 1rem 1.25rem; border-top: 1px solid var(--border); background: #050505; position: sticky; bottom: 0; }
+        .new-btn-wrap .btn { width: 100%; }
+
+        .editor-main { padding: 2rem 2.5rem; max-width: 900px; width: 100%; }
+        .editor-main h2 { font-size: 1.4rem; font-weight: 300; margin-bottom: 0.5rem; }
+        .editor-main .form-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--mute); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 2rem; }
+
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        fieldset { border: 1px solid var(--border); border-radius: 4px; padding: 1rem 1.25rem; margin-top: 1.5rem; }
+        legend { padding: 0 0.5rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .meta-rows { display: grid; gap: 0.75rem; }
+        .meta-row { display: grid; grid-template-columns: 1fr 1.5fr auto; gap: 0.5rem; align-items: center; }
+        .meta-row .remove-btn { padding: 0.5rem 0.75rem; }
+
+        .media-list { display: flex; flex-direction: column; gap: 0.75rem; }
+        .media-item { padding: 0.85rem; border: 1px solid var(--border); border-radius: 4px; display: grid; grid-template-columns: 140px 1fr auto; gap: 0.75rem; align-items: center; background: #080808; }
+        .media-item select { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+        .media-item input { padding: 0.5rem 0.75rem; font-size: 0.85rem; }
+
+        .save-footer { position: sticky; bottom: 0; background: rgba(3,3,3,0.92); backdrop-filter: blur(12px); padding: 1rem 2.5rem; border-top: 1px solid var(--border); display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; margin-top: 2rem; }
+        .save-footer .btn { min-width: 180px; }
+        .save-footer .dirty-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); display: none; }
+        .save-footer.is-dirty .dirty-dot { display: inline-block; }
+
+        .empty-state { padding: 8rem 2rem; text-align: center; color: var(--mute); font-family: var(--font-mono); font-size: 0.85rem; letter-spacing: 0.1em; }
+
+        @media (max-width: 960px) {
+            .editor-body { grid-template-columns: 1fr; }
+            .sidebar { position: static; max-height: none; border-right: none; border-bottom: 1px solid var(--border); }
+            .editor-main { padding: 1.5rem; }
+            .row { grid-template-columns: 1fr; }
+            .meta-row { grid-template-columns: 1fr 1fr; }
+            .meta-row .remove-btn { grid-column: 1 / -1; justify-self: end; }
+            .media-item { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ═══ LOGIN SCREEN ═══ -->
+    <div class="login-wrap" id="login-screen">
+        <div class="login-card">
+            <div class="brand"><img src="img/xrx_w_logo_White.svg" alt="XRX"></div>
+            <h1>Admin Access</h1>
+            <p class="sub">Content Management</p>
+
+            <label for="lg-user">User ID</label>
+            <input id="lg-user" type="text" autocomplete="username">
+
+            <label for="lg-pass">Password</label>
+            <input id="lg-pass" type="password" autocomplete="current-password">
+
+            <label for="lg-token">GitHub Token <span style="color:var(--mute);text-transform:none;letter-spacing:0;">(first time only)</span></label>
+            <input id="lg-token" type="password" placeholder="github_pat_... or ghp_...">
+            <div class="hint">
+                First time? <a href="https://github.com/settings/personal-access-tokens/new" target="_blank">Generate a fine-grained PAT ↗</a><br>
+                Scope: Contents write on LukeParkXRX/XRX-Homepage. Token is stored only in this browser session.
+            </div>
+
+            <button class="btn" id="lg-submit" style="width:100%; margin-top: 1.75rem;">Sign In</button>
+            <div id="lg-status"></div>
+        </div>
+    </div>
+
+    <!-- ═══ EDITOR ═══ -->
+    <div class="editor-shell" id="editor-screen">
+        <div class="top-bar">
+            <div class="brand">
+                <img src="img/xrx_w_logo_White.svg" alt="XRX">
+                <span class="label">Admin — Projects</span>
+            </div>
+            <div class="actions">
+                <a class="btn secondary" href="work.html" target="_blank">↗ Preview Site</a>
+                <button class="btn secondary" id="logout">Sign Out</button>
+            </div>
+        </div>
+
+        <div class="editor-body">
+            <aside class="sidebar">
+                <div class="sidebar-head">
+                    <h3>Projects (<span id="pl-count">0</span>)</h3>
+                </div>
+                <ul class="project-list" id="project-list"></ul>
+                <div class="new-btn-wrap">
+                    <button class="btn" id="new-project">+ New Project</button>
+                </div>
+            </aside>
+
+            <main class="editor-main" id="editor-main">
+                <div class="empty-state">Select a project from the left to edit, or create a new one.</div>
+            </main>
+        </div>
+    </div>
+
+    <script>
+        // ═══ CONFIG ═══
+        const REPO_OWNER = 'LukeParkXRX';
+        const REPO_NAME = 'XRX-Homepage';
+        const FILE_PATH = 'data/projects.json';
+        const BRANCH = 'main';
+
+        // Credentials (hashed — not the real security layer; GitHub PAT is)
+        // 'lukepark' / 'lukepark1004' SHA-256
+        const EXPECTED_USER_HASH = '15d57cca18f6c42b42b7d062dbe8ac5cc70ea618f82e3dbcf08b86c55ffbdcbc';
+        const EXPECTED_PASS_HASH = '33e4b56e45e385671708cff26482a9fba3d9b00e7b7c867c30c646442f7fb670';
+
+        const TOKEN_KEY = 'xrx_gh_pat';
+        const AUTH_KEY = 'xrx_admin_auth';
+
+        // ═══ HELPERS ═══
+        function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
+        function setText(e, t) { e.textContent = (t === undefined || t === null) ? '' : t; }
+        async function sha256(text) {
+            const buf = new TextEncoder().encode(text);
+            const hash = await crypto.subtle.digest('SHA-256', buf);
+            return Array.from(new Uint8Array(hash)).map(b => b.toString(16).padStart(2, '0')).join('');
+        }
+        function showStatus(containerId, type, message) {
+            const c = document.getElementById(containerId);
+            while (c.firstChild) c.removeChild(c.firstChild);
+            const d = el('div', 'status ' + type);
+            setText(d, message);
+            c.appendChild(d);
+        }
+
+        // ═══ LOGIN ═══
+        document.getElementById('lg-submit').addEventListener('click', handleLogin);
+        ['lg-user','lg-pass','lg-token'].forEach(id => {
+            document.getElementById(id).addEventListener('keydown', e => {
+                if (e.key === 'Enter') handleLogin();
+            });
+        });
+
+        async function handleLogin() {
+            const user = document.getElementById('lg-user').value.trim();
+            const pass = document.getElementById('lg-pass').value;
+            const token = document.getElementById('lg-token').value.trim();
+
+            if (!user || !pass) {
+                showStatus('lg-status', 'err', 'Please enter ID and password.');
+                return;
+            }
+            showStatus('lg-status', 'info', 'Verifying…');
+
+            const uH = await sha256(user.toLowerCase());
+            const pH = await sha256(pass);
+            if (uH !== EXPECTED_USER_HASH || pH !== EXPECTED_PASS_HASH) {
+                showStatus('lg-status', 'err', 'Invalid credentials.');
+                return;
+            }
+
+            // Token: if provided, save to session. Otherwise check existing.
+            const existingToken = sessionStorage.getItem(TOKEN_KEY);
+            if (token) {
+                sessionStorage.setItem(TOKEN_KEY, token);
+            } else if (!existingToken) {
+                showStatus('lg-status', 'err', 'GitHub token required on first login. See instructions above.');
+                return;
+            }
+
+            sessionStorage.setItem(AUTH_KEY, '1');
+            enterEditor();
+        }
+
+        // Auto re-enter editor if already authenticated
+        if (sessionStorage.getItem(AUTH_KEY) === '1' && sessionStorage.getItem(TOKEN_KEY)) {
+            enterEditor();
+        }
+
+        document.getElementById('logout').addEventListener('click', () => {
+            sessionStorage.removeItem(AUTH_KEY);
+            sessionStorage.removeItem(TOKEN_KEY);
+            location.reload();
+        });
+
+        // ═══ EDITOR STATE ═══
+        let projects = [];
+        let currentIndex = -1;
+        let fileSha = null;
+        let dirty = false;
+
+        async function enterEditor() {
+            document.getElementById('login-screen').style.display = 'none';
+            document.getElementById('editor-screen').classList.add('active');
+            await loadProjects();
+        }
+
+        async function loadProjects() {
+            try {
+                const token = sessionStorage.getItem(TOKEN_KEY);
+                const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}?ref=${BRANCH}`, {
+                    headers: { 'Authorization': 'Bearer ' + token, 'Accept': 'application/vnd.github+json' }
+                });
+                if (!res.ok) throw new Error('HTTP ' + res.status);
+                const data = await res.json();
+                fileSha = data.sha;
+                const jsonText = atob(data.content.replace(/\s/g, ''));
+                // UTF-8 safe decode
+                const decoded = decodeURIComponent(escape(jsonText));
+                projects = JSON.parse(decoded);
+                renderList();
+            } catch (err) {
+                console.error(err);
+                alert('Could not load projects.json from GitHub. Check your PAT permissions (Contents write on LukeParkXRX/XRX-Homepage).');
+            }
+        }
+
+        function renderList() {
+            const ul = document.getElementById('project-list');
+            while (ul.firstChild) ul.removeChild(ul.firstChild);
+            document.getElementById('pl-count').textContent = projects.length;
+
+            projects.forEach((p, i) => {
+                const li = document.createElement('li');
+                if (i === currentIndex) li.className = 'active';
+                const t = el('div', 'pl-title'); setText(t, p.title || '(Untitled)'); li.appendChild(t);
+                const m = el('div', 'pl-meta');
+                setText(m, (p.category || '').toUpperCase() + ' · ' + (p.year || ''));
+                if (p.tileSize && p.tileSize !== 'default') {
+                    const badge = el('span', 'pl-badge'); setText(badge, p.tileSize); m.appendChild(badge);
+                }
+                li.appendChild(m);
+                li.addEventListener('click', () => selectProject(i));
+                ul.appendChild(li);
+            });
+        }
+
+        function selectProject(i) {
+            if (dirty && !confirm('Unsaved changes will be lost. Continue?')) return;
+            currentIndex = i;
+            dirty = false;
+            renderList();
+            renderEditor();
+        }
+
+        document.getElementById('new-project').addEventListener('click', () => {
+            if (dirty && !confirm('Unsaved changes will be lost. Continue?')) return;
+            const newP = {
+                slug: 'new-project-' + Date.now(),
+                title: 'New Project',
+                subtitle: '',
+                category: 'client',
+                client: '',
+                year: new Date().getFullYear().toString(),
+                status: 'In Development',
+                tileSize: 'default',
+                tileTag: 'CLIENT',
+                tileSubtag: new Date().getFullYear().toString(),
+                image: 'img/alive-engine.jpg',
+                imageWebp: 'img/alive-engine.webp',
+                imageWidth: 2752,
+                imageHeight: 1536,
+                lead: '',
+                meta: [
+                    { label: 'Category', value: 'Client Work' },
+                    { label: 'Client', value: '' },
+                    { label: 'Year', value: new Date().getFullYear().toString() },
+                    { label: 'Status', value: 'In Development' }
+                ],
+                bodyHtml: '<h2>Overview</h2><p>Write your project description here.</p>',
+                media: []
+            };
+            projects.unshift(newP);
+            currentIndex = 0;
+            dirty = true;
+            renderList();
+            renderEditor();
+        });
+
+        // ═══ FORM RENDERING ═══
+        function renderEditor() {
+            const main = document.getElementById('editor-main');
+            while (main.firstChild) main.removeChild(main.firstChild);
+
+            if (currentIndex < 0) {
+                const empty = el('div', 'empty-state');
+                setText(empty, 'Select a project from the left to edit, or create a new one.');
+                main.appendChild(empty);
+                return;
+            }
+
+            const p = projects[currentIndex];
+
+            const h2 = document.createElement('h2');
+            setText(h2, 'Editing: ' + (p.title || '(Untitled)'));
+            main.appendChild(h2);
+            const metaLabel = el('div', 'form-meta');
+            setText(metaLabel, 'Slug: ' + (p.slug || '')); main.appendChild(metaLabel);
+
+            // BASIC INFO
+            const f1 = document.createElement('fieldset');
+            const l1 = document.createElement('legend'); setText(l1, 'Basic Info'); f1.appendChild(l1);
+            f1.appendChild(textInput('Title', 'title'));
+            f1.appendChild(textInput('Subtitle', 'subtitle'));
+            const row1 = el('div', 'row');
+            row1.appendChild(selectInput('Category', 'category', [
+                { v: 'platform', t: 'Platform' },
+                { v: 'client', t: 'Client Work' },
+                { v: 'partnership', t: 'Partnership' },
+                { v: 'rd', t: 'R&D / Award' }
+            ]));
+            row1.appendChild(textInput('Client / Partner', 'client'));
+            f1.appendChild(row1);
+            const row2 = el('div', 'row');
+            row2.appendChild(textInput('Year', 'year'));
+            row2.appendChild(textInput('Status', 'status'));
+            f1.appendChild(row2);
+            f1.appendChild(textInput('Slug (URL)', 'slug', 'URL path — lowercase, hyphens only. Changing this breaks old links.'));
+            f1.appendChild(textInput('External URL (optional)', 'externalUrl', 'e.g., https://ontologyhub.ai'));
+            main.appendChild(f1);
+
+            // TILE
+            const f2 = document.createElement('fieldset');
+            const l2 = document.createElement('legend'); setText(l2, 'Portfolio Tile'); f2.appendChild(l2);
+            f2.appendChild(selectInput('Tile Size', 'tileSize', [
+                { v: 'default', t: 'Default (1×1)' },
+                { v: 'wide', t: 'Wide (2×1)' },
+                { v: 'tall', t: 'Tall (1×2)' },
+                { v: 'large', t: 'Large (2×2)' }
+            ]));
+            const row3 = el('div', 'row');
+            row3.appendChild(textInput('Tile Tag (top)', 'tileTag'));
+            row3.appendChild(textInput('Tile Subtag (after ·)', 'tileSubtag'));
+            f2.appendChild(row3);
+            main.appendChild(f2);
+
+            // COVER IMAGE
+            const f3 = document.createElement('fieldset');
+            const l3 = document.createElement('legend'); setText(l3, 'Cover Image'); f3.appendChild(l3);
+            f3.appendChild(textInput('Image path (JPG/PNG)', 'image', 'e.g., img/my-project.jpg'));
+            f3.appendChild(textInput('WebP path (optional)', 'imageWebp', 'e.g., img/my-project.webp'));
+            const row4 = el('div', 'row');
+            row4.appendChild(numberInput('Width (px)', 'imageWidth'));
+            row4.appendChild(numberInput('Height (px)', 'imageHeight'));
+            f3.appendChild(row4);
+            main.appendChild(f3);
+
+            // LEAD
+            const f4 = document.createElement('fieldset');
+            const l4 = document.createElement('legend'); setText(l4, 'Hero Intro'); f4.appendChild(l4);
+            f4.appendChild(textareaInput('Lead Paragraph', 'lead', 'One-sentence summary (shown under the title).', 3));
+            main.appendChild(f4);
+
+            // META BAR
+            const f5 = document.createElement('fieldset');
+            const l5 = document.createElement('legend'); setText(l5, 'Meta Bar (4 cells)'); f5.appendChild(l5);
+            f5.appendChild(renderMetaRows(p));
+            main.appendChild(f5);
+
+            // BODY
+            const f6 = document.createElement('fieldset');
+            const l6 = document.createElement('legend'); setText(l6, 'Body Content'); f6.appendChild(l6);
+            const hint = el('div', 'hint');
+            setText(hint, 'Allowed tags: h2, h3, p, ul, ol, li, strong, em, br, a, blockquote, code, hr, span. Example: <h2>Overview</h2><p>Your text…</p><ul><li>Point 1</li></ul>');
+            f6.appendChild(hint);
+            f6.appendChild(textareaInput('HTML Body', 'bodyHtml', '', 12));
+            main.appendChild(f6);
+
+            // MEDIA
+            const f7 = document.createElement('fieldset');
+            const l7 = document.createElement('legend'); setText(l7, 'Additional Media (images, videos)'); f7.appendChild(l7);
+            f7.appendChild(renderMediaRows(p));
+            main.appendChild(f7);
+
+            // Footer actions
+            const footer = el('div', 'save-footer' + (dirty ? ' is-dirty' : ''));
+            footer.id = 'save-footer';
+            const dotLabel = el('span', 'mono'); dotLabel.style.color = 'var(--mute)'; dotLabel.style.fontSize = '0.75rem';
+            const dot = el('span', 'dirty-dot');
+            dotLabel.appendChild(dot);
+            const lblTxt = document.createElement('span'); setText(lblTxt, dirty ? ' Unsaved changes' : ' Saved');
+            dotLabel.appendChild(lblTxt);
+            const saveBtn = el('button', 'btn'); setText(saveBtn, 'Save & Publish'); saveBtn.id = 'save-btn';
+            const delBtn = el('button', 'btn danger'); setText(delBtn, 'Delete');
+
+            saveBtn.addEventListener('click', saveAll);
+            delBtn.addEventListener('click', deleteCurrent);
+            footer.appendChild(dotLabel);
+            footer.appendChild(saveBtn);
+            footer.appendChild(delBtn);
+            main.appendChild(footer);
+
+            const saveStatus = el('div'); saveStatus.id = 'save-status';
+            main.appendChild(saveStatus);
+        }
+
+        // ═══ INPUT FACTORIES ═══
+        function textInput(label, key, hint) {
+            const wrap = document.createElement('div');
+            const l = document.createElement('label'); setText(l, label); wrap.appendChild(l);
+            const input = document.createElement('input');
+            input.type = 'text';
+            input.value = (projects[currentIndex][key] === undefined || projects[currentIndex][key] === null) ? '' : projects[currentIndex][key];
+            input.addEventListener('input', () => { projects[currentIndex][key] = input.value; markDirty(); });
+            wrap.appendChild(input);
+            if (hint) { const h = el('div', 'hint'); setText(h, hint); wrap.appendChild(h); }
+            return wrap;
+        }
+        function numberInput(label, key) {
+            const wrap = document.createElement('div');
+            const l = document.createElement('label'); setText(l, label); wrap.appendChild(l);
+            const input = document.createElement('input');
+            input.type = 'number';
+            input.value = projects[currentIndex][key] || '';
+            input.addEventListener('input', () => {
+                const v = parseInt(input.value, 10);
+                projects[currentIndex][key] = isNaN(v) ? undefined : v;
+                markDirty();
+            });
+            wrap.appendChild(input);
+            return wrap;
+        }
+        function textareaInput(label, key, hint, rows) {
+            const wrap = document.createElement('div');
+            const l = document.createElement('label'); setText(l, label); wrap.appendChild(l);
+            const ta = document.createElement('textarea');
+            ta.value = projects[currentIndex][key] || '';
+            if (rows) ta.rows = rows;
+            ta.addEventListener('input', () => { projects[currentIndex][key] = ta.value; markDirty(); });
+            wrap.appendChild(ta);
+            if (hint) { const h = el('div', 'hint'); setText(h, hint); wrap.appendChild(h); }
+            return wrap;
+        }
+        function selectInput(label, key, options) {
+            const wrap = document.createElement('div');
+            const l = document.createElement('label'); setText(l, label); wrap.appendChild(l);
+            const s = document.createElement('select');
+            options.forEach(o => {
+                const opt = document.createElement('option');
+                opt.value = o.v; setText(opt, o.t);
+                if (projects[currentIndex][key] === o.v) opt.selected = true;
+                s.appendChild(opt);
+            });
+            s.addEventListener('change', () => { projects[currentIndex][key] = s.value; markDirty(); });
+            wrap.appendChild(s);
+            return wrap;
+        }
+
+        function renderMetaRows(p) {
+            if (!Array.isArray(p.meta)) p.meta = [];
+            const wrap = el('div', 'meta-rows');
+            p.meta.forEach((m, idx) => {
+                const row = el('div', 'meta-row');
+                const lab = document.createElement('input'); lab.type = 'text'; lab.placeholder = 'Label'; lab.value = m.label || '';
+                lab.addEventListener('input', () => { m.label = lab.value; markDirty(); });
+                const val = document.createElement('input'); val.type = 'text'; val.placeholder = 'Value'; val.value = m.value || '';
+                val.addEventListener('input', () => { m.value = val.value; markDirty(); });
+                const rm = el('button', 'btn secondary remove-btn'); setText(rm, 'Remove');
+                rm.addEventListener('click', () => { p.meta.splice(idx, 1); markDirty(); renderEditor(); });
+                row.appendChild(lab); row.appendChild(val); row.appendChild(rm);
+                wrap.appendChild(row);
+            });
+            const add = el('button', 'btn secondary'); setText(add, '+ Add meta row');
+            add.style.marginTop = '0.5rem';
+            add.addEventListener('click', () => { p.meta.push({ label: '', value: '' }); markDirty(); renderEditor(); });
+            wrap.appendChild(add);
+            return wrap;
+        }
+
+        function renderMediaRows(p) {
+            if (!Array.isArray(p.media)) p.media = [];
+            const wrap = el('div', 'media-list');
+            p.media.forEach((m, idx) => {
+                const row = el('div', 'media-item');
+                const typeSel = document.createElement('select');
+                [{v:'image',t:'Image'},{v:'video',t:'Video (self-hosted .mp4)'},{v:'youtube',t:'YouTube embed'},{v:'vimeo',t:'Vimeo embed'},{v:'embed',t:'Other iframe'}].forEach(o => {
+                    const opt = document.createElement('option'); opt.value = o.v; setText(opt, o.t);
+                    if (m.type === o.v) opt.selected = true;
+                    typeSel.appendChild(opt);
+                });
+                typeSel.addEventListener('change', () => { m.type = typeSel.value; markDirty(); });
+                const srcInput = document.createElement('input'); srcInput.type = 'text'; srcInput.placeholder = 'Source URL / path (for YouTube use https://www.youtube.com/embed/VIDEO_ID)';
+                srcInput.value = m.src || '';
+                srcInput.addEventListener('input', () => { m.src = srcInput.value; markDirty(); });
+                const rm = el('button', 'btn danger'); setText(rm, '×');
+                rm.addEventListener('click', () => { p.media.splice(idx, 1); markDirty(); renderEditor(); });
+                row.appendChild(typeSel); row.appendChild(srcInput); row.appendChild(rm);
+                wrap.appendChild(row);
+            });
+            const add = el('button', 'btn secondary'); setText(add, '+ Add media');
+            add.style.marginTop = '0.5rem';
+            add.addEventListener('click', () => { p.media.push({ type: 'image', src: '' }); markDirty(); renderEditor(); });
+            wrap.appendChild(add);
+            return wrap;
+        }
+
+        // ═══ DIRTY STATE ═══
+        function markDirty() {
+            dirty = true;
+            const footer = document.getElementById('save-footer');
+            if (footer) footer.classList.add('is-dirty');
+            const lbl = footer && footer.querySelector('.mono span:last-child');
+            if (lbl) setText(lbl, ' Unsaved changes');
+        }
+        window.addEventListener('beforeunload', (e) => {
+            if (dirty) { e.preventDefault(); e.returnValue = ''; }
+        });
+
+        // ═══ SAVE / DELETE ═══
+        async function saveAll() {
+            if (!projects.length) return;
+            const btn = document.getElementById('save-btn');
+            btn.disabled = true;
+            setText(btn, 'Saving…');
+            try {
+                const token = sessionStorage.getItem(TOKEN_KEY);
+                const pretty = JSON.stringify(projects, null, 2);
+                // UTF-8 safe encode
+                const b64 = btoa(unescape(encodeURIComponent(pretty)));
+
+                const commitMsg = 'Admin: update projects.json (' + projects.length + ' projects)';
+                const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Authorization': 'Bearer ' + token,
+                        'Accept': 'application/vnd.github+json',
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        message: commitMsg,
+                        content: b64,
+                        sha: fileSha,
+                        branch: BRANCH
+                    })
+                });
+                if (!res.ok) {
+                    const errText = await res.text();
+                    throw new Error('HTTP ' + res.status + ': ' + errText);
+                }
+                const result = await res.json();
+                fileSha = result.content.sha;
+                dirty = false;
+                renderList();
+                setText(btn, 'Save & Publish');
+                btn.disabled = false;
+                showStatus('save-status', 'ok', '✓ Saved. Vercel will auto-deploy in ~1 min.');
+                const footer = document.getElementById('save-footer');
+                if (footer) {
+                    footer.classList.remove('is-dirty');
+                    const lbl = footer.querySelector('.mono span:last-child');
+                    if (lbl) setText(lbl, ' Saved');
+                }
+            } catch (err) {
+                console.error(err);
+                setText(btn, 'Save & Publish');
+                btn.disabled = false;
+                showStatus('save-status', 'err', 'Save failed: ' + err.message + ' — refresh & retry if it was a sha conflict.');
+            }
+        }
+
+        function deleteCurrent() {
+            if (currentIndex < 0) return;
+            const p = projects[currentIndex];
+            if (!confirm('Delete "' + (p.title || 'this project') + '"? This only removes it from the JSON; you still need to Save & Publish.')) return;
+            projects.splice(currentIndex, 1);
+            currentIndex = -1;
+            markDirty();
+            renderList();
+            renderEditor();
+        }
+    </script>
+</body>
+</html>
