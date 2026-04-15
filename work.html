@@ -200,6 +200,105 @@
         }
         .case-card h3 { font-size: 1.3rem; font-weight: 400; margin-bottom: 1rem; }
 
+        /* ═══ PORTFOLIO GRID ═══ */
+        .portfolio-header {
+            display: flex; align-items: flex-end; justify-content: space-between;
+            flex-wrap: wrap; gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .portfolio-header h2 { margin-bottom: 0; }
+
+        .filter-bar {
+            display: flex; gap: 0.5rem; flex-wrap: wrap;
+            align-items: center;
+        }
+        .filter-bar::before {
+            content: 'FILTER';
+            font-family: var(--font-mono); font-size: 0.7rem;
+            color: var(--mute); margin-right: 1rem;
+            letter-spacing: 0.1em;
+        }
+        .filter-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--fg-dim);
+            padding: 0.5rem 1rem;
+            font-family: var(--font-mono); font-size: 0.75rem;
+            text-transform: uppercase; letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.25s;
+            border-radius: 2px;
+        }
+        .filter-btn:hover { border-color: var(--accent); color: var(--fg); }
+        .filter-btn.is-active {
+            background: var(--accent); color: var(--bg); border-color: var(--accent);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 280px;
+            gap: 1.25rem;
+        }
+        .portfolio-item {
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            text-decoration: none;
+            color: var(--fg);
+            transition: transform 0.45s cubic-bezier(.2,0,.2,1), border-color 0.25s;
+            display: block;
+        }
+        .portfolio-item.is-wide { grid-column: span 2; }
+        .portfolio-item.is-tall { grid-row: span 2; }
+        .portfolio-item.is-large { grid-column: span 2; grid-row: span 2; }
+
+        .portfolio-item img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(.2,0,.2,1), filter 0.4s;
+            display: block;
+        }
+        .portfolio-item:hover { border-color: var(--accent); }
+        .portfolio-item:hover img {
+            transform: scale(1.05);
+            filter: brightness(0.55);
+        }
+
+        .portfolio-caption {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 1.5rem;
+            background: linear-gradient(to top, rgba(0,0,0,0.92) 10%, rgba(0,0,0,0) 100%);
+            transform: translateY(25%);
+            opacity: 0.85;
+            transition: transform 0.4s cubic-bezier(.2,0,.2,1), opacity 0.3s;
+        }
+        .portfolio-item:hover .portfolio-caption {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        .portfolio-tag {
+            font-family: var(--font-mono); font-size: 0.7rem;
+            color: var(--accent); text-transform: uppercase;
+            letter-spacing: 0.1em; margin-bottom: 0.4rem;
+            display: flex; gap: 0.75rem; align-items: center;
+        }
+        .portfolio-tag .dot { color: var(--mute); }
+        .portfolio-title {
+            font-size: 1.25rem; font-weight: 400; line-height: 1.2;
+            letter-spacing: -0.01em;
+        }
+        .portfolio-item[hidden] { display: none; }
+
+        .portfolio-empty {
+            grid-column: 1 / -1;
+            padding: 4rem 2rem; text-align: center;
+            color: var(--mute); font-family: var(--font-mono);
+            font-size: 0.85rem; letter-spacing: 0.1em;
+        }
+
         /* Partners */
         .partner-grid {
             display: grid;
@@ -245,9 +344,18 @@
             .phase-grid { grid-template-columns: 1fr 1fr; }
             .case-grid { grid-template-columns: 1fr; }
             .pipeline-header { flex-direction: column; align-items: flex-start; }
+            .portfolio-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 220px; }
+            .portfolio-item.is-wide,
+            .portfolio-item.is-large { grid-column: span 2; }
+            .portfolio-item.is-tall { grid-row: span 1; }
+            .portfolio-header { flex-direction: column; align-items: flex-start; }
         }
         @media (max-width: 480px) {
             .phase-grid { grid-template-columns: 1fr; }
+            .portfolio-grid { grid-template-columns: 1fr; grid-auto-rows: 200px; }
+            .portfolio-item.is-wide,
+            .portfolio-item.is-large { grid-column: span 1; }
+            .portfolio-caption { transform: translateY(0); opacity: 1; }
         }
     </style>
 </head>
@@ -268,9 +376,173 @@
     <main>
         <div class="container">
             <section class="page-hero">
-                <div class="section-label mono">METHODOLOGY</div>
-                <h1>How We Work</h1>
-                <p>Each XRX system follows a distinct deployment pipeline. From cognitive mapping to live production — every phase is engineered for real-time performance.</p>
+                <div class="section-label mono">SELECTED WORKS</div>
+                <h1>Projects &<br>Case Studies</h1>
+                <p>Everything we have built, shipped, and collaborated on — from AI & XR platforms to client deployments and strategic partnerships.</p>
+            </section>
+
+            <!-- PORTFOLIO GALLERY -->
+            <section class="section" id="projects">
+                <div class="portfolio-header">
+                    <div>
+                        <div class="section-label mono">PROJECTS</div>
+                        <h2>Recent Work</h2>
+                    </div>
+                    <div class="filter-bar" role="tablist">
+                        <button class="filter-btn is-active" data-filter="all">All</button>
+                        <button class="filter-btn" data-filter="platform">Platform</button>
+                        <button class="filter-btn" data-filter="client">Client Work</button>
+                        <button class="filter-btn" data-filter="partnership">Partnership</button>
+                        <button class="filter-btn" data-filter="rd">R&amp;D</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-grid" id="portfolio-grid">
+                    <!-- ALIVE Engine — large feature tile -->
+                    <a class="portfolio-item platform is-large" href="projects/alive-engine.html">
+                        <picture>
+                            <source srcset="img/alive-engine.webp" type="image/webp">
+                            <img src="img/alive-engine.jpg" alt="ALIVE Engine" width="2752" height="1536" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PLATFORM</span><span class="dot">·</span><span>2023 — Present</span></div>
+                            <div class="portfolio-title">ALIVE Engine — AI Persona &amp; Memory Platform</div>
+                        </div>
+                    </a>
+
+                    <!-- Samsung EHS -->
+                    <a class="portfolio-item client is-tall" href="#">
+                        <picture>
+                            <source srcset="img/alive_park2.webp" type="image/webp">
+                            <img src="img/alive_park2.jpg" alt="Samsung EHS Safety Education" width="1920" height="1084" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>CLIENT · SAMSUNG</span><span class="dot">·</span><span>2025</span></div>
+                            <div class="portfolio-title">ALIVE AI &amp; XR Safety Education for Samsung EHS</div>
+                        </div>
+                    </a>
+
+                    <!-- ALIVE Park -->
+                    <a class="portfolio-item platform" href="#">
+                        <picture>
+                            <source srcset="img/alive-park.webp" type="image/webp">
+                            <img src="img/alive-park.png" alt="ALIVE Park" width="2311" height="1287" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PLATFORM</span><span class="dot">·</span><span>2024 — 2025</span></div>
+                            <div class="portfolio-title">ALIVE Park — Interactive AI Theme Park</div>
+                        </div>
+                    </a>
+
+                    <!-- Mana Tech Miami -->
+                    <a class="portfolio-item client is-wide" href="#">
+                        <picture>
+                            <source srcset="img/onto_02.webp" type="image/webp">
+                            <img src="img/onto_02.jpg" alt="Mana Tech Miami Kiosks" width="1920" height="814" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>CLIENT · MANA TECH</span><span class="dot">·</span><span>2025 · Miami, US</span></div>
+                            <div class="portfolio-title">ALIVE AI Virtual Human Kiosks — North America</div>
+                        </div>
+                    </a>
+
+                    <!-- ONTO -->
+                    <a class="portfolio-item platform" href="#">
+                        <picture>
+                            <source srcset="img/onto.webp" type="image/webp">
+                            <img src="img/onto.jpg" alt="ONTO Knowledge Graph" width="2752" height="1536" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PLATFORM</span><span class="dot">·</span><span>2024 — Present</span></div>
+                            <div class="portfolio-title">ONTO — OntologyHub.ai Knowledge Graph</div>
+                        </div>
+                    </a>
+
+                    <!-- XDT -->
+                    <a class="portfolio-item platform is-wide" href="#">
+                        <picture>
+                            <source srcset="img/xdt.webp" type="image/webp">
+                            <img src="img/xdt.jpg" alt="XDT Digital Twin" width="2752" height="1536" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PLATFORM</span><span class="dot">·</span><span>2024 — Present</span></div>
+                            <div class="portfolio-title">XDT — Industrial Digital Twin Platform</div>
+                        </div>
+                    </a>
+
+                    <!-- Pablo Air -->
+                    <a class="portfolio-item partnership" href="#">
+                        <picture>
+                            <source srcset="img/XDT2.webp" type="image/webp">
+                            <img src="img/XDT2.jpg" alt="Pablo Air XR Drone Control" width="1920" height="814" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PARTNERSHIP · PABLO AIR</span><span class="dot">·</span><span>2026</span></div>
+                            <div class="portfolio-title">XR-based Drone Control Technology</div>
+                        </div>
+                    </a>
+
+                    <!-- NVIDIA Inception -->
+                    <a class="portfolio-item partnership" href="#">
+                        <picture>
+                            <source srcset="img/alive-engine.webp" type="image/webp">
+                            <img src="img/alive-engine.jpg" alt="NVIDIA Inception Program" width="2752" height="1536" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PARTNERSHIP · NVIDIA</span><span class="dot">·</span><span>2024</span></div>
+                            <div class="portfolio-title">NVIDIA Inception Program Member</div>
+                        </div>
+                    </a>
+
+                    <!-- Microsoft Launcher -->
+                    <a class="portfolio-item partnership" href="#">
+                        <picture>
+                            <source srcset="img/onto.webp" type="image/webp">
+                            <img src="img/onto.jpg" alt="Microsoft Launcher Program" width="2752" height="1536" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>PARTNERSHIP · MICROSOFT</span><span class="dot">·</span><span>2024</span></div>
+                            <div class="portfolio-title">Microsoft Launcher Program Selection</div>
+                        </div>
+                    </a>
+
+                    <!-- CES 2026 -->
+                    <a class="portfolio-item partnership is-wide" href="#">
+                        <picture>
+                            <source srcset="img/alive_park2.webp" type="image/webp">
+                            <img src="img/alive_park2.jpg" alt="CES 2026" width="1920" height="1084" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>EXHIBITION · CES</span><span class="dot">·</span><span>2026 · Las Vegas</span></div>
+                            <div class="portfolio-title">CES 2026 Official Exhibitor — ALIVE Technology</div>
+                        </div>
+                    </a>
+
+                    <!-- UKC Award -->
+                    <a class="portfolio-item rd" href="#">
+                        <picture>
+                            <source srcset="img/onto_02.webp" type="image/webp">
+                            <img src="img/onto_02.jpg" alt="UKC Atlanta 3rd Place" width="1920" height="814" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>AWARD · UKC</span><span class="dot">·</span><span>2024 · Atlanta</span></div>
+                            <div class="portfolio-title">3rd Place — US-Korea Conference Startup Pitch</div>
+                        </div>
+                    </a>
+
+                    <!-- Patent -->
+                    <a class="portfolio-item rd" href="#">
+                        <picture>
+                            <source srcset="img/xdt.webp" type="image/webp">
+                            <img src="img/xdt.jpg" alt="Real-Time UHD Content Patent" width="2752" height="1536" loading="lazy">
+                        </picture>
+                        <div class="portfolio-caption">
+                            <div class="portfolio-tag"><span>R&amp;D · PATENT</span><span class="dot">·</span><span>2024</span></div>
+                            <div class="portfolio-title">Real-Time Responsive Ultra-HD Content System</div>
+                        </div>
+                    </a>
+
+                </div>
             </section>
         </div>
 
@@ -481,6 +753,20 @@
             link.addEventListener('click', () => {
                 navToggle.classList.remove('open');
                 navLinks.classList.remove('open');
+            });
+        });
+
+        // Portfolio filter
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('is-active'));
+                btn.classList.add('is-active');
+                const filter = btn.dataset.filter;
+                portfolioItems.forEach(item => {
+                    item.hidden = filter !== 'all' && !item.classList.contains(filter);
+                });
             });
         });
     </script>
