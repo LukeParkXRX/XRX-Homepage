@@ -125,7 +125,7 @@
         .nav-links { display: flex; gap: clamp(1rem,3vw,3rem); }
         .nav-links a {
             color: var(--fg); text-decoration: none;
-            font-family: var(--font-mono); font-size: 0.8rem;
+            font-family: var(--font-mono); font-size: 0.85rem;
             text-transform: uppercase; letter-spacing: 0.1em; transition: color 0.3s;
         }
         .nav-links a:hover, .nav-links a.active { color: var(--accent); }
@@ -162,21 +162,67 @@
         h3 { font-size: 1.2rem; font-weight: 500; margin-bottom: 0.75rem; }
         p { font-size: 1.1rem; font-weight: 300; line-height: 1.7; color: var(--fg-dim); }
 
-        .product-detail {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 4rem;
-            align-items: start;
+        /* ═══ PRODUCT HERO SECTION (full-width bg image + overlay text) ═══ */
+        .product-hero {
+            position: relative;
+            width: 100%;
+            min-height: 85vh;
+            display: flex; align-items: center;
+            padding: 10vh 0;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border);
         }
-        .product-img {
-            width: 100%; aspect-ratio: 16/10; object-fit: cover;
-            border-radius: 4px; border: 1px solid var(--border);
+        .product-hero-bg {
+            position: absolute; inset: 0;
+            z-index: 0;
         }
+        .product-hero-bg picture,
+        .product-hero-bg img {
+            width: 100%; height: 100%;
+            display: block;
+        }
+        .product-hero-bg img {
+            object-fit: cover;
+            object-position: center;
+        }
+        .product-hero-overlay {
+            position: absolute; inset: 0; z-index: 1;
+            background: linear-gradient(90deg,
+                rgba(3,3,3,0.95) 0%,
+                rgba(3,3,3,0.75) 45%,
+                rgba(3,3,3,0.35) 85%,
+                rgba(3,3,3,0.15) 100%);
+        }
+        .product-hero-inner {
+            position: relative; z-index: 2;
+            width: min(100% - 4rem, 1400px);
+            margin: 0 auto;
+        }
+        .product-hero-content {
+            max-width: 640px;
+        }
+        .product-hero .section-label { margin-bottom: 1.5rem; }
+        .product-hero h2 {
+            margin-top: 1rem !important;
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            margin-bottom: 1.5rem !important;
+        }
+        .product-hero p {
+            font-size: 1.15rem;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
         .product-meta {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;
+            display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
             margin-top: 2rem;
         }
         .meta-item {
             padding: 1rem;
-            border: 1px solid var(--border);
+            border: 1px solid rgba(255,255,255,0.14);
+            background: rgba(3,3,3,0.55);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             border-radius: 4px;
         }
         .meta-item .label {
@@ -231,8 +277,15 @@
                 transform: translateX(100%); transition: transform 0.3s;
             }
             .nav-links.open { transform: translateX(0); }
-            .product-detail { grid-template-columns: 1fr; }
             .product-meta { grid-template-columns: 1fr; }
+            .product-hero { min-height: 70vh; padding: 8vh 0; }
+            .product-hero-overlay {
+                background: linear-gradient(180deg,
+                    rgba(3,3,3,0.4) 0%,
+                    rgba(3,3,3,0.85) 60%,
+                    rgba(3,3,3,0.95) 100%);
+            }
+            .product-hero-content { max-width: 100%; }
         }
     </style>
 </head>
@@ -258,162 +311,141 @@
                 <p>Four interconnected platforms that power the next generation of spatial intelligence, AI relationships, and digital twin infrastructure.</p>
             </section>
 
-            <!-- ALIVE -->
-            <section class="section" id="alive">
-                <div class="section-label mono">01 / CORE ENGINE</div>
-                <div class="product-detail">
-                    <div>
-                        <span class="tag">CORE</span>
-                        <h2 style="margin-top:1rem;">ALIVE Engine</h2>
-                        <p>AI persona, memory & relationship platform. A proprietary generative neural framework that injects real-time behavioral intelligence into immersive 3D environments.</p>
-                        <ul class="feature-list">
-                            <li>Real-time AI persona with persistent memory</li>
-                            <li>Behavioral intelligence for 3D spatial environments</li>
-                            <li>Sub-12ms latency response system</li>
-                            <li>Unreal Engine & Unity native integration</li>
-                            <li>Emotional context and relationship modeling</li>
-                            <li>Multi-agent orchestration support</li>
-                        </ul>
-                        <div class="product-meta">
-                            <div class="meta-item">
-                                <div class="label">Latency</div>
-                                <div class="value">&lt; 12ms</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Integration</div>
-                                <div class="value">Unreal / Unity</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Architecture</div>
-                                <div class="value">Neural Framework</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Status</div>
-                                <div class="value">Production</div>
-                            </div>
-                        </div>
-                    </div>
-                    <picture><source srcset="img/alive-engine.webp" type="image/webp"><img class="product-img" src="img/alive-engine.jpg" alt="ALIVE Engine" width="2752" height="1536" loading="lazy"></picture>
-                </div>
-            </section>
+        </div>
 
-            <!-- ALIVE PARK -->
-            <section class="section" id="alive-park">
-                <div class="section-label mono">02 / PLATFORM</div>
-                <div class="product-detail">
-                    <picture><source srcset="img/alive-park.webp" type="image/webp"><img class="product-img" src="img/alive-park.png" alt="ALIVE Park" width="2311" height="1287" loading="lazy"></picture>
-                    <div>
-                        <span class="tag">PLATFORM</span>
-                        <h2 style="margin-top:1rem;">ALIVE Park</h2>
-                        <p>AI-powered interactive theme park platform. Brings ALIVE Engine's real-time reactive spatial experiences into the physical world.</p>
-                        <ul class="feature-list">
-                            <li>Physical-digital hybrid experience platform</li>
-                            <li>10M+ concurrent entity handling</li>
-                            <li>Distributed mesh network topology</li>
-                            <li>Real-time visitor interaction and adaptation</li>
-                            <li>Multi-zone spatial orchestration</li>
-                            <li>Powered by ALIVE Engine core</li>
-                        </ul>
-                        <div class="product-meta">
-                            <div class="meta-item">
-                                <div class="label">Concurrency</div>
-                                <div class="value">10M+ Entities</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Topology</div>
-                                <div class="value">Distributed Mesh</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Domain</div>
-                                <div class="value">Theme Park / XR</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Engine</div>
-                                <div class="value">ALIVE Engine</div>
-                            </div>
-                        </div>
+        <!-- ALIVE -->
+        <section class="product-hero" id="alive">
+            <div class="product-hero-bg">
+                <picture>
+                    <source srcset="img/alive-engine.webp" type="image/webp">
+                    <img src="img/alive-engine.jpg" alt="ALIVE Engine" width="2752" height="1536" loading="lazy">
+                </picture>
+            </div>
+            <div class="product-hero-overlay"></div>
+            <div class="product-hero-inner">
+                <div class="product-hero-content">
+                    <div class="section-label mono">01 / CORE ENGINE</div>
+                    <span class="tag">CORE</span>
+                    <h2>ALIVE Engine</h2>
+                    <p>AI persona, memory &amp; relationship platform. A proprietary generative neural framework that injects real-time behavioral intelligence into immersive 3D environments.</p>
+                    <ul class="feature-list">
+                        <li>Real-time AI persona with persistent memory</li>
+                        <li>Behavioral intelligence for 3D spatial environments</li>
+                        <li>Sub-12ms latency response system</li>
+                        <li>Unreal Engine &amp; Unity native integration</li>
+                        <li>Emotional context and relationship modeling</li>
+                        <li>Multi-agent orchestration support</li>
+                    </ul>
+                    <div class="product-meta">
+                        <div class="meta-item"><div class="label">Latency</div><div class="value">&lt; 12ms</div></div>
+                        <div class="meta-item"><div class="label">Integration</div><div class="value">Unreal / Unity</div></div>
+                        <div class="meta-item"><div class="label">Architecture</div><div class="value">Neural Framework</div></div>
+                        <div class="meta-item"><div class="label">Status</div><div class="value">Production</div></div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- ONTO -->
-            <section class="section" id="onto">
-                <div class="section-label mono">03 / KNOWLEDGE</div>
-                <div class="product-detail">
-                    <div>
-                        <span class="tag">KNOWLEDGE</span>
-                        <h2 style="margin-top:1rem;">ONTO</h2>
-                        <p>Personal knowledge graph & ontology hub. An MCP-compatible platform that structures and connects knowledge for AI agents and human reasoning alike.</p>
-                        <ul class="feature-list">
-                            <li>Personal and organizational knowledge graphs</li>
-                            <li>Model Context Protocol (MCP) native integration</li>
-                            <li>Cross-AI agent interoperability (GPT, Claude, Gemini)</li>
-                            <li>Semantic reasoning and entity extraction</li>
-                            <li>Living ontology that evolves with usage</li>
-                            <li>Enterprise-grade knowledge management</li>
-                        </ul>
-                        <div class="product-meta">
-                            <div class="meta-item">
-                                <div class="label">Protocol</div>
-                                <div class="value">MCP Compatible</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Endpoint</div>
-                                <div class="value"><a href="https://ontologyhub.ai" target="_blank" style="color:var(--accent);text-decoration:none;">OntologyHub.ai ↗</a></div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Type</div>
-                                <div class="value">Knowledge Graph</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Agents</div>
-                                <div class="value">Multi-AI Support</div>
-                            </div>
-                        </div>
-                    </div>
-                    <picture><source srcset="img/onto.webp" type="image/webp"><img class="product-img" src="img/onto.jpg" alt="ONTO" width="2752" height="1536" loading="lazy"></picture>
-                </div>
-            </section>
-
-            <!-- XDT -->
-            <section class="section" id="xdt">
-                <div class="section-label mono">04 / DIGITAL TWIN</div>
-                <div class="product-detail">
-                    <picture><source srcset="img/xdt.webp" type="image/webp"><img class="product-img" src="img/xdt.jpg" alt="XDT" width="2752" height="1536" loading="lazy"></picture>
-                    <div>
-                        <span class="tag">DIGITAL TWIN</span>
-                        <h2 style="margin-top:1rem;">XDT</h2>
-                        <p>XR-based digital twin platform that synchronizes physical and digital spaces in real time. Deployed across industrial sites and smart facilities.</p>
-                        <ul class="feature-list">
-                            <li>Real-time physical-digital synchronization</li>
-                            <li>Multi-protocol support (ROS 2, MQTT, OPC-UA, Modbus)</li>
-                            <li>JSON-based device registration — no coding required</li>
-                            <li>3D visualization of all devices, states, and flows</li>
-                            <li>AI-powered anomaly detection</li>
-                            <li>Industrial site and smart facility deployment</li>
-                        </ul>
-                        <div class="product-meta">
-                            <div class="meta-item">
-                                <div class="label">Sync</div>
-                                <div class="value">Real-time</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Target</div>
-                                <div class="value">Industry / Smart Facility</div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Endpoint</div>
-                                <div class="value"><a href="https://xdt.co.kr" target="_blank" style="color:var(--accent);text-decoration:none;">xdt.co.kr ↗</a></div>
-                            </div>
-                            <div class="meta-item">
-                                <div class="label">Protocols</div>
-                                <div class="value">ROS2 / MQTT / OPC-UA</div>
-                            </div>
-                        </div>
+        <!-- ALIVE PARK -->
+        <section class="product-hero" id="alive-park">
+            <div class="product-hero-bg">
+                <picture>
+                    <source srcset="img/alive-park.webp" type="image/webp">
+                    <img src="img/alive-park.png" alt="ALIVE Park" width="2311" height="1287" loading="lazy">
+                </picture>
+            </div>
+            <div class="product-hero-overlay"></div>
+            <div class="product-hero-inner">
+                <div class="product-hero-content">
+                    <div class="section-label mono">02 / PLATFORM</div>
+                    <span class="tag">PLATFORM</span>
+                    <h2>ALIVE Park</h2>
+                    <p>AI-powered interactive theme park platform. Brings ALIVE Engine's real-time reactive spatial experiences into the physical world.</p>
+                    <ul class="feature-list">
+                        <li>Physical-digital hybrid experience platform</li>
+                        <li>10M+ concurrent entity handling</li>
+                        <li>Distributed mesh network topology</li>
+                        <li>Real-time visitor interaction and adaptation</li>
+                        <li>Multi-zone spatial orchestration</li>
+                        <li>Powered by ALIVE Engine core</li>
+                    </ul>
+                    <div class="product-meta">
+                        <div class="meta-item"><div class="label">Concurrency</div><div class="value">10M+ Entities</div></div>
+                        <div class="meta-item"><div class="label">Topology</div><div class="value">Distributed Mesh</div></div>
+                        <div class="meta-item"><div class="label">Domain</div><div class="value">Theme Park / XR</div></div>
+                        <div class="meta-item"><div class="label">Engine</div><div class="value">ALIVE Engine</div></div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
+        <!-- ONTO -->
+        <section class="product-hero" id="onto">
+            <div class="product-hero-bg">
+                <picture>
+                    <source srcset="img/onto.webp" type="image/webp">
+                    <img src="img/onto.jpg" alt="ONTO" width="2752" height="1536" loading="lazy">
+                </picture>
+            </div>
+            <div class="product-hero-overlay"></div>
+            <div class="product-hero-inner">
+                <div class="product-hero-content">
+                    <div class="section-label mono">03 / KNOWLEDGE</div>
+                    <span class="tag">KNOWLEDGE</span>
+                    <h2>ONTO</h2>
+                    <p>Personal knowledge graph &amp; ontology hub. An MCP-compatible platform that structures and connects knowledge for AI agents and human reasoning alike.</p>
+                    <ul class="feature-list">
+                        <li>Personal and organizational knowledge graphs</li>
+                        <li>Model Context Protocol (MCP) native integration</li>
+                        <li>Cross-AI agent interoperability (GPT, Claude, Gemini)</li>
+                        <li>Semantic reasoning and entity extraction</li>
+                        <li>Living ontology that evolves with usage</li>
+                        <li>Enterprise-grade knowledge management</li>
+                    </ul>
+                    <div class="product-meta">
+                        <div class="meta-item"><div class="label">Protocol</div><div class="value">MCP Compatible</div></div>
+                        <div class="meta-item"><div class="label">Endpoint</div><div class="value"><a href="https://ontologyhub.ai" target="_blank" style="color:var(--accent);text-decoration:none;">OntologyHub.ai ↗</a></div></div>
+                        <div class="meta-item"><div class="label">Type</div><div class="value">Knowledge Graph</div></div>
+                        <div class="meta-item"><div class="label">Agents</div><div class="value">Multi-AI Support</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- XDT -->
+        <section class="product-hero" id="xdt">
+            <div class="product-hero-bg">
+                <picture>
+                    <source srcset="img/xdt.webp" type="image/webp">
+                    <img src="img/xdt.jpg" alt="XDT" width="2752" height="1536" loading="lazy">
+                </picture>
+            </div>
+            <div class="product-hero-overlay"></div>
+            <div class="product-hero-inner">
+                <div class="product-hero-content">
+                    <div class="section-label mono">04 / DIGITAL TWIN</div>
+                    <span class="tag">DIGITAL TWIN</span>
+                    <h2>XDT</h2>
+                    <p>XR-based digital twin platform that synchronizes physical and digital spaces in real time. Deployed across industrial sites and smart facilities.</p>
+                    <ul class="feature-list">
+                        <li>Real-time physical-digital synchronization</li>
+                        <li>Multi-protocol support (ROS 2, MQTT, OPC-UA, Modbus)</li>
+                        <li>JSON-based device registration — no coding required</li>
+                        <li>3D visualization of all devices, states, and flows</li>
+                        <li>AI-powered anomaly detection</li>
+                        <li>Industrial site and smart facility deployment</li>
+                    </ul>
+                    <div class="product-meta">
+                        <div class="meta-item"><div class="label">Sync</div><div class="value">Real-time</div></div>
+                        <div class="meta-item"><div class="label">Target</div><div class="value">Industry / Smart Facility</div></div>
+                        <div class="meta-item"><div class="label">Endpoint</div><div class="value"><a href="https://xdt.co.kr" target="_blank" style="color:var(--accent);text-decoration:none;">xdt.co.kr ↗</a></div></div>
+                        <div class="meta-item"><div class="label">Protocols</div><div class="value">ROS2 / MQTT / OPC-UA</div></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
             <a class="back-link" href="index.html">← Back to Home</a>
             <div style="height: 4rem;"></div>
         </div>
