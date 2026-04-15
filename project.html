@@ -138,10 +138,11 @@
             });
         });
 
-        // Project page: load by ?slug=
+        // Project page: load by ?slug= (normal) or ?preview=1 (admin preview via sessionStorage)
         const root = document.getElementById('project-root');
         const params = new URLSearchParams(location.search);
         const slug = params.get('slug');
+        const isPreview = params.get('preview') === '1';
 
         function el(tag, cls) { const e = document.createElement(tag); if (cls) e.className = cls; return e; }
         function setText(e, t) { e.textContent = t || ''; }
@@ -296,7 +297,24 @@
             root.appendChild(nav);
         }
 
-        if (!slug) {
+        if (isPreview) {
+            try {
+                const raw = sessionStorage.getItem('xrx_preview');
+                if (!raw) { showMessage('No preview data. Open Preview from admin editor.'); }
+                else {
+                    const p = JSON.parse(raw);
+                    renderProject(p);
+                    // Preview banner
+                    const banner = el('div');
+                    banner.style.cssText = 'position:fixed;top:0;left:0;right:0;z-index:200;background:var(--accent);color:var(--bg);padding:0.6rem 1rem;text-align:center;font-family:var(--font-mono);font-size:0.75rem;letter-spacing:0.1em;text-transform:uppercase;';
+                    setText(banner, '⟡ Preview Mode — unsaved edits from admin editor. Not live on site. ⟡');
+                    document.body.appendChild(banner);
+                    document.querySelector('nav').style.top = '32px';
+                }
+            } catch (err) {
+                showMessage('Preview failed: ' + err.message);
+            }
+        } else if (!slug) {
             showMessage('No project specified.');
         } else {
             fetch('data/projects.json', { cache: 'no-cache' })

@@ -439,12 +439,16 @@
             dotLabel.appendChild(dot);
             const lblTxt = document.createElement('span'); setText(lblTxt, dirty ? ' Unsaved changes' : ' Saved');
             dotLabel.appendChild(lblTxt);
+            const previewBtn = el('button', 'btn secondary'); setText(previewBtn, '↗ Preview');
+            previewBtn.title = 'Preview current edits in a new tab (no save required)';
             const saveBtn = el('button', 'btn'); setText(saveBtn, 'Save & Publish'); saveBtn.id = 'save-btn';
             const delBtn = el('button', 'btn danger'); setText(delBtn, 'Delete');
 
+            previewBtn.addEventListener('click', previewCurrent);
             saveBtn.addEventListener('click', saveAll);
             delBtn.addEventListener('click', deleteCurrent);
             footer.appendChild(dotLabel);
+            footer.appendChild(previewBtn);
             footer.appendChild(saveBtn);
             footer.appendChild(delBtn);
             main.appendChild(footer);
@@ -600,6 +604,17 @@
                 setText(btn, 'Save & Publish');
                 btn.disabled = false;
                 showStatus('save-status', 'err', 'Save failed: ' + err.message);
+            }
+        }
+
+        function previewCurrent() {
+            if (currentIndex < 0) return;
+            const p = projects[currentIndex];
+            try {
+                sessionStorage.setItem('xrx_preview', JSON.stringify(p));
+                window.open('project.html?preview=1&t=' + Date.now(), 'xrx-preview');
+            } catch (err) {
+                alert('Preview failed: ' + err.message);
             }
         }
 
