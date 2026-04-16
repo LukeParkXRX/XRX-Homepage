@@ -13,3 +13,4 @@
 # Claude Code local settings
 .claude/
 .omc/
+.gstack/
